@@ -1,78 +1,95 @@
 const Client = require('../models/client');
 const { checkAccess } = require('../helpers/checkAccess');
+const ApiError = require('../helpers/ApiError');
 
-const getAllClients = async (req, res) => {
-  const clients = await Client.find({ user: req.user.id });
-  res.status(200).json({ message: 'Ok', data: clients });
+const getAllClients = async (req, res, next) => {
+  try {
+    const clients = await Client.find({ user: req.user.id });
+    if (!clients.length) {
+      return next(new ApiError('Not found any users', 404));
+    }
+    res.status(200).json({ status: 200, data: clients });
+  } catch (err) {
+    return next(new ApiError(err, 404));
+  }
 };
 
-const getClient = async (req, res) => {
+const getClient = async (req, res, next) => {
   const client = await Client.findById(req.params.id);
   if (!client) {
-    res.status(400).json({ message: 'Not found' });
+    return next(new ApiError('Client of this id not found', 404));
   }
   if (!checkAccess(client, req)) {
-    return res.status(200).json({ message: 'Ok', data: client });
+    return next(new ApiError("You don't have access to this resource", 403));
   }
-  res.status(403).json({ message: 'You dont have access for this resource' });
+  res.status(200).json({ status: 200, data: client });
 };
 
-const addClient = async (req, res) => {
+const addClient = async (req, res, next) => {
+  const { name, category, date, value, alreadyPaid, status, address, info } =
+    req.body;
+
   const client = await new Client({
-    name: req.body.name,
-    category: req.body.category,
-    date: req.body.date,
-    value: req.body.value,
-    alreadyPaid: req.body.alreadyPaid,
-    status: req.body.status,
-    address: req.body.address,
+    name,
+    category,
+    date,
+    value,
+    alreadyPaid,
+    status,
+    address,
     user: req.user.id,
-    info: req.body.info,
+    info,
   }).save();
 
   if (!client) {
-    return res.status(400).send({ messsage: 'Error while creating' });
+    return next(new ApiError('Error while saving to databases', 500));
   }
-  res.status(201).send({ data: client, message: 'Client was created' });
+  res
+    .status(201)
+    .send({ status: 201, data: client, message: 'Client was created' });
 };
 
 const updateClient = async (req, res) => {
   const client = await Client.findById(req.params.id);
 
   if (!client) {
-    return res.status(400).json({ message: 'Not found' });
+    return next(new ApiError('Client of this id not found', 404));
   }
 
   if (!checkAccess(client, req)) {
-    return res
-      .status(403)
-      .json({ message: 'You dont have access for this resource' });
+    return next(new ApiError("You don't have access to this resource", 403));
   }
+
   const updatedClient = await Client.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true }
   );
+
+  if (!updatedClient) {
+    return next(new ApiError('Error while saving to databases', 500));
+  }
+
   res.status(200).json({ message: 'Ok', data: updatedClient });
 };
 
 const deleteClient = async (req, res, next) => {
   const client = await Client.findById(req.params.id);
 
-  try {
-    if (!client) {
-      res.status(400);
-      throw new Error('My error');
-    }
-  } catch (err) {
-    return next(err);
+  if (!client) {
+    return next(new ApiError('Client of this id not found', 404));
   }
+
   if (!checkAccess(client, req)) {
-    res.status(403);
-    throw new Error('My error');
-    //.json({ message: 'You dont have access for this resource' });
+    return next(new ApiError("You don't have access to this resource", 403));
   }
-  client.remove();
+
+  try {
+    client.remove();
+  } catch(err){
+    return next(new ApiError(err, 500));
+  }
+  
   res.status(200).json({ message: 'Ok', data: client });
 };
 

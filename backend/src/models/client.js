@@ -37,9 +37,11 @@ const clientSchema = mongoose.Schema(
     },
     address: {
       type: String,
+      default: '',
     },
     info: {
       type: String,
+      default: '',
     },
   },
   {

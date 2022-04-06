@@ -10,8 +10,8 @@ POST http://localhost:5000/api/users/login
 content-type: application/json
 
 {
-    "email": "oleg@wpa.pl",
-    "password": "12345"
+    "email": "dlegasawp@w.pl",
+    "password": "12"
 }
 
 ####
@@ -21,13 +21,13 @@ POST http://localhost:5000/api/users/logout
 GET http://localhost:5000/api/clients
 
 ###
-GET http://localhost:5000/api/clients/624c71fa7cc6a3c00dff30bf
+GET http://localhost:5000/api/clients/625c71fa7cc6a3c00dff30bf
 
 ###
 GET http://localhost:5000/api/lol
 
 ###
-DELETE http://localhost:5000/api/clients/624c30370bb462c544705847
+DELETE http://localhost:5000/api/clients/624d69e49018fd0cf6d6ee5d
 
 ####
 POST http://localhost:5000/api/clients
