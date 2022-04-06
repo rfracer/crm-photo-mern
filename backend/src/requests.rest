@@ -1,0 +1,61 @@
+POST http://localhost:5000/api/users
+content-type: application/json
+
+{
+    "email": "dlegasawp@w.pl",
+    "password": "12"
+}
+####
+POST http://localhost:5000/api/users/login
+content-type: application/json
+
+{
+    "email": "oleg@wpa.pl",
+    "password": "12345"
+}
+
+####
+POST http://localhost:5000/api/users/logout
+
+####
+GET http://localhost:5000/api/clients
+
+###
+GET http://localhost:5000/api/clients/624c71fa7cc6a3c00dff30bf
+
+###
+GET http://localhost:5000/api/lol
+
+###
+DELETE http://localhost:5000/api/clients/624c30370bb462c544705847
+
+####
+POST http://localhost:5000/api/clients
+content-type: application/json
+
+{
+    "name": "nowy",
+    "category": "wedding",
+    "date": "2021-11-20T12:05:45",
+    "value": 5000,
+    "alreadyPaid": 100,
+    "status": "Lead",
+    "address": "Kalisz, czestochowska 69/62",
+    "info": "To sa dodatkowe informacje"
+}
+
+###
+PUT http://localhost:5000/api/clients/624c753847409098957cbaa8
+content-type: application/json
+
+{
+    "name": "nowypoprawionyeeeoleaa",
+    "category": "event",
+    "date": "2021-11-20T12:05:45",
+    "value": 5000,
+    "alreadyPaid": 500,
+    "status": "Leady",
+    "address": "Kaliszda, czestochowska 69/62",
+    "info": "To sa dodatkowe informacje"
+}
+
