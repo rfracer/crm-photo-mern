@@ -2,7 +2,7 @@ POST http://localhost:5000/api/users
 content-type: application/json
 
 {
-    "email": "dlegasawp@w.pl",
+    "email": "dlegasawpe@w.pl",
     "password": "12"
 }
 ####
@@ -10,7 +10,7 @@ POST http://localhost:5000/api/users/login
 content-type: application/json
 
 {
-    "email": "dlegasawp@w.pl",
+    "email": "dlegasawpe@w.pl",
     "password": "12"
 }
 
@@ -59,3 +59,28 @@ content-type: application/json
     "info": "To sa dodatkowe informacje"
 }
 
+
+
+
+###
+GET http://localhost:5000/api/tasks
+
+###
+POST http://localhost:5000/api/tasks
+content-type: application/json
+
+{
+    "name": "nowy task1",
+    "priority": "medium"
+}
+###
+DELETE http://localhost:5000/api/tasks/624d93124cbf903cbab03139
+
+###
+PUT http://localhost:5000/api/tasks/624d959d4dacfcad74be3a94
+content-type: application/json
+
+{
+    "name": "nowy task1edited",
+    "priority": "high"
+}

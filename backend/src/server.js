@@ -18,7 +18,6 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/clients', require('./routes/clients'));
 app.use('/api/tasks', require('./routes/tasks'));
 
-
 app.use(notFoundURL);
 app.use(catchErrors);
 

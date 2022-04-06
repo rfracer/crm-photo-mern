@@ -49,7 +49,7 @@ const addClient = async (req, res, next) => {
     .send({ status: 201, data: client, message: 'Client was created' });
 };
 
-const updateClient = async (req, res) => {
+const updateClient = async (req, res, next) => {
   const client = await Client.findById(req.params.id);
 
   if (!client) {
@@ -89,7 +89,7 @@ const deleteClient = async (req, res, next) => {
   } catch(err){
     return next(new ApiError(err, 500));
   }
-  
+
   res.status(200).json({ message: 'Ok', data: client });
 };
 
