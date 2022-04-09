@@ -32,7 +32,7 @@ const loginUser = async (req, res, next) => {
   }
 
   res.cookie('JWT', accessToken, {
-    maxAge: 86400000,
+    maxAge: 864000000,
     httpOnly: true,
   });
 

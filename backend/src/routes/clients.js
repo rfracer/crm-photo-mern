@@ -7,13 +7,14 @@ const {
   addClient,
   deleteClient,
   updateClient,
+  getAllTest,
 } = require('../controllers/clientController');
 
-
 router.get('/', auth, getAllClients);
+router.get('/test', getAllTest);
 router.get('/:id', auth, getClient);
-router.post('/', auth, addClient);
-router.delete('/:id', auth, deleteClient);
+router.post('/', addClient);
+router.delete('/:id', deleteClient);
 router.put('/:id', auth, updateClient);
 
 module.exports = router;

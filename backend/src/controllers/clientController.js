@@ -14,6 +14,18 @@ const getAllClients = async (req, res, next) => {
   }
 };
 
+const getAllTest = async (req, res, next) => {
+  try {
+    const clients = await Client.find({});
+    if (!clients.length) {
+      return next(new ApiError('Not found any users', 404));
+    }
+    res.status(200).json({ status: 200, data: clients });
+  } catch (err) {
+    return next(new ApiError(err, 404));
+  }
+};
+
 const getClient = async (req, res, next) => {
   const client = await Client.findById(req.params.id);
   if (!client) {
@@ -37,7 +49,7 @@ const addClient = async (req, res, next) => {
     alreadyPaid,
     status,
     address,
-    user: req.user.id,
+    // user: req.user.id,
     info,
   }).save();
 
@@ -86,7 +98,7 @@ const deleteClient = async (req, res, next) => {
 
   try {
     client.remove();
-  } catch(err){
+  } catch (err) {
     return next(new ApiError(err, 500));
   }
 
@@ -99,4 +111,5 @@ module.exports = {
   addClient,
   deleteClient,
   updateClient,
+  getAllTest,
 };

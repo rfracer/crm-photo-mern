@@ -1,23 +1,34 @@
-import { createGlobalStyle } from 'styled-components';
+import * as styled from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = styled.createGlobalStyle`
   html {
     box-sizing: border-box;
+    font-size: 62.5%;
+    height: 100%;
   }
-  
-  *, *::after, *::before {
+
+  *,
+  *::after,
+  *::before {
     box-sizing: inherit;
   }
-  
+
   body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    height: 100%;
+    font-size: 1.6rem;
+    color: ${({ theme }) => theme.colors.black};
   }
-  
-  a, button {
+
+  a,
+  button,
+  input {
     font-family: 'Montserrat', sans-serif;
+  }
+
+  #root {
+    height: 100%;
   }
 `;

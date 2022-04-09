@@ -34,14 +34,14 @@ POST http://localhost:5000/api/clients
 content-type: application/json
 
 {
-    "name": "nowy",
-    "category": "wedding",
+    "name": "Kinga",
+    "category": "event",
     "date": "2021-11-20T12:05:45",
-    "value": 5000,
+    "value": 4000,
     "alreadyPaid": 100,
-    "status": "Lead",
+    "status": "Completed",
     "address": "Kalisz, czestochowska 69/62",
-    "info": "To sa dodatkowe informacje"
+    "info": "To sa dodatkowe informacje2"
 }
 
 ###
