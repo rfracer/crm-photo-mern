@@ -11,6 +11,11 @@ export const clientsApi = createApi({
       query: () => 'clients/test',
       providesTags: ['Clients'],
     }),
+    getClient: builder.query({
+      query: (id) => ({ url: `clients/${id}` }),
+      transformResponse: (response) => response.data,
+      providesTags: ['Clients'],
+    }),
     addClient: builder.mutation({
       query: (body) => ({
         url: 'clients',
@@ -40,6 +45,7 @@ export const clientsApi = createApi({
 
 export const {
   useGetClientsQuery,
+  useGetClientQuery,
   useAddClientMutation,
   useUpdateClientMutation,
   useRemoveClientMutation,

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { ShowMoreOptions } from '../ShowMoreOptions/ShowMoreOptions';
+import { ShowMoreOptions } from 'components/molecules/ShowMoreOptions/ShowMoreOptions';
 import { Wrapper } from 'components/molecules/ClientItem/ClientItem.styles';
 
 export const ClientItem = ({
   data: { _id, name, category, date, value, status },
+  handleOpenCurrentClient,
 }) => {
   const [isShowMore, setIsShowMore] = useState(false);
-  const handleShowMore = () => {
+  const handleShowMore = (e) => {
+    e.stopPropagation();
     setIsShowMore(!isShowMore);
   };
+
   return (
-    <Wrapper>
+    <Wrapper onClick={() => handleOpenCurrentClient(_id)}>
       <td>{name}</td>
       <td>{date}</td>
       <td>{category}</td>

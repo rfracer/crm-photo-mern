@@ -31,9 +31,9 @@ const getClient = async (req, res, next) => {
   if (!client) {
     return next(new ApiError('Client of this id not found', 404));
   }
-  if (!checkAccess(client, req)) {
-    return next(new ApiError("You don't have access to this resource", 403));
-  }
+  // if (!checkAccess(client, req)) {
+  //   return next(new ApiError("You don't have access to this resource", 403));
+  // }
   res.status(200).json({ status: 200, data: client });
 };
 

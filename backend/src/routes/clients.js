@@ -12,7 +12,7 @@ const {
 
 router.get('/', auth, getAllClients);
 router.get('/test', getAllTest);
-router.get('/:id', auth, getClient);
+router.get('/:id', getClient);
 router.post('/', addClient);
 router.delete('/:id', deleteClient);
 router.put('/:id', auth, updateClient);

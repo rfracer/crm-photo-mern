@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useGetClientsQuery } from 'store';
+
 import { StyledTable, Wrapper } from './ClientsList.styles';
 import { ClientItem } from 'components/molecules/ClientItem/ClientItem';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
+import Modal from 'components/organisms/Modal/Modal';
+import { ClientDetails } from 'components/molecules/ClientDetails/ClientDetails';
 
 const SpinnerWrapper = styled.div`
   width: 100%;
@@ -13,6 +16,17 @@ const SpinnerWrapper = styled.div`
 export const ClientsList = ({ searchTerm }) => {
   const { data, isLoading } = useGetClientsQuery();
   const [filteredResults, setFilteredResults] = useState();
+  const [currentClient, setCurrentClient] = useState();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleOpenCurrentClient = (id) => {
+    setCurrentClient(id);
+    setModalIsOpen(true);
+  };
 
   useEffect(() => {
     if (searchTerm.replace(/\s/g, '') !== '') {
@@ -29,6 +43,9 @@ export const ClientsList = ({ searchTerm }) => {
 
   return (
     <Wrapper>
+      <Modal isOpen={modalIsOpen} handleClose={handleCloseModal}>
+        <ClientDetails client={currentClient} />
+      </Modal>
       <StyledTable>
         <thead>
           <tr>
@@ -44,7 +61,11 @@ export const ClientsList = ({ searchTerm }) => {
           {!isLoading
             ? filteredResults
               ? filteredResults.map((clientData) => (
-                  <ClientItem key={clientData._id} data={clientData} />
+                  <ClientItem
+                    handleOpenCurrentClient={handleOpenCurrentClient}
+                    key={clientData._id}
+                    data={clientData}
+                  />
                 ))
               : null
             : null}

@@ -6,13 +6,14 @@ import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
 import { Input } from 'components/atoms/Input/Input';
 import { ClientsList } from 'components/organisms/ClientsList/ClientsList';
+import Modal from 'components/organisms/Modal/Modal';
 
 const HeadingWrapper = styled.div`
   display: flex;
   align-items: top;
   justify-content: space-between;
 
-  Button {
+  a {
     margin-top: 3rem;
   }
 `;

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
+  display: block;
+  text-decoration: none;
   cursor: pointer;
   text-align: center;
   padding: 8px 30px;
