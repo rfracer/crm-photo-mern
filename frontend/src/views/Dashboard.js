@@ -65,7 +65,6 @@ const ChartWrapper = styled.div`
 `;
 
 const Dashboard = ({ theme }) => {
-  console.log(theme);
   return (
     <ViewWrapper>
       <Title>Dashboard</Title>

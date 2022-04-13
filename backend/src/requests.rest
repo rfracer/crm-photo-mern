@@ -1,9 +1,9 @@
-POST http://localhost:5000/api/users
+POST http://localhost:5000/api/users/register
 content-type: application/json
 
 {
-    "email": "dlegasawpe@w.pl",
-    "password": "12"
+    "email": "august2@gmail.com",
+    "password": "1234"
 }
 ####
 POST http://localhost:5000/api/users/login
@@ -13,6 +13,11 @@ content-type: application/json
     "email": "dlegasawpe@w.pl",
     "password": "12"
 }
+
+###
+GET http://localhost:5000/api/users/me
+content-type: application/json
+
 
 ####
 POST http://localhost:5000/api/users/logout
@@ -45,11 +50,11 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:5000/api/clients/624c753847409098957cbaa8
+PUT http://localhost:5000/api/clients/625009f420ad00bab0c38281
 content-type: application/json
 
 {
-    "name": "nowypoprawionyeeeoleaa",
+    "name": "nowypoprawionyeeeole",
     "category": "event",
     "date": "2021-11-20T12:05:45",
     "value": 5000,

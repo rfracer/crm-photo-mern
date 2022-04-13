@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
+import { useLogoutUserMutation } from 'store';
+import { useDispatch } from 'react-redux';
+import { setUser } from 'store/state/authSlice';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { ReactComponent as LogoWhite } from 'assets/logo-white.svg';
 import { Button } from 'components/atoms/Button/Button';
@@ -18,6 +21,7 @@ const OuterWrapper = styled.div`
   position: fixed;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.white};
+  z-index: 3;
 `;
 
 const TopBarWrapper = styled.div`
@@ -123,10 +127,19 @@ const LogOutButton = styled(Button)`
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [logoutUser, { isSuccess }] = useLogoutUserMutation();
+
+  const dispatch = useDispatch();
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogout = () => {
+    logoutUser();
+  };
+
+  if (isSuccess) dispatch(setUser({ user: null }));
   return (
     <OuterWrapper>
       <TopBarWrapper>
@@ -176,7 +189,7 @@ export const Navigation = () => {
             </li>
           </ul>
         </StyledNavigation>
-        <LogOutButton>Logout</LogOutButton>
+        <LogOutButton onClick={handleLogout}>Logout</LogOutButton>
       </Wrapper>
     </OuterWrapper>
   );

@@ -14,11 +14,11 @@ const clientSchema = mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-    // user: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: 'User',
-    // },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
     value: {
       type: Number,
       required: [true, 'Please add value of the job'],

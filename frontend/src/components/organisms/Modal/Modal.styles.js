@@ -10,7 +10,7 @@ export const ModalWrapper = styled(ReactModal)`
 
   width: 90%;
   max-width: 600px;
-  min-height: 300px;
+  min-height: 230px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 15px;
   box-shadow: 0px -5px 25px -10px rgba(0, 0, 0, 0.3);

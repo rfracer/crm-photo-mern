@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useGetClientsQuery } from 'store';
-
 import { StyledTable, Wrapper } from './ClientsList.styles';
 import { ClientItem } from 'components/molecules/ClientItem/ClientItem';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
@@ -13,9 +12,14 @@ const SpinnerWrapper = styled.div`
   margin: 0 auto;
 `;
 
+const NoClientsMessage = styled.p`
+  font-weight: 500;
+  padding-left: 1rem;
+`;
+
 export const ClientsList = ({ searchTerm }) => {
-  const { data, isLoading } = useGetClientsQuery();
-  const [filteredResults, setFilteredResults] = useState();
+  const { data, isFetching, isSuccess, isLoading } = useGetClientsQuery();
+  const [filteredResults, setFilteredResults] = useState([]);
   const [currentClient, setCurrentClient] = useState();
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -29,21 +33,27 @@ export const ClientsList = ({ searchTerm }) => {
   };
 
   useEffect(() => {
-    if (searchTerm.replace(/\s/g, '') !== '') {
-      const results = data.data.filter((client) =>
+    if (isSuccess && searchTerm.replace(/\s/g, '') !== '') {
+      const results = data.filter((client) =>
         client.name
           .toLowerCase()
           .includes(searchTerm.trim().toLocaleLowerCase())
       );
       setFilteredResults(results);
-    } else if (isLoading) {
+    } else if (isSuccess) {
+      setFilteredResults(data);
+    } else {
       setFilteredResults([]);
-    } else setFilteredResults(data.data);
-  }, [searchTerm, isLoading]);
+    }
+  }, [searchTerm, data, isSuccess]);
 
   return (
     <Wrapper>
-      <Modal isOpen={modalIsOpen} handleClose={handleCloseModal}>
+      <Modal
+        isOpen={modalIsOpen}
+        handleClose={handleCloseModal}
+        modalHeader={'Client Info'}
+      >
         <ClientDetails client={currentClient} />
       </Modal>
       <StyledTable>
@@ -58,7 +68,7 @@ export const ClientsList = ({ searchTerm }) => {
           </tr>
         </thead>
         <tbody>
-          {!isLoading
+          {data
             ? filteredResults
               ? filteredResults.map((clientData) => (
                   <ClientItem
@@ -71,7 +81,10 @@ export const ClientsList = ({ searchTerm }) => {
             : null}
         </tbody>
       </StyledTable>
-      {isLoading ? (
+      {!isFetching && !filteredResults.length ? (
+        <NoClientsMessage>No clients</NoClientsMessage>
+      ) : null}
+      {isFetching ? (
         <SpinnerWrapper>
           <Spinner />
         </SpinnerWrapper>

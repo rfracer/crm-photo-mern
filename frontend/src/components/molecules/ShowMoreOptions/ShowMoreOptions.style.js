@@ -1,4 +1,3 @@
-import { theme } from 'assets/styles/theme';
 import styled from 'styled-components';
 
 export const ShowMoreWrapper = styled.td`
@@ -17,7 +16,6 @@ export const ShowMoreList = styled.ul`
   font-weight: 600;
   display: ${({ show }) => (show ? 'block' : 'none')};
   box-shadow: ${({ theme }) => theme.inputShadow};
-  z-index: 2;
 
   li {
     display: flex;

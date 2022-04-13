@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAddClientMutation } from 'store';
+import { StyledForm } from 'components/organisms/ClientAddForm/ClientAddForm.styles';
 import { Button } from 'components/atoms/Button/Button';
 import { ClientFormSchema } from 'types/ClientFormSchema';
 import { FormInputError } from 'components/atoms/FormInputError/FormInputError';
@@ -11,15 +11,6 @@ import { TextField } from 'components/molecules/TextField/TextField';
 import { SelectField } from 'components/molecules/SelectField/SelectField';
 import { DateField } from 'components/molecules/DateField/DateField';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
-
-const StyledForm = styled.form`
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-
-  ${Button} {
-    margin-top: 3rem;
-  }
-`;
 
 export const ClientAddForm = () => {
   const [addClient, { isSuccess, isError, isLoading }] = useAddClientMutation();
@@ -41,21 +32,24 @@ export const ClientAddForm = () => {
     },
   });
 
-  const handleAddNote = (data, isSuccess) => {
+  const handleAddClient = (data, isSuccess) => {
+    console.log(data);
     addClient(data);
     if (isSuccess) reset();
   };
+
   return (
-    <StyledForm onSubmit={handleSubmit(handleAddNote, isSuccess)}>
+    <StyledForm onSubmit={handleSubmit(handleAddClient, isSuccess)}>
       <TextField
         {...register('name', { required: true })}
         label="Name"
         name="name"
         id="name"
       />
-      <FormInputError>
-        {errors.name ? 'Please fill name field' : null}
-      </FormInputError>
+
+      {errors.name ? (
+        <FormInputError>Please fill name field</FormInputError>
+      ) : null}
       <SelectField
         {...register('category', { required: true })}
         label="Category"
@@ -63,9 +57,9 @@ export const ClientAddForm = () => {
         id="category"
         options={['event', 'wedding', 'family']}
       />
-      <FormInputError>
-        {errors.category ? 'Please fill category field' : null}
-      </FormInputError>
+      {errors.category ? (
+        <FormInputError>Please fill category field</FormInputError>
+      ) : null}
       <SelectField
         {...register('status', { required: true })}
         label="Status"
@@ -73,9 +67,9 @@ export const ClientAddForm = () => {
         id="status"
         options={['lead', 'contract', 'completed']}
       />
-      <FormInputError>
-        {errors.category ? 'Please set status' : null}
-      </FormInputError>
+      {errors.status ? (
+        <FormInputError>Please set status</FormInputError>
+      ) : null}
       <TextField
         {...register('value', { required: true })}
         label="Contract value"
@@ -83,9 +77,9 @@ export const ClientAddForm = () => {
         id="value"
         type="number"
       />
-      <FormInputError>
-        {errors.value ? 'Please fill with positive value' : null}
-      </FormInputError>
+      {errors.value ? (
+        <FormInputError>Please fill field with positive value</FormInputError>
+      ) : null}
       <TextField
         {...register('alreadyPaid', { required: true })}
         label="Already paid"
@@ -93,9 +87,9 @@ export const ClientAddForm = () => {
         id="alreadyPaid"
         type="number"
       />
-      <FormInputError>
-        {errors.alreadyPaid ? 'Please fill with positive value' : null}
-      </FormInputError>
+      {errors.alreadyPaid ? (
+        <FormInputError>Please fill field with positive value</FormInputError>
+      ) : null}
       <TextField
         {...register('address', { required: true })}
         label="Address"
@@ -103,14 +97,14 @@ export const ClientAddForm = () => {
         id="address"
         type="text"
       />
-      <FormInputError>
-        {errors.address ? 'Please fill address field' : null}
-      </FormInputError>
+      {errors.address ? (
+        <FormInputError>Please fill address field</FormInputError>
+      ) : null}
 
       <DateField {...register('date')} label="Date" name="date" id="date" />
-      <FormInputError>
-        {errors.date ? 'Please fill date field' : null}
-      </FormInputError>
+      {errors.category ? (
+        <FormInputError>Please set a date</FormInputError>
+      ) : null}
       <TextField
         {...register('info', { required: true })}
         label="Additional information"

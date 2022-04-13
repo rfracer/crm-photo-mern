@@ -4,12 +4,14 @@ export const clientsApi = createApi({
   reducerPath: 'clientsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:5000/api/',
+    credentials: 'include',
   }),
   tagTypes: ['Clients'],
   endpoints: (builder) => ({
     getClients: builder.query({
-      query: () => 'clients/test',
+      query: () => 'clients',
       providesTags: ['Clients'],
+      transformResponse: (response) => response.data,
     }),
     getClient: builder.query({
       query: (id) => ({ url: `clients/${id}` }),
@@ -25,18 +27,18 @@ export const clientsApi = createApi({
       invalidatesTags: ['Clients'],
     }),
     updateClient: builder.mutation({
-      query: (body) => ({
-        url: 'clients',
-        method: 'POST',
-        body,
+      query: ({ id, data }) => ({
+        url: `clients/${id}`,
+        method: 'PUT',
+        body: data,
       }),
+      transformResponse: (response) => response.data,
       invalidatesTags: ['Clients'],
     }),
     removeClient: builder.mutation({
-      query: (body) => ({
-        url: 'clients',
+      query: (id) => ({
+        url: `clients/${id}`,
         method: 'DELETE',
-        body,
       }),
       invalidatesTags: ['Clients'],
     }),

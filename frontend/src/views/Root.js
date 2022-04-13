@@ -1,19 +1,35 @@
-import { MainTemplate } from 'components/templates/MainTemplate/MainTemplate';
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Dashboard from 'views/Dashboard';
-import Clients from 'views/Clients';
-import { AddClient } from './AddClient';
+import React, { useEffect } from 'react';
+import AuthenticatedApp from 'views/AuthenticatedApp';
+import UnauthenticatedApp from 'views/UnauthenticatedApp';
+import { useDispatch } from 'react-redux';
+import { setUser } from 'store/state/authSlice';
+import { useGetUserQuery } from 'store';
+import { useSelector } from 'react-redux';
+import { Spinner } from 'components/atoms/Spinner/Spinner';
 
 const Root = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const { data, isSuccess, isLoading } = useGetUserQuery({ user });
+
+  useEffect(() => {
+    if (!user && isSuccess) {
+      dispatch(setUser(data.user));
+    }
+  }, [data]);
+
   return (
-    <MainTemplate>
-      <Routes>
-        <Route path="/" element={<Dashboard />}></Route>
-        <Route path="/clients" element={<Clients />}></Route>
-        <Route path="clients/add" element={<AddClient />} />
-      </Routes>
-    </MainTemplate>
+    <>
+      {user ? (
+        isLoading ? (
+          <Spinner />
+        ) : (
+          <AuthenticatedApp />
+        )
+      ) : isLoading ? null : (
+        <UnauthenticatedApp />
+      )}
+    </>
   );
 };
 

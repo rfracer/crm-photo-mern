@@ -14,26 +14,26 @@ const getAllClients = async (req, res, next) => {
   }
 };
 
-const getAllTest = async (req, res, next) => {
-  try {
-    const clients = await Client.find({});
-    if (!clients.length) {
-      return next(new ApiError('Not found any users', 404));
-    }
-    res.status(200).json({ status: 200, data: clients });
-  } catch (err) {
-    return next(new ApiError(err, 404));
-  }
-};
+// const getAllTest = async (req, res, next) => {
+//   try {
+//     const clients = await Client.find({});
+//     if (!clients.length) {
+//       return next(new ApiError('Not found any users', 404));
+//     }
+//     res.status(200).json({ status: 200, data: clients });
+//   } catch (err) {
+//     return next(new ApiError(err, 404));
+//   }
+// };
 
 const getClient = async (req, res, next) => {
   const client = await Client.findById(req.params.id);
   if (!client) {
     return next(new ApiError('Client of this id not found', 404));
   }
-  // if (!checkAccess(client, req)) {
-  //   return next(new ApiError("You don't have access to this resource", 403));
-  // }
+  if (!checkAccess(client, req)) {
+    return next(new ApiError("You don't have access to this resource", 403));
+  }
   res.status(200).json({ status: 200, data: client });
 };
 
@@ -49,7 +49,7 @@ const addClient = async (req, res, next) => {
     alreadyPaid,
     status,
     address,
-    // user: req.user.id,
+    user: req.user.id,
     info,
   }).save();
 
@@ -82,7 +82,7 @@ const updateClient = async (req, res, next) => {
     return next(new ApiError('Error while saving to databases', 500));
   }
 
-  res.status(200).json({ message: 'Ok', data: updatedClient });
+  res.status(200).json({ message: 'Updated', data: updatedClient });
 };
 
 const deleteClient = async (req, res, next) => {
@@ -111,5 +111,4 @@ module.exports = {
   addClient,
   deleteClient,
   updateClient,
-  getAllTest,
 };

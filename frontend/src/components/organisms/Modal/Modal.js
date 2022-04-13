@@ -2,7 +2,7 @@ import React from 'react';
 import { ModalWrapper, CloseModalBtn, ModalHeader } from './Modal.styles';
 import { IoCloseOutline } from 'react-icons/io5';
 
-const Modal = ({ isOpen, children, handleClose }) => {
+const Modal = ({ isOpen, children, handleClose, modalHeader }) => {
   if (!isOpen) return null;
 
   return (
@@ -12,7 +12,7 @@ const Modal = ({ isOpen, children, handleClose }) => {
       onRequestClose={handleClose}
     >
       <ModalHeader>
-        <h1>Client info</h1>
+        <h1>{modalHeader}</h1>
         <CloseModalBtn onClick={handleClose}>
           <IoCloseOutline />
         </CloseModalBtn>

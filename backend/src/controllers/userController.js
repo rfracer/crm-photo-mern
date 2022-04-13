@@ -3,6 +3,21 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const ApiError = require('../helpers/ApiError');
 
+const getUser = async (req, res, next) => {
+  const token = req.cookies.JWT;
+
+  if (!token) return next(new ApiError('Unauthenticated', 401));
+
+  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+    if (err) return next(new ApiError('Forbidden', 403));
+
+    res.status(200).send({
+      status: 200,
+      user,
+    });
+  });
+};
+
 const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -34,9 +49,15 @@ const loginUser = async (req, res, next) => {
   res.cookie('JWT', accessToken, {
     maxAge: 864000000,
     httpOnly: true,
+    secure: true,
+    sameSite: 'none',
   });
 
-  res.status(200).send({ status: 200, message: 'Login successfully' });
+  res.status(200).send({
+    status: 200,
+    user: { email: email },
+    message: 'Login successfully',
+  });
 };
 
 const registerUser = async (req, res, next) => {
@@ -98,4 +119,5 @@ module.exports = {
   loginUser,
   registerUser,
   logoutUser,
+  getUser,
 };
