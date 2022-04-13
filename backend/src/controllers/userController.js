@@ -61,10 +61,14 @@ const loginUser = async (req, res, next) => {
 };
 
 const registerUser = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password, confirmPassword } = req.body;
 
-  if (!email || !password) {
+  if (!email || !password || !confirmPassword) {
     return next(new ApiError('Fill all required fields', 400));
+  }
+
+  if (password !== confirmPassword) {
+    return next(new ApiError("Passwords didn't match", 400));
   }
 
   // Check if user exists

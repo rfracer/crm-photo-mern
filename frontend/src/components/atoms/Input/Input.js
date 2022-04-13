@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const Input = styled.input`
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  border: ${({ borderStyle, theme }) =>
+    borderStyle ? borderStyle.border : '1px solid #F0F0F0'};
+
   box-sizing: border-box;
   box-shadow: ${({ theme }) => theme.inputShadow};
   border-radius: ${({ isRounded }) => (isRounded ? '50px' : '10px')};

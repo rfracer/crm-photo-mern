@@ -20,7 +20,6 @@ export const authApi = createApi({
         method: 'POST',
         body,
       }),
-      transformResponse: (response) => response.data,
     }),
     logoutUser: builder.mutation({
       query: () => ({
