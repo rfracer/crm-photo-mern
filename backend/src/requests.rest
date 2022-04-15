@@ -2,7 +2,7 @@ POST http://localhost:5000/api/users/register
 content-type: application/json
 
 {
-    "email": "august2@gmail.com",
+    "email": "august94@gmail.com",
     "password": "1234",
     "confirmPassword": "1234"
 }
@@ -11,8 +11,8 @@ POST http://localhost:5000/api/users/login
 content-type: application/json
 
 {
-    "email": "dlegasawpea@w.pl",
-    "password": "12"
+    "email": "august94@gmail.com",
+    "password": "1234"
 }
 
 ###
@@ -76,7 +76,7 @@ POST http://localhost:5000/api/tasks
 content-type: application/json
 
 {
-    "name": "nowy task1",
+    "name": "nowy task2",
     "priority": "medium"
 }
 ###

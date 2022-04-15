@@ -12,10 +12,10 @@ import { TextField } from 'components/molecules/TextField/TextField';
 
 import { Info, StyledForm, FormTitle } from 'views/Login.style';
 
-const Login = () => {
+const Login = ({ message }) => {
   const [loginUser, { data, error, isLoading, isSuccess, isError }] =
     useLoginUserMutation();
-
+  console.log(message);
   const dispatch = useDispatch();
   const {
     register,
@@ -98,6 +98,7 @@ const Login = () => {
           <span>SING UP</span>
         </Link>
       </Info>
+      {message ? <FormMessage success>{message}</FormMessage> : null}
     </>
   );
 };

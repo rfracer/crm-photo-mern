@@ -58,7 +58,7 @@ const updateTask = async (req, res, next) => {
     return next(new ApiError('Error while saving to databases', 500));
   }
 
-  res.status(200).json({ message: 'Ok', data: updatedTask });
+  res.status(200).json({ message: 'Updated successfully', data: updatedTask });
 };
 
 const deleteTask = async (req, res, next) => {

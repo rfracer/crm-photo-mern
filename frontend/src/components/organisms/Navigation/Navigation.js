@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { NavLink, Link } from 'react-router-dom';
-import { useLogoutUserMutation } from 'store';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'store/state/authSlice';
+import { NavLink, Link } from 'react-router-dom';
+import { useLogoutUserMutation, clientsApi, tasksApi, authApi } from 'store';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { ReactComponent as LogoWhite } from 'assets/logo-white.svg';
 import { Button } from 'components/atoms/Button/Button';
@@ -139,7 +139,13 @@ export const Navigation = () => {
     logoutUser();
   };
 
-  if (isSuccess) dispatch(setUser({ user: null }));
+  if (isSuccess) {
+    dispatch(setUser({ user: null }));
+    dispatch(clientsApi.util.resetApiState());
+    dispatch(tasksApi.util.resetApiState());
+    dispatch(authApi.util.resetApiState());
+  }
+
   return (
     <OuterWrapper>
       <TopBarWrapper>

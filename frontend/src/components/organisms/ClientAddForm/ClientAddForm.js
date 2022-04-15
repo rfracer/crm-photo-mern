@@ -33,7 +33,6 @@ export const ClientAddForm = () => {
   });
 
   const handleAddClient = (data, isSuccess) => {
-    console.log(data);
     addClient(data);
     if (isSuccess) reset();
   };

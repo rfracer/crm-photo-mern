@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRegisterUserMutation } from 'store';
-import { Input } from 'components/atoms/Input/Input';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
@@ -10,10 +10,10 @@ import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { Info, StyledForm, FormTitle } from 'views/Login.style';
 import { TextField } from 'components/molecules/TextField/TextField';
 
-const Register = () => {
+const Register = ({ handleMessage }) => {
   const [registerUser, { error, isSuccess, isError }] =
     useRegisterUserMutation();
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,6 +29,13 @@ const Register = () => {
   const handleRegister = (data) => {
     registerUser(data);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      handleMessage('User created successfully. You can sign in now!');
+      navigate('/login');
+    }
+  }, [isSuccess, handleMessage, navigate]);
 
   return (
     <>
@@ -58,6 +65,7 @@ const Register = () => {
           type="password"
           id="password"
           label="Password"
+          autocomplete="new-password"
           placeholder="Enter your password"
           style={{
             border: errors.password
@@ -72,6 +80,7 @@ const Register = () => {
           type="password"
           id="cofirmPassword"
           label="Confirm password"
+          autocomplete="new-password"
           placeholder="Type password again"
           style={{
             border: errors.password

@@ -15,7 +15,10 @@ const Wrapper = styled.div`
 `;
 
 export const TextField = React.forwardRef(
-  ({ label, name, id, type = 'text', isTextarea, ...props }, ref) => {
+  (
+    { autocomplete, label, name, id, type = 'text', isTextarea, ...props },
+    ref
+  ) => {
     return (
       <Wrapper>
         <Label htmlFor={id}>{label}</Label>
@@ -27,7 +30,6 @@ export const TextField = React.forwardRef(
             id={id}
             {...props}
             ref={ref}
-            autocomplete="off"
             type={type ? type : 'text'}
           />
         ) : (
@@ -37,7 +39,7 @@ export const TextField = React.forwardRef(
             type={type ? type : 'text'}
             {...props}
             ref={ref}
-            autocomplete="off"
+            autoComplete={autocomplete ? autocomplete : 'on'}
           />
         )}
       </Wrapper>

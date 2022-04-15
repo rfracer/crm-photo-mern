@@ -26,9 +26,9 @@ const Root = () => {
         ) : (
           <AuthenticatedApp />
         )
-      ) : isLoading ? null : (
+      ) : isError && !user ? (
         <UnauthenticatedApp />
-      )}
+      ) : null}
     </>
   );
 };
