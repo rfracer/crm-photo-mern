@@ -16,6 +16,11 @@ export const ModalWrapper = styled(ReactModal)`
   box-shadow: 0px -5px 25px -10px rgba(0, 0, 0, 0.3);
   z-index: 9999;
 
+  ${({ theme }) => theme.mq.desktop} {
+    max-width: 500px;
+    min-width: 300px;
+  }
+
   &:focus {
     outline: none;
   }

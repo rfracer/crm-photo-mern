@@ -22,6 +22,11 @@ const OuterWrapper = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   z-index: 3;
+  ${({ theme }) => theme.mq.desktop} {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
 `;
 
 const TopBarWrapper = styled.div`
@@ -35,6 +40,10 @@ const TopBarWrapper = styled.div`
   a {
     z-index: 100;
   }
+
+  ${({ theme }) => theme.mq.desktop} {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -47,6 +56,13 @@ const Wrapper = styled.div`
   left: 0;
   padding: 10%;
   background-color: ${({ theme }) => theme.colors.main};
+
+  ${({ theme }) => theme.mq.desktop} {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding-left: 2rem;
+  }
 `;
 
 const StyledBurger = styled.button`
@@ -77,6 +93,11 @@ const StyledNavigation = styled.div`
     align-items: center;
     list-style: none;
     margin-top: 7rem;
+
+    ${({ theme }) => theme.mq.desktop} {
+      align-items: flex-start;
+      align-content: center;
+    }
 
     li {
       margin-bottom: 10px;
@@ -115,6 +136,12 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
     height: 2rem;
     width: 2rem;
   }
+
+  ${({ theme }) => theme.mq.desktop} {
+    margin: 20px 0px;
+    text-align: left;
+    font-size: ${({ theme }) => theme.fontSize.normal};
+  }
 `;
 
 const LogOutButton = styled(Button)`
@@ -123,6 +150,11 @@ const LogOutButton = styled(Button)`
   width: 50%;
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.main};
+
+  ${({ theme }) => theme.mq.desktop} {
+    width: auto;
+    margin-bottom: 4rem;
+  }
 `;
 
 export const Navigation = () => {
@@ -158,7 +190,6 @@ export const Navigation = () => {
           </StyledLogo>
         </Link>
       </TopBarWrapper>
-      {/* <a href="" className="logo"></a> */}
 
       <Wrapper isOpen={isOpen}>
         <StyledNavigation>
@@ -181,12 +212,12 @@ export const Navigation = () => {
                 Tasks
               </StyledLink>
             </li>
-            <li>
+            {/* <li>
               <StyledLink to="/statistics" onClick={toggleNav}>
                 <IoStatsChartOutline className="nav-icon" />
                 Statistics
               </StyledLink>
-            </li>
+            </li> */}
             <li>
               <StyledLink to="/settings" onClick={toggleNav}>
                 <IoBuildOutline className="nav-icon" />

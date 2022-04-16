@@ -31,4 +31,8 @@ export const GlobalStyle = styled.createGlobalStyle`
   #root {
     height: 100%;
   }
+
+  .ReactModal__Overlay {
+    z-index: 3;
+  }
 `;

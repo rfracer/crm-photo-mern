@@ -6,4 +6,8 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.darkGrey};
   margin-top: 2rem;
   margin-bottom: 1rem;
+
+  ${({ theme }) => theme.mq.desktop} {
+    margin-bottom: 1.5rem;
+  }
 `;

@@ -22,6 +22,7 @@ export const theme = {
     meneLinks: '1.8rem',
     button: '1.6rem',
     big: '2.2rem',
+    medium: '1.8rem',
     normal: '1.6rem',
     small: '1.4rem',
   },

@@ -11,11 +11,13 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "babel-eslint": "^10.1.0",
+    "chart.js": "^3.7.1",
     "eslint-plugin-cypress": "^2.12.1",
     "lint-staged": "^12.3.7",
     "moment": "^2.29.2",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
+    "react-chartjs-2": "^4.1.0",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.29.0",
     "react-icons": "^4.3.1",
@@ -52,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.1.2",
     "cypress": "^9.5.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",

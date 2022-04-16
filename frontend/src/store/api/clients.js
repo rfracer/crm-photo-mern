@@ -1,22 +1,16 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
+import { baseApi } from './base';
 
-export const clientsApi = createApi({
-  reducerPath: 'clientsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5000/api/',
-    credentials: 'include',
-  }),
-  tagTypes: ['Clients'],
+export const clientsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getClients: builder.query({
       query: () => 'clients',
-      providesTags: ['Clients'],
+      providesTags: () => ['Clients'],
       transformResponse: (response) => response.data,
     }),
     getClient: builder.query({
       query: (id) => ({ url: `clients/${id}` }),
       transformResponse: (response) => response.data,
-      providesTags: ['Clients'],
+      providesTags: () => ['Clients'],
     }),
     addClient: builder.mutation({
       query: (body) => ({
@@ -24,7 +18,7 @@ export const clientsApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Clients'],
+      invalidatesTags: () => ['Clients'],
     }),
     updateClient: builder.mutation({
       query: ({ id, data }) => ({
@@ -33,16 +27,17 @@ export const clientsApi = createApi({
         body: data,
       }),
       transformResponse: (response) => response.data,
-      invalidatesTags: ['Clients'],
+      invalidatesTags: () => ['Clients'],
     }),
     removeClient: builder.mutation({
       query: (id) => ({
         url: `clients/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Clients'],
+      invalidatesTags: () => ['Clients'],
     }),
   }),
+  overrideExisting: true,
 });
 
 export const {

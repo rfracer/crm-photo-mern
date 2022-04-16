@@ -18,7 +18,13 @@ const NoClientsMessage = styled.p`
 `;
 
 export const ClientsList = ({ searchTerm }) => {
-  const { data, isFetching, isSuccess, isLoading } = useGetClientsQuery();
+  const { data, isFetching, isSuccess, isLoading, isError } =
+    useGetClientsQuery();
+
+  console.log('succefss' + ' ' + isSuccess);
+  console.log('error' + isError);
+  console.log('fetching d' + isFetching);
+  console.log(data);
   const [filteredResults, setFilteredResults] = useState([]);
   const [currentClient, setCurrentClient] = useState();
   const [modalIsOpen, setModalIsOpen] = useState(false);

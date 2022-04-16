@@ -1,120 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { Button } from 'components/atoms/Button/Button';
+import { useGetClientsQuery } from 'store';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
-import { IoFileTrayFull, IoCheckbox, IoCash } from 'react-icons/io5';
-import { Card, CardContent } from 'components/molecules/Card/Card';
-import chartMockup from 'assets/chart-mock.png';
-
-const BasicInfoRowWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-`;
-
-const CardHeader = styled.h3`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: ${({ theme }) => theme.fontSize.normal};
-  margin: 0;
-  padding: 20px 10px;
-  text-align: center;
-  background: ${({ background }) => background};
-  color: ${({ theme, nofill }) =>
-    nofill ? theme.colors.black : theme.colors.white};
-  border-bottom: 1px solid
-    ${({ theme, nofill }) =>
-      nofill ? theme.colors.lightGrey : theme.colors.white};
-
-  svg {
-    margin-right: 1rem;
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-`;
+import { Card, CardHeader } from 'components/molecules/Card/Card';
+import DashboardCards from 'components/organisms/DashboardCards/DashboardCards';
+import { DashboardActivities } from 'components/organisms/DashboardActivities/DashboardActivities';
+import { DashboardChart } from 'components/organisms/DashboardChart/DashboardChart';
 
 const ActivitesWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 3rem;
-  gap: 3rem;
-`;
-
-const ComingEvents = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  width: 100%;
+  height: auto;
+  margin-top: 3rem;
+  gap: 3rem;
 
-  table {
-    margin-bottom: 4rem;
-
-    td {
-      padding: 0.4rem;
-      font-size: ${({ theme }) => theme.fontSize.small};
-    }
-  }
-`;
-
-const ChartWrapper = styled.div`
-  img {
-    width: 100%;
+  ${({ theme }) => theme.mq.desktop} {
+    flex-direction: row;
   }
 `;
 
 const Dashboard = ({ theme }) => {
+  const { data, error, isFetching, isSuccess, isLoading, isError } =
+    useGetClientsQuery();
   return (
     <ViewWrapper>
       <Title>Dashboard</Title>
-      <BasicInfoRowWrapper>
-        <Card>
-          <CardHeader background={theme.colors.lightSecondary}>
-            <IoFileTrayFull /> LEADS
-          </CardHeader>
-          <CardContent>50</CardContent>
-        </Card>
-        <Card>
-          <CardHeader background={theme.colors.secondary}>
-            <IoCheckbox /> CONTRACTS
-          </CardHeader>
-          <CardContent>50</CardContent>
-        </Card>
-        <Card>
-          <CardHeader background={theme.colors.lightMain}>
-            <IoCash /> EARNINGS
-          </CardHeader>
-          <CardContent>50</CardContent>
-        </Card>
-      </BasicInfoRowWrapper>
-
+      <DashboardCards data={data} isSuccess={isSuccess} isLoading={isLoading} />
       <ActivitesWrapper>
-        <Card>
-          <CardHeader nofill>Upcoming Activities</CardHeader>
-          <ComingEvents>
-            <table>
-              <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-              </tr>
-              <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-              </tr>
-            </table>
-            <Button as="a" isOutline>
-              SHOW ALL
-            </Button>
-          </ComingEvents>
-        </Card>
-        <Card>
-          <ChartWrapper>
-            <img src={chartMockup} alt="" />
-          </ChartWrapper>
-        </Card>
+        <DashboardActivities
+          isSuccess={isSuccess}
+          isLoading={isLoading}
+          data={data}
+          isError={isError}
+          error={error}
+        />
+
+        <DashboardChart
+          isSuccess={isSuccess}
+          isLoading={isLoading}
+          isFetching={isFetching}
+          baseData={data}
+          title="EARNINGS STATISTICS"
+        />
       </ActivitesWrapper>
     </ViewWrapper>
   );
