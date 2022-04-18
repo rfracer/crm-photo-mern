@@ -24,7 +24,15 @@ export const SelectFilter = styled(Select)`
 
 export const ChartCard = styled(Card)`
   ${({ theme }) => theme.mq.desktop} {
-    min-width: 450px;
-    max-width: 800px;
+    min-width: 400px;
+    max-width: 500px;
   }
+  ${({ theme }) => theme.mq.desktop} {
+    flex-shrink: 2;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  text-align: center;
+  padding: 1rem;
 `;

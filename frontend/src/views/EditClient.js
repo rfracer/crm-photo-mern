@@ -1,14 +1,14 @@
 import React from 'react';
 import { ClientEditForm } from 'components/organisms/ClientEditForm/ClientEditForm';
-import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
+import { FormViewWrapper } from 'components/molecules/FormViewWrapper/FormViewWrapper';
 
 const EditClient = () => {
   return (
-    <ViewWrapper>
+    <FormViewWrapper>
       <Title>Edit Client</Title>
       <ClientEditForm />
-    </ViewWrapper>
+    </FormViewWrapper>
   );
 };
 

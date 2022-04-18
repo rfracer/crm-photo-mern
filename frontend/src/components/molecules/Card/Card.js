@@ -21,7 +21,7 @@ export const CardHeader = styled.h3`
   justify-content: center;
   font-size: ${({ theme }) => theme.fontSize.normal};
   margin: 0;
-  padding: 20px 10px;
+  padding: 20px 15px;
   text-align: center;
   background: ${({ background }) => background};
   color: ${({ theme, nofill }) =>
@@ -30,7 +30,7 @@ export const CardHeader = styled.h3`
     ${({ theme, nofill }) =>
       nofill ? theme.colors.lightGrey : theme.colors.white};
 
-  ${({ theme }) => theme.mq.desktop} {
+  ${({ theme }) => theme.mq.huge} {
     font-size: ${({ theme }) => theme.fontSize.medium};
   }
 
@@ -38,5 +38,9 @@ export const CardHeader = styled.h3`
     margin-right: 1rem;
     width: 1.8rem;
     height: 1.8rem;
+    ${({ theme }) => theme.mq.desktop} {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 `;

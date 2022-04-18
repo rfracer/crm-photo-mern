@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import { useGetClientQuery } from 'store';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 import { Button } from 'components/atoms/Button/Button';
-import { Wrapper } from 'components/molecules/ClientDetails/ClientDetails.style';
+import {
+  Wrapper,
+  ButtonWrapper,
+} from 'components/molecules/ClientDetails/ClientDetails.styles';
 
 const Label = styled.h3`
   font-weight: 500;
@@ -37,9 +40,11 @@ export const ClientDetails = ({ client }) => {
           <StyledInfo>{data.alreadyPaid}</StyledInfo>
           <Label>Notes:</Label>
           <StyledInfo>{data.info}</StyledInfo>
-          <Button as={Link} to={`/clients/edit/${data._id}`} isSecondary>
-            EDIT
-          </Button>
+          <ButtonWrapper>
+            <Button as={Link} to={`/clients/edit/${data._id}`} isSecondary>
+              EDIT
+            </Button>
+          </ButtonWrapper>
         </Wrapper>
       )}
     </>

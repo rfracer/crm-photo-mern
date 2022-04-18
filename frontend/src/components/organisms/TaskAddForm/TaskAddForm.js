@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useAddTaskMutation } from 'store';
 import { TextField } from 'components/molecules/TextField/TextField';
 import { SelectField } from 'components/molecules/SelectField/SelectField';
-import { FormWrapper } from 'components/organisms/TaskAddForm/TaskAddForm.style';
+import { FormWrapper } from 'components/organisms/TaskAddForm/TaskAddForm.styles';
 import { Button } from 'components/atoms/Button/Button';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';

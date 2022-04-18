@@ -1,14 +1,14 @@
 import React from 'react';
 import { ClientAddForm } from 'components/organisms/ClientAddForm/ClientAddForm';
-import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
+import { FormViewWrapper } from 'components/molecules/FormViewWrapper/FormViewWrapper';
 
 const AddClient = () => {
   return (
-    <ViewWrapper>
+    <FormViewWrapper>
       <Title>Add Client</Title>
       <ClientAddForm />
-    </ViewWrapper>
+    </FormViewWrapper>
   );
 };
 

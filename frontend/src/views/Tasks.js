@@ -6,8 +6,6 @@ import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
 import { TasksList } from 'components/organisms/TasksList/TasksList';
 import Modal from 'components/organisms/Modal/Modal';
-import { TextField } from 'components/molecules/TextField/TextField';
-import { SelectField } from 'components/molecules/SelectField/SelectField';
 import TaskAddForm from 'components/organisms/TaskAddForm/TaskAddForm';
 
 const HeadingWrapper = styled.div`
@@ -31,7 +29,7 @@ const Tasks = () => {
   };
 
   return (
-    <ViewWrapper>
+    <ViewWrapper narrow>
       <Modal
         isOpen={modalStatus}
         handleClose={handleCloseModal}

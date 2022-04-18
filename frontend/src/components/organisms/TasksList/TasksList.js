@@ -6,7 +6,7 @@ import {
   StyledList,
   SelectFilter,
   StyledMessage,
-} from 'components/organisms/TasksList/TasksList.style';
+} from 'components/organisms/TasksList/TasksList.styles';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 
 export const TasksList = () => {

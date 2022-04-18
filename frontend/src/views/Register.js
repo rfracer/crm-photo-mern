@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 
-import { Info, StyledForm, FormTitle } from 'views/Login.style';
+import { Info, StyledForm, FormTitle } from 'views/Login.styles';
 import { TextField } from 'components/molecules/TextField/TextField';
 
 const Register = ({ handleMessage }) => {

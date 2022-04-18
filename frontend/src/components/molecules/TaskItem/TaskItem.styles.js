@@ -48,6 +48,11 @@ export const StyledButton = styled.button`
     if (type === 'trash') return theme.colors.error;
   }};
 
+  &:hover {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+  }
+
   svg {
     width: 2rem;
     height: 2rem;

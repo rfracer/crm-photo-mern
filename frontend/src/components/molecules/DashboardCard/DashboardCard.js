@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader } from 'components/molecules/Card/Card';
-import { DashCardSpinner } from 'components/molecules/DashboardCard/DashboardCard.style';
+import { DashCardSpinner } from 'components/molecules/DashboardCard/DashboardCard.styles';
 
 const DashboardCard = ({
   title,

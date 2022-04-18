@@ -41,6 +41,8 @@ const Dashboard = ({ theme }) => {
           isSuccess={isSuccess}
           isLoading={isLoading}
           isFetching={isFetching}
+          isError={isError}
+          error={error}
           baseData={data}
           title="EARNINGS STATISTICS"
         />

@@ -17,7 +17,7 @@ const ButtonWrapper = styled.div`
 export const DeleteConfirm = ({ handleRemoveClient, handleClose }) => {
   return (
     <Wrapper>
-      <p>You want to delete this client?</p>
+      <p>Are you sure you want to remove this client?</p>
       <ButtonWrapper>
         <Button onClick={handleRemoveClient}>YES</Button>
         <Button onClick={handleClose} isSecondary>

@@ -8,7 +8,7 @@ import {
   ShowMoreList,
   ShowMoreWrapper,
   ShowMoreButton,
-} from 'components/molecules/ShowMoreOptions/ShowMoreOptions.style';
+} from 'components/molecules/ShowMoreOptions/ShowMoreOptions.styles';
 import { DeleteConfirm } from '../DeleteConfirm/DeleteConfirm';
 
 export const ShowMoreOptions = React.forwardRef(
@@ -37,7 +37,7 @@ export const ShowMoreOptions = React.forwardRef(
         <Modal
           isOpen={modalIsOpen}
           handleClose={handleCloseModal}
-          modalHeader={'Are you sure?'}
+          modalHeader={'Confirm Deletion'}
         >
           <DeleteConfirm
             handleRemoveClient={handleRemoveClient}

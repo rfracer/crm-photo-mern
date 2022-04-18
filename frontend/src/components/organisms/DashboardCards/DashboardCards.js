@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withTheme } from 'styled-components';
-import { CardsWrapper } from 'components/organisms/DashboardCards/DashboardCards.style';
+import { CardsWrapper } from 'components/organisms/DashboardCards/DashboardCards.styles';
 import { IoFileTrayFull, IoCheckbox, IoCash } from 'react-icons/io5';
 import DashboardCard from 'components/molecules/DashboardCard/DashboardCard';
 

@@ -12,7 +12,7 @@ export const StyledForm = styled.form`
 
   ${Input} {
     ${({ theme }) => theme.mq.desktop} {
-      max-width: 50%;
+      max-width: 100%;
     }
   }
 `;

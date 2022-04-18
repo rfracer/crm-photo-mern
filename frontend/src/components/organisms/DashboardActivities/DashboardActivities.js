@@ -7,7 +7,7 @@ import {
   TableWrapper,
   StyledCard,
   ButtonWrapper,
-} from 'components/organisms/DashboardActivities/DashboardActivities.style';
+} from 'components/organisms/DashboardActivities/DashboardActivities.styles';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 
 export const DashboardActivities = ({
@@ -53,13 +53,19 @@ export const DashboardActivities = ({
             </tbody>
           </table>
         ) : isError && error.status !== 404 ? null : (
-          'No tasks'
+          'No activities yet'
         )}
       </TableWrapper>
       <ButtonWrapper>
-        <Button isOutline as={Link} to="/clients">
-          SHOW MORE
-        </Button>
+        {isError && error.status === 404 ? (
+          <Button isOutline as={Link} to="/clients/add">
+            ADD FIRST
+          </Button>
+        ) : (
+          <Button isOutline as={Link} to="/clients">
+            SHOW MORE
+          </Button>
+        )}
       </ButtonWrapper>
     </StyledCard>
   );

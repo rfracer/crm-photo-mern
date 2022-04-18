@@ -12,7 +12,8 @@ export const Wrapper = styled.div`
     height: 100vh;
     overflow-y: hidden;
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 210px 1fr;
+    grid-template-rows: 60px 1fr;
   }
 `;
 
@@ -22,5 +23,7 @@ export const ContentWrapper = styled.div`
 
   ${({ theme }) => theme.mq.desktop} {
     overflow-y: auto;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
   }
 `;

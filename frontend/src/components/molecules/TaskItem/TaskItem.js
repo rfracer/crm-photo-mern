@@ -6,7 +6,7 @@ import {
   TaskPriority,
   ButtonsWrapper,
   StyledButton,
-} from 'components/molecules/TaskItem/TaskItem.style';
+} from 'components/molecules/TaskItem/TaskItem.styles';
 import { IoCheckmarkDoneOutline, IoTrash, IoArrowUp } from 'react-icons/io5';
 
 export const TaskItem = ({ data }) => {

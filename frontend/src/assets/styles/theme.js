@@ -2,8 +2,10 @@ export const theme = {
   colors: {
     main: '#3949AB',
     lightMain: '#7685D8',
+    darkMain: '#283593',
     secondary: '#FF9800',
     lightSecondary: '#FFB74D',
+    darkSecondary: '#EF6C00',
     background: '#F8F9FD',
     lightGrey: '#F0F0F0',
     grey: '#bdbdbd',
@@ -22,7 +24,7 @@ export const theme = {
     meneLinks: '1.8rem',
     button: '1.6rem',
     big: '2.2rem',
-    medium: '1.8rem',
+    medium: '1.7rem',
     normal: '1.6rem',
     small: '1.4rem',
   },
@@ -32,6 +34,6 @@ export const theme = {
     tablet: '@media (min-width: 768px)',
     desktop: '@media (min-width: 1024px)',
     bigDesktop: '@media (min-width: 1280px)',
-    huge: '@media(min-width: 1440px)',
+    huge: '@media(min-width: 1400px)',
   },
 };

@@ -11,6 +11,10 @@ export const StyledList = styled.ul`
 export const SelectFilter = styled(Select)`
   margin-bottom: 3rem;
   font-size: ${({ theme }) => theme.fontSize.small};
+
+  ${({ theme }) => theme.mq.desktop} {
+    width: auto;
+  }
 `;
 
 export const StyledMessage = styled(Card)`

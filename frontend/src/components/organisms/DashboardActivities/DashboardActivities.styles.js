@@ -28,7 +28,7 @@ export const StyledCard = styled(Card)`
   overflow-x: auto;
 
   ${({ theme }) => theme.mq.desktop} {
-    flex-shrink: 0;
+    flex-shrink: 1;
   }
 `;
 

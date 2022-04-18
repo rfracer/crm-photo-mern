@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'store/state/authSlice';
 import { useForm } from 'react-hook-form';
 import { useLoginUserMutation } from 'store';
-import { Input } from 'components/atoms/Input/Input';
+import { ReactComponent as Logo } from 'assets/logo.svg';
 import { Button } from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { TextField } from 'components/molecules/TextField/TextField';
 
-import { Info, StyledForm, FormTitle } from 'views/Login.style';
+import { Info, StyledForm, FormTitle, Wrapper } from 'views/Login.styles';
 
 const Login = ({ message }) => {
   const [loginUser, { data, error, isLoading, isSuccess, isError }] =
     useLoginUserMutation();
-  console.log(message);
+
   const dispatch = useDispatch();
   const {
     register,
@@ -34,13 +34,15 @@ const Login = ({ message }) => {
     loginUser(data);
   };
 
-  if (isSuccess) {
-    console.log(data.user.email);
-    dispatch(setUser({ email: data.user.email }));
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setUser({ email: data.user.email }));
+    }
+  }, [data, isSuccess]);
 
   return (
-    <>
+    <Wrapper>
+      <Logo />
       <FormTitle>Login</FormTitle>
       <StyledForm onSubmit={handleSubmit(handleLogin)}>
         <TextField
@@ -99,7 +101,7 @@ const Login = ({ message }) => {
         </Link>
       </Info>
       {message ? <FormMessage success>{message}</FormMessage> : null}
-    </>
+    </Wrapper>
   );
 };
 

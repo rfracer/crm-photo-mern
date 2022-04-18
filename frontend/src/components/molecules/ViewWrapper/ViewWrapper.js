@@ -7,7 +7,19 @@ export const ViewWrapper = styled.div`
   padding-top: 70px;
 
   ${({ theme }) => theme.mq.desktop} {
-    width: 90%;
+    width: ${({ narrow }) => (narrow ? '70%' : '90%')};
+    margin: 0 auto;
+    padding-bottom: 5rem;
+  }
+
+  ${({ theme }) => theme.mq.bigDesktop} {
+    width: ${({ narrow }) => (narrow ? '70%' : '80%')};
+    margin: 0 auto;
+    padding-bottom: 5rem;
+  }
+
+  ${({ theme }) => theme.mq.huge} {
+    width: ${({ narrow }) => (narrow ? '60%' : '70%')};
     margin: 0 auto;
     padding-bottom: 5rem;
   }

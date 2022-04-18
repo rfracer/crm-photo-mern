@@ -14,9 +14,10 @@ import { Line } from 'react-chartjs-2';
 import {
   ChartWrapper,
   ChartCard,
-} from 'components/organisms/DashboardChart/DashboardChart.style';
+  ErrorMessage,
+  SelectFilter,
+} from 'components/organisms/DashboardChart/DashboardChart.styles';
 import { CardHeader } from 'components/molecules/Card/Card';
-import { SelectFilter } from 'components/organisms/DashboardChart/DashboardChart.style';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 
 ChartJS.register(
@@ -33,8 +34,10 @@ export const DashboardChart = ({
   baseData,
   isSuccess,
   isLoading,
+  isError,
   isFetching,
   title,
+  error,
 }) => {
   const thisYear = new Date().getFullYear();
   const [selectedFilter, setSelectedFilter] = useState(thisYear);
@@ -117,9 +120,9 @@ export const DashboardChart = ({
   return (
     <ChartCard>
       <CardHeader nofill>{title}</CardHeader>{' '}
-      {!isSuccess ? (
+      {isLoading ? (
         <Spinner />
-      ) : (
+      ) : isSuccess && baseData ? (
         <>
           <SelectFilter
             value={selectedFilter}
@@ -135,6 +138,8 @@ export const DashboardChart = ({
             <Line options={options} data={data} />{' '}
           </ChartWrapper>
         </>
+      ) : isError && error.status !== 404 ? null : (
+        <ErrorMessage>No data to show a chart</ErrorMessage>
       )}
     </ChartCard>
   );

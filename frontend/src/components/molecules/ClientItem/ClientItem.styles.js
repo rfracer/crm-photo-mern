@@ -7,7 +7,7 @@ export const Wrapper = styled.tr`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: #f8f8f8;
   }
 
   td {
