@@ -1,25 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { Button } from 'components/atoms/Button/Button';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
 import { TasksList } from 'components/organisms/TasksList/TasksList';
 import Modal from 'components/organisms/Modal/Modal';
 import TaskAddForm from 'components/organisms/TaskAddForm/TaskAddForm';
-
-const HeadingWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  a {
-    margin-top: 3rem;
-  }
-`;
+import { HeadingWrapper } from 'views/Tasks/Tasks.styles';
 
 const Tasks = () => {
   const [modalStatus, setModalStatus] = useState(false);
+
   const handleCloseModal = () => {
     setModalStatus(false);
   };
@@ -42,7 +32,7 @@ const Tasks = () => {
           <Title>Tasks</Title>
         </div>
         <div>
-          <Button onClick={handleOpenModal} isSecondary>
+          <Button onClick={handleOpenModal} secondary>
             ADD
           </Button>
         </div>

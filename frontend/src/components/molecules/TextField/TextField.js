@@ -42,3 +42,10 @@ export const TextField = React.forwardRef(
     );
   }
 );
+
+TextField.propTypes = {
+  autocomplete: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isTextarea: PropTypes.bool,
+};

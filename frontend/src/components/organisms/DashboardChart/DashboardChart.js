@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -35,7 +36,6 @@ export const DashboardChart = ({
   isSuccess,
   isLoading,
   isError,
-  isFetching,
   title,
   error,
 }) => {
@@ -143,4 +143,12 @@ export const DashboardChart = ({
       )}
     </ChartCard>
   );
+};
+
+DashboardChart.propTypes = {
+  isSuccess: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  isError: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  error: PropTypes.object,
 };

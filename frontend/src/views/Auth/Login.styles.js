@@ -3,21 +3,24 @@ import { Input } from 'components/atoms/Input/Input';
 import { Button } from 'components/atoms/Button/Button';
 
 export const Wrapper = styled.div`
-  svg {
-    display: none;
-    width: 170px;
-  }
-
   ${({ theme }) => theme.mq.desktop} {
-    height: 100%;
+    height: 90%;
     width: 80%;
-    margin: 0 auto;
+    margin: 4rem auto 4rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
 
-    svg {
+  svg {
+    display: none;
+
+    ${({ theme }) => theme.mq.desktop} {
       display: block;
+      width: 135px;
+    }
+    ${({ theme }) => theme.mq.huge} {
+      width: 160px;
     }
   }
 `;
@@ -34,11 +37,20 @@ export const StyledForm = styled.form`
       color: ${({ theme }) => theme.colors.black};
       font-size: ${({ theme }) => theme.fontSize.normal};
       font-weight: 500;
+      margin-bottom: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    ${({ theme }) => theme.mq.huge} {
+      margin-top: 1.3rem;
     }
   }
   input {
     box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.1);
     margin-bottom: 0.7rem;
+    ${({ theme }) => theme.mq.desktop} {
+      width: 90%;
+    }
   }
 
   ${Button} {
@@ -52,9 +64,9 @@ export const StyledForm = styled.form`
 `;
 
 export const FormTitle = styled.h1`
-  margin: 2rem 0;
+  margin: 1rem 0 0 0;
   font-weight: 500;
-  font-size: 32px;
+  font-size: 30px;
   color: ${({ theme }) => theme.colors.white};
 
   ${({ theme }) => theme.mq.desktop} {

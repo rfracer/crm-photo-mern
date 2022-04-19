@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'store/state/authSlice';
 import { useLogoutUserMutation, baseApi } from 'store';
-import { ReactComponent as Logo } from 'assets/logo.svg';
-import { ReactComponent as LogoWhite } from 'assets/logo-white.svg';
+import { ReactComponent as Logo } from 'assets/image/logo.svg';
+import { ReactComponent as LogoWhite } from 'assets/image/logo-white.svg';
 import {
   LogOutButton,
   OuterWrapper,
@@ -19,7 +18,6 @@ import {
 import {
   IoBriefcaseOutline,
   IoBuildOutline,
-  IoStatsChartOutline,
   IoListOutline,
   IoPeopleOutline,
   IoReorderThreeOutline,
@@ -93,12 +91,6 @@ export const Navigation = () => {
                 Tasks
               </StyledLink>
             </li>
-            {/* <li>
-              <StyledLink to="/statistics" onClick={toggleNav}>
-                <IoStatsChartOutline className="nav-icon" />
-                Statistics
-              </StyledLink>
-            </li> */}
             <li>
               <StyledLink to="/settings" onClick={toggleNav}>
                 <IoBuildOutline className="nav-icon" />

@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useAddClientMutation } from 'store';
 import { StyledForm } from 'components/organisms/ClientAddForm/ClientAddForm.styles';
 import { Button } from 'components/atoms/Button/Button';
-import { ClientFormSchema } from 'types/ClientFormSchema';
+import { ClientFormSchema } from 'types/yup/ClientFormSchema';
 import { FormInputError } from 'components/atoms/FormInputError/FormInputError';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { TextField } from 'components/molecules/TextField/TextField';

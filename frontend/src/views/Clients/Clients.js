@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HeadingWrapper, SearchBar } from 'views/Clients.styles';
+import { HeadingWrapper, SearchBar } from 'views/Clients/Clients.styles';
 import { Button } from 'components/atoms/Button/Button';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
@@ -29,7 +29,7 @@ const Clients = () => {
           </SearchBar>
         </div>
         <div>
-          <Button as={Link} to="/clients/add" isSecondary>
+          <Button as={Link} to="/clients/add" secondary>
             ADD
           </Button>
         </div>

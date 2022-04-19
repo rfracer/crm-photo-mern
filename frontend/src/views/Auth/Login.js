@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setUser } from 'store/state/authSlice';
 import { useForm } from 'react-hook-form';
-import { useRegisterUserMutation } from 'store';
-import { useNavigate } from 'react-router-dom';
+import { useLoginUserMutation } from 'store';
+import { ReactComponent as Logo } from 'assets/image/logo.svg';
 import { Button } from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
-
-import { Info, StyledForm, FormTitle } from 'views/Login.styles';
 import { TextField } from 'components/molecules/TextField/TextField';
 
-const Register = ({ handleMessage }) => {
-  const [registerUser, { error, isSuccess, isError }] =
-    useRegisterUserMutation();
-  const navigate = useNavigate();
+import { Info, StyledForm, FormTitle, Wrapper } from 'views/Auth/Login.styles';
+
+const Login = ({ message }) => {
+  const [loginUser, { data, error, isLoading, isSuccess, isError }] =
+    useLoginUserMutation();
+
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -22,25 +26,26 @@ const Register = ({ handleMessage }) => {
     defaultValues: {
       email: '',
       password: '',
-      confirmPassword: '',
     },
+    mode: 'onSubmit',
+    reValidateMode: 'onChange',
   });
 
-  const handleRegister = (data) => {
-    registerUser(data);
+  const handleLogin = (data) => {
+    loginUser(data);
   };
 
   useEffect(() => {
     if (isSuccess) {
-      handleMessage('User created successfully. You can sign in now!');
-      navigate('/login');
+      dispatch(setUser({ email: data.user.email }));
     }
-  }, [isSuccess, handleMessage, navigate]);
+  }, [data, isSuccess]);
 
   return (
-    <>
-      <FormTitle>Sing up</FormTitle>
-      <StyledForm onSubmit={handleSubmit(handleRegister)}>
+    <Wrapper>
+      <Logo />
+      <FormTitle>Login</FormTitle>
+      <StyledForm onSubmit={handleSubmit(handleLogin)}>
         <TextField
           {...register('email', {
             required: true,
@@ -65,23 +70,7 @@ const Register = ({ handleMessage }) => {
           type="password"
           id="password"
           label="Password"
-          autocomplete="new-password"
           placeholder="Enter your password"
-          style={{
-            border: errors.password
-              ? '2px solid #e53935'
-              : '2px solid transparent',
-          }}
-        />
-        <TextField
-          {...register('confirmPassword', {
-            required: true,
-          })}
-          type="password"
-          id="cofirmPassword"
-          label="Confirm password"
-          autocomplete="new-password"
-          placeholder="Type password again"
           style={{
             border: errors.password
               ? '2px solid #e53935'
@@ -96,28 +85,29 @@ const Register = ({ handleMessage }) => {
         ) : null}
         {errors.password ? <FormMessage>Enter password</FormMessage> : null}
 
-        {errors.confirmPassword ? (
-          <FormMessage>Confirm your password</FormMessage>
-        ) : null}
-
         {isError ? (
           <FormMessage>
-            {error.status === 400
-              ? error.data.error.message
+            {error.status === 404
+              ? 'Either your email or password is wrong'
               : 'Server error - contact with page administration'}
           </FormMessage>
         ) : null}
 
-        <Button>{isSuccess ? <ButtonSpinner /> : 'REGISTER'}</Button>
+        <Button>{isLoading ? <ButtonSpinner /> : 'LOGIN'}</Button>
       </StyledForm>
       <Info>
-        YOU HAVE AN ACCOUNT?{' '}
-        <Link to="/login">
-          <span>SIGN IN</span>
+        DON'T HAVE AN ACCOUNT YET?{' '}
+        <Link to="/register">
+          <span>SING UP</span>
         </Link>
       </Info>
-    </>
+      {message ? <FormMessage success>{message}</FormMessage> : null}
+    </Wrapper>
   );
 };
 
-export default Register;
+Login.propTypes = {
+  handleMessage: PropTypes.string,
+};
+
+export default Login;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useGetClientQuery } from 'store';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
@@ -8,6 +9,7 @@ import {
   Wrapper,
   ButtonWrapper,
 } from 'components/molecules/ClientDetails/ClientDetails.styles';
+import { ClientShape } from 'types';
 
 const Label = styled.h3`
   font-weight: 500;
@@ -49,4 +51,8 @@ export const ClientDetails = ({ client }) => {
       )}
     </>
   );
+};
+
+ClientDetails.propTypes = {
+  client: PropTypes.shape(ClientShape),
 };

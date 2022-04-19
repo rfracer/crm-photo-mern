@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useRemoveTaskMutation, useUpdateTaskMutation } from 'store';
 import {
   Wrapper,
@@ -41,4 +42,8 @@ export const TaskItem = ({ data }) => {
       </ButtonsWrapper>
     </Wrapper>
   );
+};
+
+TaskItem.propTypes = {
+  data: PropTypes.object,
 };

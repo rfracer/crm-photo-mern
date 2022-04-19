@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactComponent as BackgroundImage } from 'assets/image/login-image.svg';
-import { ReactComponent as Logo } from 'assets/logo-white.svg';
+import { ReactComponent as Logo } from 'assets/image/logo-white.svg';
 
 import {
   Wrapper,

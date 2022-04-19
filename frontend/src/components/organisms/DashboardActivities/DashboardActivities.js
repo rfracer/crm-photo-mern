@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { CardHeader } from 'components/molecules/Card/Card';
@@ -58,15 +59,23 @@ export const DashboardActivities = ({
       </TableWrapper>
       <ButtonWrapper>
         {isError && error.status === 404 ? (
-          <Button isOutline as={Link} to="/clients/add">
+          <Button outline as={Link} to="/clients/add">
             ADD FIRST
           </Button>
         ) : (
-          <Button isOutline as={Link} to="/clients">
+          <Button outline as={Link} to="/clients">
             SHOW MORE
           </Button>
         )}
       </ButtonWrapper>
     </StyledCard>
   );
+};
+
+DashboardActivities.propTypes = {
+  data: PropTypes.object,
+  isSuccess: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  isError: PropTypes.bool,
+  error: PropTypes.object,
 };

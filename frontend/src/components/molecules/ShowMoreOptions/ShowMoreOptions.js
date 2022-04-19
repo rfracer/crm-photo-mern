@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { IoEllipsisVertical, IoPencil, IoTrash } from 'react-icons/io5';
 import { useRemoveClientMutation } from 'store';
 import { Link } from 'react-router-dom';
@@ -61,3 +62,9 @@ export const ShowMoreOptions = React.forwardRef(
     );
   }
 );
+
+ShowMoreOptions.propTypes = {
+  id: PropTypes.string.isRequired,
+  isActive: PropTypes.bool,
+  handleOpen: PropTypes.func,
+};

@@ -1,8 +1,8 @@
 import AuthTemplate from 'components/templates/AuthTemplate/AuthTemplate';
 import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Login from 'views/Login';
-import Register from 'views/Register';
+import Login from 'views/Auth/Login';
+import Register from 'views/Auth/Register';
 
 const UnauthenticatedApp = () => {
   const [message, setMessage] = useState('');

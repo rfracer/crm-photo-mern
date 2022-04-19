@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 export const DateField = React.forwardRef(
-  ({ label, name, id, type, options = 'text', ...props }, ref) => {
+  ({ label, name, id, type, ...props }, ref) => {
     return (
       <Wrapper>
         <Label htmlFor={id}>{label}</Label>
@@ -24,3 +24,10 @@ export const DateField = React.forwardRef(
     );
   }
 );
+
+DateField.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string,
+};

@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Label } from 'components/atoms/Label/Label';
 import { Select } from 'components/atoms/Select/Select';
 
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 export const SelectField = React.forwardRef(
-  ({ label, name, id, type, options = 'text', isTextarea, ...props }, ref) => {
+  ({ label, name, id, type, options = '', ...props }, ref) => {
     return (
       <Wrapper>
         <Label htmlFor={id}>{label}</Label>
@@ -37,3 +37,11 @@ export const SelectField = React.forwardRef(
     );
   }
 );
+
+SelectField.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  options: PropTypes.string,
+};

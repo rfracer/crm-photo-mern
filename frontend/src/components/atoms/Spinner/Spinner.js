@@ -13,8 +13,8 @@ export const Spinner = styled.div`
   width: 50px;
   height: 50px;
   margin: 0 auto;
-  border: 6px solid ${({ theme }) => theme.colors.lightGrey}; /* Light grey */
-  border-top: 6px solid ${({ theme }) => theme.colors.main}; /* Black */
+  border: 6px solid ${({ theme }) => theme.colors.lightGrey};
+  border-top: 6px solid ${({ theme }) => theme.colors.main};
   border-radius: 50%;
   animation: ${spinner} 1.5s linear infinite;
 `;

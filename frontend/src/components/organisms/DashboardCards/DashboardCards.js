@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 import { CardsWrapper } from 'components/organisms/DashboardCards/DashboardCards.styles';
 import { IoFileTrayFull, IoCheckbox, IoCash } from 'react-icons/io5';
@@ -60,6 +61,12 @@ const DashboardCards = ({ theme, data, isSuccess, isLoading }) => {
       />
     </CardsWrapper>
   );
+};
+
+DashboardCards.propTypes = {
+  data: PropTypes.object,
+  isSuccess: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 export default withTheme(DashboardCards);

@@ -9,8 +9,8 @@ export const Wrapper = styled.div`
   ${({ theme }) => theme.mq.desktop} {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
-    overflow-y: hidden;
+    /* height: 100vh;
+    overflow-y: hidden; */
     grid-auto-flow: dense;
     padding: 0;
   }
@@ -18,9 +18,9 @@ export const Wrapper = styled.div`
 
 export const FormWrapper = styled.div`
   ${({ theme }) => theme.mq.desktop} {
-    padding: 2rem;
     background: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.black};
+    overflow: auto;
   }
 `;
 

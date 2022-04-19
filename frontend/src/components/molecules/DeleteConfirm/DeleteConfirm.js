@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from 'components/atoms/Button/Button';
 
@@ -26,4 +27,9 @@ export const DeleteConfirm = ({ handleRemoveClient, handleClose }) => {
       </ButtonWrapper>
     </Wrapper>
   );
+};
+
+DeleteConfirm.propTypes = {
+  handleRemoveClient: PropTypes.func,
+  handleClose: PropTypes.func,
 };

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { ShowMoreOptions } from 'components/molecules/ShowMoreOptions/ShowMoreOptions';
 import { Wrapper } from 'components/molecules/ClientItem/ClientItem.styles';
@@ -43,4 +44,15 @@ export const ClientItem = ({
       />
     </Wrapper>
   );
+};
+
+ClientItem.propTypes = {
+  handleOpenCurrentClient: PropTypes.func,
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    category: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
+    value: PropTypes.number,
+    status: PropTypes.string,
+  }),
 };

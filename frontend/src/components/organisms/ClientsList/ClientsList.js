@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useGetClientsQuery } from 'store';
 import { StyledTable, Wrapper } from './ClientsList.styles';
@@ -97,4 +98,8 @@ export const ClientsList = ({ searchTerm }) => {
       ) : null}
     </Wrapper>
   );
+};
+
+ClientsList.propTypes = {
+  searchTerm: PropTypes.string,
 };

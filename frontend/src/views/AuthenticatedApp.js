@@ -1,11 +1,12 @@
 import React from 'react';
 import { MainTemplate } from 'components/templates/MainTemplate/MainTemplate';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from 'views/Dashboard';
-import Clients from 'views/Clients';
-import AddClient from 'views/AddClient';
-import EditClient from 'views/EditClient';
-import Tasks from 'views/Tasks';
+import Dashboard from 'views/Dashboard/Dashboard';
+import Clients from 'views/Clients/Clients';
+import AddClient from 'views/Clients/AddClient';
+import EditClient from 'views/Clients/EditClient';
+import Tasks from 'views/Tasks/Tasks';
+import Settings from 'views/Settings/Settings';
 
 const AuthenticatedApp = () => {
   return (
@@ -20,6 +21,7 @@ const AuthenticatedApp = () => {
         <Route path="tasks">
           <Route index element={<Tasks />} />
         </Route>
+        <Route path="settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </MainTemplate>

@@ -24,7 +24,8 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   a,
   button,
-  input {
+  input,
+  select {
     font-family: 'Montserrat', sans-serif;
   }
 

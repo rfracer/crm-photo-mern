@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const DateInput = styled.input.attrs((props) => ({
-  // we can define static props
   type: 'datetime-local',
-
-  // or we can define dynamic ones
-  size: props.size || '1em',
+  size: props.size || '1rem',
 }))`
   padding: 10px 12px;
   border: 1px solid ${({ theme }) => theme.colors.lightGrey};

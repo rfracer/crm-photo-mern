@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ModalWrapper, CloseModalBtn, ModalHeader } from './Modal.styles';
 import { IoCloseOutline } from 'react-icons/io5';
 
@@ -20,6 +21,13 @@ const Modal = ({ isOpen, children, handleClose, modalHeader }) => {
       {children}
     </ModalWrapper>
   );
+};
+
+Modal.propTypes = {
+  handleClose: PropTypes.func,
+  isOpen: PropTypes.bool,
+  children: PropTypes.element,
+  modalHeader: PropTypes.string,
 };
 
 export default Modal;

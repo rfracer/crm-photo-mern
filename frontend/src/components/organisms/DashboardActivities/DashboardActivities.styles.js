@@ -26,9 +26,11 @@ export const TableWrapper = styled.div`
 export const StyledCard = styled(Card)`
   align-self: flex-start;
   overflow-x: auto;
+  width: 100%;
 
   ${({ theme }) => theme.mq.desktop} {
     flex-shrink: 1;
+    width: auto;
   }
 `;
 

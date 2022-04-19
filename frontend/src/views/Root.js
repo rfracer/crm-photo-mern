@@ -10,13 +10,17 @@ import { Spinner } from 'components/atoms/Spinner/Spinner';
 const Root = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const { data, isSuccess, isLoading, isError } = useGetUserQuery({ user });
+  const { data, isSuccess, isLoading, isError } = useGetUserQuery();
 
-  useEffect(() => {
-    if (!user && isSuccess) {
-      dispatch(setUser(data.user));
-    }
-  }, [data]);
+  useEffect(
+    () => {
+      if (!user && isSuccess) {
+        dispatch(setUser(data.user));
+      }
+    },
+    [data],
+    isSuccess
+  );
 
   return (
     <>
