@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { TextField } from 'components/molecules/TextField/TextField';
-
 import { Info, StyledForm, FormTitle, Wrapper } from 'views/Auth/Login.styles';
 
 const Login = ({ message }) => {
@@ -83,7 +82,7 @@ const Login = ({ message }) => {
             {errors.email.message ? errors.email.message : 'Enter e-mail'}
           </FormMessage>
         ) : null}
-        {errors.password ? <FormMessage>Enter password</FormMessage> : null}
+        {errors.password && <FormMessage>Enter password</FormMessage>}
 
         {isError ? (
           <FormMessage>

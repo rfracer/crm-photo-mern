@@ -14,12 +14,12 @@ export const TasksList = () => {
     useGetTasksQuery();
 
   const [selectedFilter, setSelectedFilter] = useState('all');
-
   const [results, setResults] = useState();
 
   const handleFilterChange = (e) => {
     setSelectedFilter(e.target.value);
   };
+
   const setBooleanStatus = (status) => {
     if (status === 'completed') return true;
     if (status === 'uncompleted') return false;

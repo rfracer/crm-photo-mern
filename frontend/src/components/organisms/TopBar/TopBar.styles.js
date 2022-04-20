@@ -20,11 +20,11 @@ export const UserInfoWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  margin-right: 10%;
-  padding: 0 20px;
+  margin-right: 5%;
+  padding: 0 2rem;
 
   ${({ theme }) => theme.mq.huge} {
-    margin-right: 15%;
+    margin-right: 5%;
   }
 `;
 

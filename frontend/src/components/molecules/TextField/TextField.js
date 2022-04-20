@@ -1,14 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Label } from 'components/atoms/Label/Label';
 import { Input } from 'components/atoms/Input/Input';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
+import { Wrapper } from 'components/molecules/TextField/TextField.styles';
 
 export const TextField = React.forwardRef(
   (

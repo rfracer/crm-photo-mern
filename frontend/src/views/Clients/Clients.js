@@ -29,7 +29,7 @@ const Clients = () => {
           </SearchBar>
         </div>
         <div>
-          <Button as={Link} to="/clients/add" secondary>
+          <Button as={Link} to="/clients/add" $secondary>
             ADD
           </Button>
         </div>

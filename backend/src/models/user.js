@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       unique: true,
-      minlength: 3,
+      minlength: 4,
       maxlength: 50,
       trim: true,
       required: [true, 'E-mail is required'],
@@ -24,13 +24,9 @@ const userSchema = mongoose.Schema(
         default: 'PLN',
       },
     },
-    token: {
-      type: String,
-      default: '',
-    },
   },
   {
-    timestamps: true, // created_at / updated_at
+    timestamps: true,
   }
 );
 

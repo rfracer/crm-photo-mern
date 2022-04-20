@@ -18,3 +18,10 @@ export const ButtonWrapper = styled.div`
     }
   }
 `;
+
+export const Label = styled.h3`
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSize.normal};
+`;
+
+export const StyledInfo = styled.p``;

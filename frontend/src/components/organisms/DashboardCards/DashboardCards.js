@@ -12,13 +12,11 @@ const DashboardCards = ({ theme, data, isSuccess, isLoading }) => {
 
   const calculateLeads = (data) => {
     const results = data.filter((client) => client.status === 'lead');
-
     setLeadsAmount(results.length);
   };
 
   const calculateContracts = (data) => {
     const results = data.filter((client) => client.status === 'contract');
-
     setContractsAmount(results.length);
   };
 
@@ -64,7 +62,7 @@ const DashboardCards = ({ theme, data, isSuccess, isLoading }) => {
 };
 
 DashboardCards.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
   isSuccess: PropTypes.bool,
   isLoading: PropTypes.bool,
 };

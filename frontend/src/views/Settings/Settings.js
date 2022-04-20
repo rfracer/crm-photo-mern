@@ -66,7 +66,7 @@ const Settings = () => {
           <FormInputError>Please fill confirm password field</FormInputError>
         ) : null}
 
-        <Button outline type="submit">
+        <Button $outline type="submit">
           {isLoading ? <ButtonSpinner /> : 'UPDATE PASSWORD'}
         </Button>
 

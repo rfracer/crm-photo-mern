@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { IoEllipsisVertical, IoPencil, IoTrash } from 'react-icons/io5';
 import { useRemoveClientMutation } from 'store';
 import { Link } from 'react-router-dom';
-import { Button } from 'components/atoms/Button/Button';
 import Modal from 'components/organisms/Modal/Modal';
 import {
   ShowMoreList,
@@ -15,6 +14,7 @@ import { DeleteConfirm } from '../DeleteConfirm/DeleteConfirm';
 export const ShowMoreOptions = React.forwardRef(
   ({ id, isActive, handleOpen }, ref) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [removeClient] = useRemoveClientMutation();
 
     const handleCloseModal = (e) => {
       e.stopPropagation();
@@ -25,8 +25,6 @@ export const ShowMoreOptions = React.forwardRef(
       e.stopPropagation();
       setModalIsOpen(true);
     };
-
-    const [removeClient] = useRemoveClientMutation();
 
     const handleRemoveClient = (e) => {
       e.stopPropagation();

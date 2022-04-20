@@ -7,8 +7,9 @@ export const Card = styled.div`
   overflow: hidden;
 `;
 
-export const CardContent = styled.p`
-  padding: 10px 10px;
+export const CardContent = styled.div`
+  margin: 1em 0;
+  padding: 1rem;
   text-align: center;
   background: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSize.big};
@@ -19,9 +20,9 @@ export const CardHeader = styled.h3`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: ${({ theme }) => theme.fontSize.normal};
   margin: 0;
-  padding: 20px 15px;
+  padding: 2rem 1.5rem;
+  font-size: ${({ theme }) => theme.fontSize.normal};
   text-align: center;
   background: ${({ background }) => background};
   color: ${({ theme, nofill }) =>
@@ -35,9 +36,10 @@ export const CardHeader = styled.h3`
   }
 
   svg {
-    margin-right: 1rem;
     width: 1.8rem;
     height: 1.8rem;
+    margin-right: 1rem;
+
     ${({ theme }) => theme.mq.desktop} {
       width: 2rem;
       height: 2rem;

@@ -17,7 +17,7 @@ export const ChartWrapper = styled.div`
 export const SelectFilter = styled(Select)`
   width: auto;
   margin: 1rem;
-  padding: 8px 10px;
+  padding: 0.8rem 1rem;
   font-size: ${({ theme }) => theme.fontSize.small};
   border-color: ${({ theme }) => theme.colors.grey};
 `;
@@ -33,6 +33,6 @@ export const ChartCard = styled(Card)`
 `;
 
 export const ErrorMessage = styled.p`
-  text-align: center;
   padding: 1rem;
+  text-align: center;
 `;

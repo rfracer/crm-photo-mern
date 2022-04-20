@@ -1,5 +1,5 @@
 const notFoundURL = (req, res, next) => {
-  const error = new Error('404 page not found');
+  const error = new Error('404 API route not found');
   error.status = 404;
   next(error);
 };

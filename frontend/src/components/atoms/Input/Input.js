@@ -14,7 +14,7 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.3);
+    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.31);
   }
 
   &::placeholder {

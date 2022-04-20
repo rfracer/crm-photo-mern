@@ -2,21 +2,22 @@ import styled from 'styled-components';
 import { Card } from 'components/molecules/Card/Card';
 
 export const Wrapper = styled(Card)`
-  padding: 20px;
+  padding: 2rem;
   margin-top: 4rem;
+  overflow: initial;
   overflow-x: auto;
 `;
 
 export const StyledTable = styled.table`
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
   overflow-x: auto;
 
   th {
+    padding: 0rem 1rem 2rem 1rem;
     color: ${({ theme }) => theme.colors.grey};
     font-weight: 500;
     text-align: left;
-    padding: 0rem 1rem 2rem 1rem;
     font-size: ${({ theme }) => theme.fontSize.small};
   }
 
@@ -27,4 +28,14 @@ export const StyledTable = styled.table`
       font-weight: 500;
     }
   }
+`;
+
+export const SpinnerWrapper = styled.div`
+  width: 100%;
+  margin: 0 auto;
+`;
+
+export const NoClientsMessage = styled.p`
+  font-weight: 500;
+  padding-left: 1rem;
 `;

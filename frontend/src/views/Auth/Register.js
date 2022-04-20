@@ -8,14 +8,15 @@ import { Button } from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
-
 import { Info, StyledForm, FormTitle, Wrapper } from 'views/Auth/Login.styles';
 import { TextField } from 'components/molecules/TextField/TextField';
 
 const Register = ({ handleMessage }) => {
-  const [registerUser, { error, isSuccess, isError }] =
+  const [registerUser, { error, isSuccess, isError, isLoading }] =
     useRegisterUserMutation();
+
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -118,7 +119,7 @@ const Register = ({ handleMessage }) => {
           </FormMessage>
         ) : null}
 
-        <Button>{isSuccess ? <ButtonSpinner /> : 'REGISTER'}</Button>
+        <Button>{isLoading ? <ButtonSpinner /> : 'REGISTER'}</Button>
       </StyledForm>
       <Info>
         YOU HAVE AN ACCOUNT?{' '}

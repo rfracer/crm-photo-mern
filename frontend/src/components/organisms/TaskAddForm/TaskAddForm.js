@@ -43,6 +43,7 @@ const TaskAddForm = () => {
       {errors.name ? (
         <FormInputError>Please fill name field</FormInputError>
       ) : null}
+
       <SelectField
         {...register('priority', { required: true })}
         label="Priority"
@@ -50,6 +51,7 @@ const TaskAddForm = () => {
         id="priority"
         options={['low', 'medium', 'high']}
       />
+
       <Button type="submit">{isLoading ? <ButtonSpinner /> : 'ADD'}</Button>
       {isSuccess && !isDirty ? <FormMessage success>Added</FormMessage> : null}
       {isError ? <FormMessage>Server Error</FormMessage> : null}

@@ -2,19 +2,15 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const ApiError = require('../helpers/ApiError');
+const {
+  generateAccessToken,
+  generateRefreshToken,
+} = require('../helpers/tokensGenerator');
 
 const getUser = async (req, res, next) => {
-  const token = req.cookies.JWT;
-
-  if (!token) return next(new ApiError('Unauthenticated', 401));
-
-  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
-    if (err) return next(new ApiError('Forbidden', 403));
-
-    res.status(200).send({
-      status: 200,
-      user,
-    });
+  res.status(200).send({
+    status: 200,
+    user: req.user ? req.user : null,
   });
 };
 
@@ -27,7 +23,9 @@ const loginUser = async (req, res, next) => {
     return next(new ApiError('User not found', 404));
   }
 
-  if (!bcrypt.compare(password, user.password)) {
+  const validPassword = await bcrypt.compare(password, user.password);
+
+  if (!validPassword) {
     return next(new ApiError('Invalid password for this user', 404));
   }
 
@@ -37,8 +35,6 @@ const loginUser = async (req, res, next) => {
     id: user._id,
     email: user.email,
   });
-  // Save refresh Token in DB
-  user.token = refreshToken;
 
   try {
     await user.save();
@@ -47,7 +43,12 @@ const loginUser = async (req, res, next) => {
   }
 
   res.cookie('JWT', accessToken, {
-    maxAge: 864000000,
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  });
+
+  res.cookie('JWT_REFRESH', refreshToken, {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
@@ -109,14 +110,35 @@ const logoutUser = (req, res) => {
   res.status(200).send({ status: 200, message: 'Logout successfully' });
 };
 
-const generateAccessToken = (data) => {
-  return jwt.sign(data, process.env.TOKEN_SECRET, { expiresIn: '15m' });
-};
+const changePassword = async (req, res, next) => {
+  const { password, confirmPassword } = req.body;
 
-const generateRefreshToken = (data) => {
-  return jwt.sign(data, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: '7d',
-  });
+  if (!password || !confirmPassword) {
+    return next(new ApiError('Fill all required fields', 400));
+  }
+
+  if (password !== confirmPassword) {
+    return next(new ApiError("Passwords didn't match", 400));
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Update user password - PATCH
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+      password: hashedPassword,
+    });
+
+    if (updatedUser) {
+      res.status(200).json({
+        status: 200,
+        message: 'Password updated',
+      });
+    }
+  } catch (err) {
+    next(new ApiError(err, 400));
+  }
 };
 
 module.exports = {
@@ -124,4 +146,5 @@ module.exports = {
   registerUser,
   logoutUser,
   getUser,
+  changePassword,
 };

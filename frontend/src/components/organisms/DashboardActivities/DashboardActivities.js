@@ -19,6 +19,7 @@ export const DashboardActivities = ({
   error,
 }) => {
   const [sortedData, setSortedData] = useState();
+
   const calcLastAcitivies = (clients) => {
     const sortedArray = [...clients];
     sortedArray.sort((a, b) => {
@@ -26,9 +27,9 @@ export const DashboardActivities = ({
     });
     return sortedArray.slice(0, 5);
   };
+
   useEffect(() => {
     if (isSuccess) {
-      console.log(data);
       setSortedData(calcLastAcitivies(data));
     }
   }, [isSuccess, data]);
@@ -59,11 +60,11 @@ export const DashboardActivities = ({
       </TableWrapper>
       <ButtonWrapper>
         {isError && error.status === 404 ? (
-          <Button outline as={Link} to="/clients/add">
+          <Button $outline as={Link} to="/clients/add">
             ADD FIRST
           </Button>
         ) : (
-          <Button outline as={Link} to="/clients">
+          <Button $outline as={Link} to="/clients">
             SHOW MORE
           </Button>
         )}
@@ -73,7 +74,7 @@ export const DashboardActivities = ({
 };
 
 DashboardActivities.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
   isSuccess: PropTypes.bool,
   isLoading: PropTypes.bool,
   isError: PropTypes.bool,

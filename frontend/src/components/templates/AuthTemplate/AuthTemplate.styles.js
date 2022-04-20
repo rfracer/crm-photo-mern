@@ -9,8 +9,6 @@ export const Wrapper = styled.div`
   ${({ theme }) => theme.mq.desktop} {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* height: 100vh;
-    overflow-y: hidden; */
     grid-auto-flow: dense;
     padding: 0;
   }
@@ -18,7 +16,7 @@ export const Wrapper = styled.div`
 
 export const FormWrapper = styled.div`
   ${({ theme }) => theme.mq.desktop} {
-    background: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.black};
     overflow: auto;
   }
@@ -29,6 +27,7 @@ export const DecorWrapper = styled.div`
   p {
     display: none;
   }
+
   ${({ theme }) => theme.mq.desktop} {
     display: flex;
     flex-direction: column;
@@ -40,7 +39,7 @@ export const DecorWrapper = styled.div`
     h2 {
       display: block;
       margin: 0;
-      font-size: 28px;
+      font-size: 2.8rem;
       line-height: 1.4;
       color: ${({ theme }) => theme.colors.white};
 
@@ -84,6 +83,10 @@ export const DecorWrapper = styled.div`
 export const ImageWrapper = styled.div`
   width: 60%;
   margin: 0 auto;
+
+  ${({ theme }) => theme.mq.tablet} {
+    max-width: 45%;
+  }
 
   ${({ theme }) => theme.mq.desktop} {
     min-width: 70%;

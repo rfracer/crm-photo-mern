@@ -12,11 +12,8 @@ import { IoCheckmarkDoneOutline, IoTrash, IoArrowUp } from 'react-icons/io5';
 
 export const TaskItem = ({ data }) => {
   const { _id: id, name, priority, checked } = data;
-  const [removeTask, { isSuccess, isError }] = useRemoveTaskMutation();
-  const [updateTask, { isSuccess: isUpdated, isError: isUpdateError }] =
-    useUpdateTaskMutation();
-
-  const [isShowMore, setIsShowMore] = useState(false);
+  const [removeTask] = useRemoveTaskMutation();
+  const [updateTask] = useUpdateTaskMutation();
 
   const handleDeleteTask = () => {
     removeTask(id);

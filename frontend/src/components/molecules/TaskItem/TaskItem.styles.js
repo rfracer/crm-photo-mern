@@ -5,11 +5,11 @@ export const Wrapper = styled.li`
   align-items: center;
   gap: 2rem;
   padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
   background-color: ${({ theme, checked }) =>
     checked ? theme.colors.lightGrey : theme.colors.white};
   box-shadow: ${({ theme }) => theme.cardShadow};
   border-radius: 15px;
-  margin-bottom: 2rem;
 `;
 
 export const TaskName = styled.span`

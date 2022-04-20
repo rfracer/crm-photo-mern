@@ -15,13 +15,13 @@ export const OuterWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
   padding: 10%;
   background-color: ${({ theme }) => theme.colors.main};
 
@@ -39,9 +39,11 @@ export const TopBarWrapper = styled.div`
   z-index: 10;
   height: 70px;
   border-bottom: 1px solid #dcdcdc;
-  padding: 10px 20px 0px 10px;
+  padding: 1rem 2rem 0 1rem;
+
   a {
     z-index: 100;
+    text-decoration: none;
   }
 `;
 
@@ -52,6 +54,7 @@ export const StyledBurger = styled.button`
   border: none;
   cursor: pointer;
   z-index: 10;
+
   svg {
     width: 3rem;
     height: 3rem;
@@ -71,8 +74,8 @@ export const StyledNavigation = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    list-style: none;
     margin-top: 7rem;
+    list-style: none;
 
     ${({ theme }) => theme.mq.desktop} {
       align-items: flex-start;
@@ -81,7 +84,7 @@ export const StyledNavigation = styled.div`
     }
 
     li {
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
       text-align: center;
     }
   }
@@ -106,13 +109,23 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   position: relative;
+  margin: 2rem;
   cursor: pointer;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
-  margin: 20px;
-  font-size: ${({ theme }) => theme.fontSize.meneLinks};
+  font-size: 1.8rem;
   opacity: 0.77;
   transition: opacity 0.1s ease-in-out;
+
+  ${({ theme }) => theme.mq.tablet} {
+    font-size: 2.2rem;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    margin: 2rem 0;
+    text-align: left;
+    font-size: ${({ theme }) => theme.fontSize.normal};
+  }
 
   &:hover {
     opacity: 1;
@@ -137,16 +150,11 @@ export const StyledLink = styled(NavLink)`
     height: 2rem;
     width: 2rem;
   }
-
-  ${({ theme }) => theme.mq.desktop} {
-    margin: 20px 0px;
-    text-align: left;
-    font-size: ${({ theme }) => theme.fontSize.normal};
-  }
 `;
 
 export const LogOutButton = styled(Button)`
   margin-top: auto;
+  margin-bottom: 2rem;
   align-self: center;
   width: 50%;
   background-color: ${({ theme }) => theme.colors.white};

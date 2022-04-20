@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAddClientMutation } from 'store';
@@ -45,10 +45,10 @@ export const ClientAddForm = () => {
         name="name"
         id="name"
       />
-
       {errors.name ? (
         <FormInputError>Please fill name field</FormInputError>
       ) : null}
+
       <SelectField
         {...register('category', { required: true })}
         label="Category"
@@ -59,6 +59,7 @@ export const ClientAddForm = () => {
       {errors.category ? (
         <FormInputError>Please fill category field</FormInputError>
       ) : null}
+
       <SelectField
         {...register('status', { required: true })}
         label="Status"
@@ -69,6 +70,7 @@ export const ClientAddForm = () => {
       {errors.status ? (
         <FormInputError>Please set status</FormInputError>
       ) : null}
+
       <TextField
         {...register('value', { required: true })}
         label="Contract value"
@@ -79,6 +81,7 @@ export const ClientAddForm = () => {
       {errors.value ? (
         <FormInputError>Please fill field with positive value</FormInputError>
       ) : null}
+
       <TextField
         {...register('alreadyPaid', { required: true })}
         label="Already paid"
@@ -89,6 +92,7 @@ export const ClientAddForm = () => {
       {errors.alreadyPaid ? (
         <FormInputError>Please fill field with positive value</FormInputError>
       ) : null}
+
       <TextField
         {...register('address', { required: true })}
         label="Address"
@@ -101,9 +105,8 @@ export const ClientAddForm = () => {
       ) : null}
 
       <DateField {...register('date')} label="Date" name="date" id="date" />
-      {errors.category ? (
-        <FormInputError>Please set a date</FormInputError>
-      ) : null}
+      {errors.date ? <FormInputError>Please set a date</FormInputError> : null}
+
       <TextField
         {...register('info', { required: true })}
         label="Additional information"

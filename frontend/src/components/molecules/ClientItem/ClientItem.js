@@ -51,7 +51,6 @@ ClientItem.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string,
     category: PropTypes.string,
-    date: PropTypes.instanceOf(Date),
     value: PropTypes.number,
     status: PropTypes.string,
   }),

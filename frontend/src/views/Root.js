@@ -12,15 +12,11 @@ const Root = () => {
   const user = useSelector((state) => state.auth.user);
   const { data, isSuccess, isLoading, isError } = useGetUserQuery();
 
-  useEffect(
-    () => {
-      if (!user && isSuccess) {
-        dispatch(setUser(data.user));
-      }
-    },
-    [data],
-    isSuccess
-  );
+  useEffect(() => {
+    if (!user && isSuccess) {
+      dispatch(setUser(data.user));
+    }
+  }, [user, data, isSuccess]);
 
   return (
     <>

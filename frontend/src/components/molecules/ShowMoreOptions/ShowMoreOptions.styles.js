@@ -6,9 +6,9 @@ export const ShowMoreWrapper = styled.td`
 
 export const ShowMoreList = styled.ul`
   position: absolute;
+  top: 0px;
+  right: 40px;
   list-style: none;
-  top: 40px;
-  right: 10px;
   padding: 0;
   background: ${({ theme }) => theme.colors.background};
   border-radius: 10px;
@@ -19,9 +19,13 @@ export const ShowMoreList = styled.ul`
   z-index: 2;
   overflow: hidden;
 
+  ${({ theme }) => theme.mq.desktop} {
+    top: -30%;
+    right: 90%;
+  }
+
   li {
     display: flex;
-
     padding: 1.2rem 1.6rem 1.2rem 1.6rem;
     color: ${({ theme }) => theme.colors.main};
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
@@ -31,12 +35,14 @@ export const ShowMoreList = styled.ul`
     }
 
     svg {
-      margin-right: 5px;
+      margin-right: 0.5rem;
     }
   }
+
   li:last-child {
     border-bottom: none;
   }
+
   a {
     display: flex;
     text-decoration: none;
@@ -47,13 +53,13 @@ export const ShowMoreList = styled.ul`
 export const ShowMoreButton = styled.button`
   cursor: pointer;
   text-align: center;
-  padding: 0.2rem;
+  padding: 0.5rem;
   background-color: transparent;
   border-radius: 50px;
   border: none;
   font-weight: 500;
-  padding: 5px;
   transition: background-color 0.1s ease-in;
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.lightGrey};
   }

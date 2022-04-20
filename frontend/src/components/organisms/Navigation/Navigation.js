@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from 'store/state/authSlice';
 import { useLogoutUserMutation, baseApi } from 'store';
 import { ReactComponent as Logo } from 'assets/image/logo.svg';
@@ -24,11 +24,13 @@ import {
   IoCloseOutline,
 } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { UserLogo } from 'components/atoms/UserLogo/UserLogo';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [logoutUser, { isSuccess }] = useLogoutUserMutation();
 
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   const toggleNav = () => {
@@ -37,6 +39,10 @@ export const Navigation = () => {
 
   const handleLogout = () => {
     logoutUser();
+  };
+
+  const getFirstLetter = (user) => {
+    return user[0];
   };
 
   useEffect(() => {
@@ -52,11 +58,15 @@ export const Navigation = () => {
         <StyledBurger isOpen={isOpen} onClick={toggleNav}>
           {isOpen ? <IoCloseOutline /> : <IoReorderThreeOutline />}
         </StyledBurger>
-        <Link to="/">
-          <StyledLogo isMobile isSmall>
-            {isOpen ? <LogoWhite /> : <Logo />}
-          </StyledLogo>
-        </Link>
+        {!isOpen ? (
+          <UserLogo icon={getFirstLetter(user)} />
+        ) : (
+          <Link to="/">
+            <StyledLogo isMobile isSmall>
+              {isOpen ? <LogoWhite /> : null}
+            </StyledLogo>
+          </Link>
+        )}
       </TopBarWrapper>
 
       <Wrapper isOpen={isOpen}>

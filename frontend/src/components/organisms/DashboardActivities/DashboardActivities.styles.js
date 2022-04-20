@@ -6,8 +6,8 @@ export const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 20px;
   width: 100%;
+  padding: 1rem 2rem;
   overflow-x: auto;
 
   table {
@@ -25,12 +25,17 @@ export const TableWrapper = styled.div`
 
 export const StyledCard = styled(Card)`
   align-self: flex-start;
-  overflow-x: auto;
   width: 100%;
+  overflow-x: auto;
 
-  ${({ theme }) => theme.mq.desktop} {
+  ${({ theme }) => theme.mq.tablet} {
     flex-shrink: 1;
     width: auto;
+    margin: 0 auto;
+  }
+
+  ${({ theme }) => theme.mq.desktop} {
+    margin: 0;
   }
 `;
 

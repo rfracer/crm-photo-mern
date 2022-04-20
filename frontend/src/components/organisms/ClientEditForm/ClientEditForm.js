@@ -17,9 +17,7 @@ import { Spinner } from 'components/atoms/Spinner/Spinner';
 
 export const ClientEditForm = () => {
   const { id } = useParams();
-
   const { data, isSuccess: isUserLoaded } = useGetClientQuery(id);
-
   const [updateClient, { isLoading, isSuccess, isError }] =
     useUpdateClientMutation();
 
@@ -52,7 +50,6 @@ export const ClientEditForm = () => {
   }, [data]);
 
   const handleUpdateClient = (data) => {
-    console.log(data);
     updateClient({ id, data });
     if (isSuccess) reset();
   };
@@ -69,10 +66,10 @@ export const ClientEditForm = () => {
             name="name"
             id="name"
           />
-
           {errors.name ? (
             <FormInputError>Please fill name field</FormInputError>
           ) : null}
+
           <SelectField
             {...register('category', { required: true })}
             label="Category"
@@ -83,6 +80,7 @@ export const ClientEditForm = () => {
           {errors.category ? (
             <FormInputError>Please fill category field</FormInputError>
           ) : null}
+
           <SelectField
             {...register('status', { required: true })}
             label="Status"
@@ -93,6 +91,7 @@ export const ClientEditForm = () => {
           {errors.status ? (
             <FormInputError>Please set status</FormInputError>
           ) : null}
+
           <TextField
             {...register('value', { required: true })}
             label="Contract value"
@@ -105,6 +104,7 @@ export const ClientEditForm = () => {
               Please fill field with positive value
             </FormInputError>
           ) : null}
+
           <TextField
             {...register('alreadyPaid', { required: true })}
             label="Already paid"
@@ -117,6 +117,7 @@ export const ClientEditForm = () => {
               Please fill field with positive value
             </FormInputError>
           ) : null}
+
           <TextField
             {...register('address', { required: true })}
             label="Address"
@@ -129,9 +130,10 @@ export const ClientEditForm = () => {
           ) : null}
 
           <DateField {...register('date')} label="Date" name="date" id="date" />
-          {errors.category ? (
+          {errors.date ? (
             <FormInputError>Please set a date</FormInputError>
           ) : null}
+
           <TextField
             {...register('info', { required: true })}
             label="Additional information"

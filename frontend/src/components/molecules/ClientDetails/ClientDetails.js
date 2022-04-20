@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useGetClientQuery } from 'store';
@@ -8,14 +7,10 @@ import { Button } from 'components/atoms/Button/Button';
 import {
   Wrapper,
   ButtonWrapper,
+  Label,
+  StyledInfo,
 } from 'components/molecules/ClientDetails/ClientDetails.styles';
 import { ClientShape } from 'types';
-
-const Label = styled.h3`
-  font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSize.normal};
-`;
-const StyledInfo = styled.p``;
 
 export const ClientDetails = ({ client }) => {
   const { data, isLoading } = useGetClientQuery(client);
@@ -43,7 +38,7 @@ export const ClientDetails = ({ client }) => {
           <Label>Notes:</Label>
           <StyledInfo>{data.info}</StyledInfo>
           <ButtonWrapper>
-            <Button as={Link} to={`/clients/edit/${data._id}`} isSecondary>
+            <Button secondary as={Link} to={`/clients/edit/${data._id}`}>
               EDIT
             </Button>
           </ButtonWrapper>

@@ -25,7 +25,8 @@ export const GlobalStyle = styled.createGlobalStyle`
   a,
   button,
   input,
-  select {
+  select,
+  textarea {
     font-family: 'Montserrat', sans-serif;
   }
 
@@ -34,6 +35,6 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
 
   .ReactModal__Overlay {
-    z-index: 3;
+    z-index: 9999;
   }
 `;

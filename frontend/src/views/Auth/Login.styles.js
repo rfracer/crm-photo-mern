@@ -1,15 +1,19 @@
 import styled from 'styled-components';
-import { Input } from 'components/atoms/Input/Input';
 import { Button } from 'components/atoms/Button/Button';
+import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 
 export const Wrapper = styled.div`
   ${({ theme }) => theme.mq.desktop} {
-    height: 90%;
-    width: 80%;
-    margin: 4rem auto 4rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 90%;
+    width: 80%;
+    margin: 4rem auto 4rem auto;
+  }
+
+  ${FormMessage} {
+    width: 90%;
   }
 
   svg {
@@ -30,7 +34,7 @@ export const StyledForm = styled.form`
 
   label {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1.4rem;
     color: ${({ theme }) => theme.colors.white};
 
     ${({ theme }) => theme.mq.desktop} {
@@ -45,9 +49,11 @@ export const StyledForm = styled.form`
       margin-top: 1.3rem;
     }
   }
+
   input {
     box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.1);
     margin-bottom: 0.7rem;
+
     ${({ theme }) => theme.mq.desktop} {
       width: 90%;
     }
@@ -57,7 +63,7 @@ export const StyledForm = styled.form`
     width: 100%;
     margin-top: 3rem;
 
-    ${({ theme }) => theme.mq.desktop} {
+    ${({ theme }) => theme.mq.tablet} {
       width: 150px;
     }
   }

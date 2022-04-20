@@ -2,7 +2,7 @@ POST http://localhost:5000/api/users/register
 content-type: application/json
 
 {
-    "email": "august94@gmail.com",
+    "email": "august944@gmail.com",
     "password": "1234",
     "confirmPassword": "1234"
 }
@@ -11,9 +11,13 @@ POST http://localhost:5000/api/users/login
 content-type: application/json
 
 {
-    "email": "august94@gmail.com",
+    "email": "august944@gmail.com",
     "password": "1234"
 }
+
+###
+POST http://localhost:5000/api/users/refresh
+content-type: application/json
 
 ###
 GET http://localhost:5000/api/users/me
@@ -47,7 +51,7 @@ content-type: application/json
     "alreadyPaid": 100,
     "status": "Completed",
     "address": "Kalisz, czestochowska 69/62",
-    "info": "To sa dodatkowe informacje2"
+    "info": "To sa dodatkowe informacje"
 }
 
 ###
@@ -64,8 +68,6 @@ content-type: application/json
     "address": "Kaliszda, czestochowska 69/62",
     "info": "To sa dodatkowe informacje"
 }
-
-
 
 
 ###

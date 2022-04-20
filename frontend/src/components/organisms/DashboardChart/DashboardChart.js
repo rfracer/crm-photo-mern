@@ -67,9 +67,6 @@ export const DashboardChart = ({
     const filteredData = data.filter((client) => {
       return moment(client.date).year() === year;
     });
-    console.log(data);
-    console.log(filteredData);
-    console.log(year);
     return filteredData;
   };
 
@@ -86,6 +83,7 @@ export const DashboardChart = ({
     });
     return dataByMonth;
   };
+
   useEffect(() => {
     if (isSuccess && baseData) {
       setYears([...new Set(baseData.map((obj) => moment(obj.date).year()))]);
@@ -95,7 +93,6 @@ export const DashboardChart = ({
   useEffect(() => {
     if (baseData) {
       const selectedYearData = sortByYear(baseData, selectedFilter);
-
       setChartData(arrayByMonth(selectedYearData));
     }
   }, [baseData, isLoading, selectedFilter]);
@@ -117,6 +114,7 @@ export const DashboardChart = ({
       display: false,
     },
   };
+
   return (
     <ChartCard>
       <CardHeader nofill>{title}</CardHeader>{' '}
@@ -130,7 +128,9 @@ export const DashboardChart = ({
             as="select"
           >
             {years.map((year) => (
-              <option value={year}>{year}</option>
+              <option key={year} value={year}>
+                {year}
+              </option>
             ))}
           </SelectFilter>
 

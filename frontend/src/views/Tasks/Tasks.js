@@ -32,7 +32,7 @@ const Tasks = () => {
           <Title>Tasks</Title>
         </div>
         <div>
-          <Button onClick={handleOpenModal} secondary>
+          <Button onClick={handleOpenModal} $secondary>
             ADD
           </Button>
         </div>

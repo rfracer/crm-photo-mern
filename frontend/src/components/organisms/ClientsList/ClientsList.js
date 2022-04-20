@@ -1,31 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { useGetClientsQuery } from 'store';
-import { StyledTable, Wrapper } from './ClientsList.styles';
+import {
+  StyledTable,
+  Wrapper,
+  NoClientsMessage,
+  SpinnerWrapper,
+} from './ClientsList.styles';
 import { ClientItem } from 'components/molecules/ClientItem/ClientItem';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 import Modal from 'components/organisms/Modal/Modal';
 import { ClientDetails } from 'components/molecules/ClientDetails/ClientDetails';
 
-const SpinnerWrapper = styled.div`
-  width: 100%;
-  margin: 0 auto;
-`;
-
-const NoClientsMessage = styled.p`
-  font-weight: 500;
-  padding-left: 1rem;
-`;
-
 export const ClientsList = ({ searchTerm }) => {
-  const { data, isFetching, isSuccess, isLoading, isError } =
-    useGetClientsQuery();
+  const { data, isFetching, isSuccess } = useGetClientsQuery();
 
-  console.log('succefss' + ' ' + isSuccess);
-  console.log('error' + isError);
-  console.log('fetching d' + isFetching);
-  console.log(data);
   const [filteredResults, setFilteredResults] = useState([]);
   const [currentClient, setCurrentClient] = useState();
   const [modalIsOpen, setModalIsOpen] = useState(false);
