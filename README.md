@@ -13,10 +13,10 @@ password: 12345
 ![CRM-screeny](https://user-images.githubusercontent.com/22677833/164290704-b468baa6-3469-415f-9757-75cfc3834b3b.jpg)
 
 ## Table of Contents
-- [Basic Features](#basicfeatures)
-- [Technologies and tools](#technologiesandtools)
+- [Basic Features](#basic-features)
+- [Technologies and tools](#technologies-and-tools)
 - [Installation](#installation)
-- [Local usage](#localusage)
+- [Local usage](#local-usage)
 
 ## Basic Features
 
