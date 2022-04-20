@@ -111,6 +111,10 @@ const logoutUser = (req, res) => {
 };
 
 const changePassword = async (req, res, next) => {
+  if (req.user.email === 'test@test.com') {
+    return next(new ApiError('Demo account password cannot be chanaged', 400));
+  }
+
   const { password, confirmPassword } = req.body;
 
   if (!password || !confirmPassword) {

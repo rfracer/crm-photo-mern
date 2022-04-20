@@ -100,6 +100,9 @@ const Login = ({ message }) => {
           <span>SING UP</span>
         </Link>
       </Info>
+      <Info>
+        <strong>DEMO ACCOUNT: </strong> login: test@test.com || password: 12345
+      </Info>
       {message ? <FormMessage success>{message}</FormMessage> : null}
     </Wrapper>
   );

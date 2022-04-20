@@ -2,5 +2,8 @@ node_modules
 .env
 requests.rest
 
+# .eslintrc
+# .prettierrc
+
 # production
 /build

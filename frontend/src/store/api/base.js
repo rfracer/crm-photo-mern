@@ -4,8 +4,14 @@ import {
   retry,
 } from '@reduxjs/toolkit/dist/query/react';
 
+let apiURL = 'http://localhost:5000/api/';
+
+if (process.env.NODE_ENV === 'production') {
+  apiURL = '/api/';
+}
+
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api/',
+  baseUrl: apiURL,
   credentials: 'include',
 });
 
@@ -23,7 +29,7 @@ const baseQueryWithAuth = retry(
     return result;
   },
   {
-    maxRetries: 1,
+    maxRetries: 0,
   }
 );
 
