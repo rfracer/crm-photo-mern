@@ -5,6 +5,7 @@ export const DateInput = styled.input.attrs((props) => ({
   size: props.size || '1rem',
 }))`
   padding: 10px 12px;
+  background-color: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors.lightGrey};
   box-sizing: border-box;
   box-shadow: ${({ theme }) => theme.inputShadow};
@@ -14,6 +15,6 @@ export const DateInput = styled.input.attrs((props) => ({
 
   &:focus {
     outline: none;
-    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.3);
+    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.33);
   }
 `;

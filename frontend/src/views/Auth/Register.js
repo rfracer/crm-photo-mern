@@ -57,9 +57,7 @@ const Register = ({ handleMessage }) => {
           id="email"
           label="E-mail"
           borderStyle={{
-            border: errors.email
-              ? '2px solid #e53935'
-              : '2px solid transparent',
+            border: errors.email ? '2px solid #e53935' : 'none',
           }}
         />
         <TextField
@@ -72,10 +70,8 @@ const Register = ({ handleMessage }) => {
           label="Password"
           autocomplete="new-password"
           placeholder="Enter your password"
-          style={{
-            border: errors.password
-              ? '2px solid #e53935'
-              : '2px solid transparent',
+          borderStyle={{
+            border: errors.password ? '2px solid #e53935' : 'none',
           }}
         />
         <TextField
@@ -87,10 +83,8 @@ const Register = ({ handleMessage }) => {
           label="Confirm password"
           autocomplete="new-password"
           placeholder="Type password again"
-          style={{
-            border: errors.password
-              ? '2px solid #e53935'
-              : '2px solid transparent',
+          borderStyle={{
+            border: errors.confirmPassword ? '2px solid #e53935' : 'none',
           }}
         />
 

@@ -57,9 +57,7 @@ const Login = ({ message }) => {
           id="email"
           label="E-mail"
           borderStyle={{
-            border: errors.email
-              ? '2px solid #e53935'
-              : '2px solid transparent',
+            border: errors.email ? '2px solid #e53935' : 'none',
           }}
         />
         <TextField
@@ -70,10 +68,8 @@ const Login = ({ message }) => {
           id="password"
           label="Password"
           placeholder="Enter your password"
-          style={{
-            border: errors.password
-              ? '2px solid #e53935'
-              : '2px solid transparent',
+          borderStyle={{
+            border: errors.password ? '2px solid #e53935' : 'none',
           }}
         />
 

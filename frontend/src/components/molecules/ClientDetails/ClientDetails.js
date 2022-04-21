@@ -10,7 +10,6 @@ import {
   Label,
   StyledInfo,
 } from 'components/molecules/ClientDetails/ClientDetails.styles';
-import { ClientShape } from 'types';
 
 export const ClientDetails = ({ client }) => {
   const { data, isLoading } = useGetClientQuery(client);
@@ -38,7 +37,7 @@ export const ClientDetails = ({ client }) => {
           <Label>Notes:</Label>
           <StyledInfo>{data.info}</StyledInfo>
           <ButtonWrapper>
-            <Button secondary as={Link} to={`/clients/edit/${data._id}`}>
+            <Button $secondary as={Link} to={`/clients/edit/${data._id}`}>
               EDIT
             </Button>
           </ButtonWrapper>
@@ -49,5 +48,5 @@ export const ClientDetails = ({ client }) => {
 };
 
 ClientDetails.propTypes = {
-  client: PropTypes.shape(ClientShape),
+  client: PropTypes.string,
 };
