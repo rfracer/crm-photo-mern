@@ -50,7 +50,7 @@ export const Navigation = () => {
       dispatch(setUser({ user: null }));
       dispatch(baseApi.util.resetApiState());
     }
-  }, [isSuccess]);
+  }, [isSuccess, dispatch]);
 
   return (
     <OuterWrapper>

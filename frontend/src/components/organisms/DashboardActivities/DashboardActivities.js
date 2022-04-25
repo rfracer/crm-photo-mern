@@ -54,8 +54,10 @@ export const DashboardActivities = ({
               ))}
             </tbody>
           </table>
-        ) : isError && error.status !== 404 ? null : (
+        ) : isError && error.status === 404 ? (
           'No activities yet'
+        ) : (
+          'Server error - contact page admin'
         )}
       </TableWrapper>
       <ButtonWrapper>

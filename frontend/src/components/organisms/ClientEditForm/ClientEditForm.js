@@ -17,7 +17,7 @@ import { Spinner } from 'components/atoms/Spinner/Spinner';
 
 export const ClientEditForm = () => {
   const { id } = useParams();
-  const { data, isSuccess: isUserLoaded } = useGetClientQuery(id);
+  const { data, isSuccess: isClientLoaded } = useGetClientQuery(id);
   const [updateClient, { isLoading, isSuccess, isError }] =
     useUpdateClientMutation();
 
@@ -45,7 +45,6 @@ export const ClientEditForm = () => {
         },
         true
       );
-      console.log(data);
     }
   }, [data]);
 
@@ -56,7 +55,7 @@ export const ClientEditForm = () => {
 
   return (
     <>
-      {!isUserLoaded ? (
+      {!isClientLoaded ? (
         <Spinner />
       ) : (
         <StyledForm onSubmit={handleSubmit(handleUpdateClient, isSuccess)}>

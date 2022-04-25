@@ -26,7 +26,7 @@ const TaskAddForm = () => {
 
   useEffect(() => {
     reset();
-  }, [isSuccess]);
+  }, [isSuccess, reset]);
 
   const handleAddTask = (data) => {
     addTask(data);

@@ -63,6 +63,7 @@ export const DashboardChart = ({
     'December',
   ];
 
+  // Get all data from specific year
   const sortByYear = (data, year) => {
     const filteredData = data.filter((client) => {
       return moment(client.date).year() === year;
@@ -70,6 +71,7 @@ export const DashboardChart = ({
     return filteredData;
   };
 
+  // Connect data to specific month of the year
   const arrayByMonth = (data) => {
     const dataByMonth = [];
     labels.forEach((label) => {
