@@ -20,20 +20,28 @@ export const TaskItem = ({ data }) => {
   };
 
   const handleUpdateTask = (data) => {
-    const { checked } = data;
+    const { checked, id } = data;
     const updated = { ...data, checked: !checked };
     updateTask({ id, updated });
   };
 
   return (
     <Wrapper checked={checked}>
-      <TaskName checked={checked}>{name}</TaskName>
+      <TaskName checked={checked}>{!name.length ? 'No name' : name}</TaskName>
       <TaskPriority value={priority}>{priority}</TaskPriority>
       <ButtonsWrapper>
-        <StyledButton onClick={() => handleUpdateTask(data)} type="check">
+        <StyledButton
+          data-testid="update-task"
+          onClick={() => handleUpdateTask(data)}
+          type="check"
+        >
           {checked ? <IoArrowUp /> : <IoCheckmarkDoneOutline />}
         </StyledButton>
-        <StyledButton onClick={handleDeleteTask} type="trash">
+        <StyledButton
+          data-testid="delete-task"
+          onClick={handleDeleteTask}
+          type="trash"
+        >
           <IoTrash />
         </StyledButton>
       </ButtonsWrapper>

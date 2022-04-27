@@ -28,7 +28,7 @@ const Settings = () => {
 
   useEffect(() => {
     reset();
-  }, [isSuccess]);
+  }, [isSuccess, reset]);
 
   const handleUpdatePassword = (data) => {
     changeUserPassword(data);

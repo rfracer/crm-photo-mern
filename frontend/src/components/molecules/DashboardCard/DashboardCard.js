@@ -18,7 +18,7 @@ const DashboardCard = ({
       </CardHeader>
       <CardContent>
         {isLoading ? (
-          <DashCardSpinner />
+          <DashCardSpinner data-testid="spinner" />
         ) : (
           <>
             {value}

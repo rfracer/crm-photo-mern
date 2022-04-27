@@ -17,7 +17,7 @@ export const ClientDetails = ({ client }) => {
   return (
     <>
       {isLoading ? (
-        <Spinner />
+        <Spinner data-testid="spinner" />
       ) : (
         <Wrapper>
           <Label>Name:</Label>

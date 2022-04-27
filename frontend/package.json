@@ -8,7 +8,6 @@
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "babel-eslint": "^10.1.0",
     "chart.js": "^3.7.1",
@@ -54,8 +53,10 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.2",
+    "@testing-library/user-event": "^14.1.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "msw": "^0.39.2",
     "prettier": "^2.6.2"
   }
 }

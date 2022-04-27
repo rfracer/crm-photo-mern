@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from 'store/state/authSlice';
 import { useLogoutUserMutation, baseApi } from 'store';
-import { ReactComponent as Logo } from 'assets/image/logo.svg';
 import { ReactComponent as LogoWhite } from 'assets/image/logo-white.svg';
 import {
   LogOutButton,

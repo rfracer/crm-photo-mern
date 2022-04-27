@@ -37,21 +37,21 @@ const DashboardCards = ({ theme, data, isSuccess, isLoading }) => {
     <CardsWrapper>
       <DashboardCard
         title="LEADS"
-        icon={<IoFileTrayFull />}
+        icon={<IoFileTrayFull title="icon" />}
         value={leadsAmount}
         isLoading={isLoading}
         background={theme.colors.lightSecondary}
       />
       <DashboardCard
         title="CONTRACTS"
-        icon={<IoCheckbox />}
+        icon={<IoCheckbox title="icon" />}
         value={contractsAmount}
         isLoading={isLoading}
         background={theme.colors.secondary}
       />
       <DashboardCard
         title="PREDICTED EARNINGS"
-        icon={<IoCash />}
+        icon={<IoCash title="icon" />}
         value={earnings}
         isLoading={isLoading}
         symbol="$"
