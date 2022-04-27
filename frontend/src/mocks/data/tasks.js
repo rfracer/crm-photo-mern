@@ -1,4 +1,4 @@
-export const tasks = [
+export let tasks = [
   {
     _id: '1',
     name: 'Task 1',

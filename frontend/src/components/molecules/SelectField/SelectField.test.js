@@ -2,21 +2,22 @@ import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from 'test-utils';
-import { DateField } from './DateField';
+import { SelectField } from './SelectField';
 
 const data = {
   label: 'test label',
   name: 'testname',
   id: 'testname',
+  options: ['1', '2', '3'],
 };
 
 const setup = () => {
-  const { label, name, id } = data;
-  render(<DateField label={label} name={name} id={id} />);
+  const { label, name, id, options } = data;
+  render(<SelectField label={label} name={name} id={id} options={options} />);
 };
 
-describe('Data Input Field', () => {
-  test('Render data field', () => {
+describe('Select Input Field', () => {
+  test('Render select input field', () => {
     setup();
   });
 
@@ -25,10 +26,10 @@ describe('Data Input Field', () => {
     expect(screen.getByLabelText(/test label/i)).toBeInTheDocument();
   });
 
-  test('Has correct date value - selected by user', () => {
+  test('Has correct selected value by user', () => {
     setup();
     const input = screen.getByLabelText(/test label/i);
-    fireEvent.change(input, { target: { value: '2018-06-12T19:30' } });
-    expect(input.value).toBe('2018-06-12T19:30');
+    fireEvent.change(input, { target: { value: '2' } });
+    expect(input.value).toBe('2');
   });
 });

@@ -27,7 +27,6 @@ export const tasks = [
   rest.delete('http://localhost:5000/api/tasks/:id', (req, res, ctx) => {
     const removeIndex = data.map((item) => item._id).indexOf(req.params.id);
     data.splice(removeIndex, 1);
-    console.log(data);
     return res(
       ctx.status(200),
       ctx.json({
@@ -37,6 +36,9 @@ export const tasks = [
     );
   }),
   rest.put('http://localhost:5000/api/tasks/:id', (req, res, ctx) => {
+    const itemIndex = data.map((item) => item._id).indexOf(req.params.id);
+    data[itemIndex].checked = !data[itemIndex].checked;
+
     const { name, priority } = req.body;
     if (!name || !priority) {
       return res(ctx.status(400));

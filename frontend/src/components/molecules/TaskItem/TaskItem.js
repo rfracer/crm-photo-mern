@@ -20,7 +20,7 @@ export const TaskItem = ({ data }) => {
   };
 
   const handleUpdateTask = (data) => {
-    const { checked, id } = data;
+    const { checked } = data;
     const updated = { ...data, checked: !checked };
     updateTask({ id, updated });
   };
@@ -35,7 +35,11 @@ export const TaskItem = ({ data }) => {
           onClick={() => handleUpdateTask(data)}
           type="check"
         >
-          {checked ? <IoArrowUp /> : <IoCheckmarkDoneOutline />}
+          {checked ? (
+            <IoArrowUp title="arrow-up icon" />
+          ) : (
+            <IoCheckmarkDoneOutline title="checkmark icon" />
+          )}
         </StyledButton>
         <StyledButton
           data-testid="delete-task"

@@ -49,11 +49,11 @@ export const ShowMoreOptions = React.forwardRef(
         <ShowMoreList show={isActive}>
           <li>
             <Link key={id} to={`/clients/edit/${id}`}>
-              <IoPencil /> Edit
+              <IoPencil title="pencil icon" /> Edit
             </Link>
           </li>
-          <li onClick={handleOpenDeleteClient}>
-            <IoTrash /> Delete
+          <li role="button" onClick={handleOpenDeleteClient}>
+            <IoTrash title="trash icon" /> Delete
           </li>
         </ShowMoreList>
       </ShowMoreWrapper>
