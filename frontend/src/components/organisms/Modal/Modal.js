@@ -15,7 +15,7 @@ const Modal = ({ isOpen, children, handleClose, modalHeader }) => {
       <ModalHeader>
         <h1>{modalHeader}</h1>
         <CloseModalBtn onClick={handleClose}>
-          <IoCloseOutline />
+          <IoCloseOutline title="Close icon" />
         </CloseModalBtn>
       </ModalHeader>
       {children}

@@ -115,7 +115,9 @@ export const ClientAddForm = () => {
         isTextarea
       />
 
-      <Button type="submit">{isLoading ? <ButtonSpinner /> : 'ADD'}</Button>
+      <Button type="submit">
+        {isLoading ? <ButtonSpinner data-testid="button-spinner" /> : 'ADD'}
+      </Button>
       {isSuccess && !isDirty ? <FormMessage success>Added</FormMessage> : null}
       {isError ? <FormMessage>Server Error</FormMessage> : null}
     </StyledForm>
