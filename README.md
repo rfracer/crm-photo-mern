@@ -8,15 +8,17 @@ Simple CRM for photography buisness. Allows you to create account, add, manage c
 \
 **Demo account**\
 login: test@test.com\
-password: 12345 
+password: 12345
 
 ![CRM-screeny](https://user-images.githubusercontent.com/22677833/164290704-b468baa6-3469-415f-9757-75cfc3834b3b.jpg)
 
 ## Table of Contents
+
 - [Basic Features](#basic-features)
 - [Technologies and tools](#technologies-and-tools)
 - [Installation](#installation)
 - [Local usage](#local-usage)
+- [Testing](#testing)
 
 ## Basic Features
 
@@ -34,16 +36,18 @@ password: 12345
 - React Hook Form
 - Styled Components
 - Express.js
-- MongoDB Database - Mongoose 
+- MongoDB Database - Mongoose
 - JWT - Auth Tokens
-
+- React Testing Library, Cypress
 
 ## Installation
 
 ### Clone Git Repository
+
 ```
 git clone https://github.com/rfracer/crm-photo-mern.git
 ```
+
 ### Frontend Part
 
 ```
@@ -62,14 +66,34 @@ npm install
 
 To use App in local enviroment:
 
-### Frontend Part: ###
+### Frontend Part:
+
 ```
 cd frontend
 npm run start
 ```
 
-### API Part: ###
+### API Part:
+
 ```
 cd backend
 npm run server
+```
+
+## Testing
+
+App has some Unit, Integration and E2E tests.
+
+### Unit tests - Jest, React Testing library:
+
+```
+cd frontend
+npm run test
+```
+
+### E2E, Integration - Cypress:
+
+```
+cd frontend
+npm run e2e
 ```
