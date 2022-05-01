@@ -25,7 +25,7 @@ describe('User tasks testing', () => {
     cy.contains(/No tasks/i).should('exist');
   });
 
-  it('Can add new task', () => {
+  it('Can open modal and add new task', () => {
     cy.findByRole('button', { name: /add/i }).click();
     cy.findByText(/add task/i).should('exist');
 
