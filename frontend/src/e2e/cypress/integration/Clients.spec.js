@@ -11,6 +11,17 @@ const client = {
   info: faker.lorem.paragraph(),
 };
 
+const editedClient = {
+  name: faker.name.findName(),
+  category: 'event',
+  status: 'contract',
+  value: faker.random.number({ min: 1, max: 3000 }),
+  alreadyPaid: faker.random.number({ min: 1, max: 3000 }),
+  address: faker.address.city(),
+  date: '2022-08-12T19:30',
+  info: faker.lorem.paragraph(),
+};
+
 describe('Clients add functionality testing', () => {
   before(() => {
     //Clear 'tasks' and 'clients' colecction before tests
@@ -36,7 +47,7 @@ describe('Clients add functionality testing', () => {
     cy.contains(/No client/i).should('exist');
   });
 
-  it('Click add button, should redirect to add page, click add button without fill fields should show error messages', () => {
+  it('Click add button, should redirect to add page then click add button on Add page without fill fields should show error messages', () => {
     cy.findByRole('link', { name: /add/i }).click();
     cy.url().should('include', '/clients/add');
     cy.findByText(/add client/i).should('exist');
@@ -48,7 +59,7 @@ describe('Clients add functionality testing', () => {
     cy.findByText(/Please set a date/i).should('exist');
   });
 
-  it('Can add new client with correct fields', () => {
+  it('Can add new client with correct fields. Open modal with client info, close button should close modal', () => {
     cy.findByRole('link', { name: /add/i }).click();
 
     cy.findByLabelText(/name/i).click().type(client.name);
@@ -71,11 +82,48 @@ describe('Clients add functionality testing', () => {
 
     cy.visit('/clients');
 
-    cy.findByText(client.name).should('exist');
+    // Client info modal
+    cy.findByText(client.name).should('exist').click();
+
+    cy.findByRole('dialog').findByText(client.name).should('exist');
+    cy.findByRole('dialog').findByText(client.category).should('exist');
+    cy.findByRole('dialog').findByText(client.status).should('exist');
+    cy.findByRole('dialog').findByText(client.address).should('exist');
+    cy.findByRole('dialog').findByText(client.info).should('exist');
+
+    cy.findByTitle(/close icon/i)
+      .parent()
+      .click();
+    cy.findByRole('dialog').should('not.exist');
+  });
+
+  it('Can edit client with new values', () => {
+    cy.findByText(client.name).parent().findByRole('button').click();
+    cy.findByRole('link', { name: /edit/i }).click();
+
+    //Check if inputs have correct values from DB
+    cy.findByLabelText(/name/i).should('have.value', client.name);
+    cy.findByLabelText(/status/i).should('have.value', client.status);
+    cy.findByLabelText(/category/i).should('have.value', client.category);
+    cy.findByLabelText(/address/i).should('have.value', client.address);
+    cy.findByLabelText(/info/i).should('have.value', client.info);
+
+    //Change value of few inputs
+    cy.findByLabelText(/name/i).click().clear().type(editedClient.name);
+    cy.findByLabelText(/category/i).select(editedClient.category);
+    cy.findByLabelText(/status/i).select(editedClient.status);
+
+    cy.findByRole('button', { name: /update/i }).click();
+
+    //Check if values are correctly updated
+    cy.visit('/clients');
+    cy.findByText(editedClient.name).should('exist');
+    cy.findByText(editedClient.status).should('exist');
+    cy.findByText(editedClient.category).should('exist');
   });
 
   it('Can delete client from client list', () => {
-    cy.findByText(client.name).parent().findByRole('button').click();
+    cy.findByText(editedClient.name).parent().findByRole('button').click();
 
     cy.findByRole('button', { name: /delete/i }).click();
 
@@ -83,31 +131,13 @@ describe('Clients add functionality testing', () => {
 
     //Check if click 'NO'
     cy.findByRole('button', { name: /no/i }).click();
-    cy.findByText(client.name).should('exist');
+    cy.findByText(editedClient.name).should('exist');
 
     //Check if click 'YES'
-    cy.findByText(client.name).parent().findByRole('button').click();
+    cy.findByText(editedClient.name).parent().findByRole('button').click();
     cy.findByRole('button', { name: /delete/i }).click();
 
     cy.findByRole('button', { name: /yes/i }).click();
-    cy.findByText(client.name).should('not.exist');
+    cy.findByText(editedClient.name).should('not.exist');
   });
 });
-
-// describe('Clients delete and edit functionality testing', () => {
-//   beforeEach(() => {
-//     cy.request({
-//       method: 'POST',
-//       url: Cypress.config('backendBaseURL') + '/users/login',
-//       body: {
-//         email: 'test@test.pl',
-//         password: '12345',
-//       },
-//     });
-//     cy.visit('/clients');
-//   });
-
-//   it('Should display user', () => {
-//     //
-//   });
-// });
