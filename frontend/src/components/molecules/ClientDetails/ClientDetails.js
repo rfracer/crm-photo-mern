@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useGetClientQuery } from 'store';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
@@ -25,7 +26,9 @@ export const ClientDetails = ({ client }) => {
           <Label>Category:</Label>
           <StyledInfo>{data.category}</StyledInfo>
           <Label>Date:</Label>
-          <StyledInfo>{data.date}</StyledInfo>
+          <StyledInfo>
+            {moment(data.date).format('MMMM Do YYYY, H:MM ')}
+          </StyledInfo>
           <Label>Status:</Label>
           <StyledInfo>{data.status}</StyledInfo>
           <Label>Address:</Label>
