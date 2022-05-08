@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const UserInfoWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -31,4 +32,10 @@ export const UserInfoWrapper = styled.div`
 export const UserName = styled.p`
   font-size: ${({ theme }) => theme.fontSize.small};
   margin-left: 1rem;
+`;
+
+export const UserMenuClickWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 `;
