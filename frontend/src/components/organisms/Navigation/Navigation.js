@@ -8,11 +8,13 @@ import {
   OuterWrapper,
   StyledBurger,
   TopBarWrapper,
+  TopBarInnerWrapper,
   Wrapper,
   StyledLogo,
   StyledNavigation,
   StyledLink,
   DesktopLogo,
+  UserMobileMenuButton,
 } from 'components/organisms/Navigation/Navigation.styles';
 import {
   IoBriefcaseOutline,
@@ -21,12 +23,15 @@ import {
   IoPeopleOutline,
   IoReorderThreeOutline,
   IoCloseOutline,
+  IoCaretDownOutline,
 } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { UserLogo } from 'components/atoms/UserLogo/UserLogo';
+import { UserMenu } from 'components/molecules/UserMenu/UserMenu';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [userMenu, setUserMenu] = useState(false);
   const [logoutUser, { isSuccess }] = useLogoutUserMutation();
 
   const user = useSelector((state) => state.auth.user);
@@ -38,6 +43,10 @@ export const Navigation = () => {
 
   const handleLogout = () => {
     logoutUser();
+  };
+
+  const handleOpenUserMenu = () => {
+    setUserMenu(!userMenu);
   };
 
   const getFirstLetter = (user) => {
@@ -54,18 +63,29 @@ export const Navigation = () => {
   return (
     <OuterWrapper>
       <TopBarWrapper>
-        <StyledBurger isOpen={isOpen} onClick={toggleNav}>
-          {isOpen ? <IoCloseOutline /> : <IoReorderThreeOutline />}
-        </StyledBurger>
-        {!isOpen ? (
-          <UserLogo icon={getFirstLetter(user)} />
-        ) : (
-          <Link to="/">
-            <StyledLogo isMobile isSmall>
-              {isOpen ? <LogoWhite /> : null}
-            </StyledLogo>
-          </Link>
-        )}
+        <TopBarInnerWrapper>
+          <StyledBurger isOpen={isOpen} onClick={toggleNav}>
+            {isOpen ? <IoCloseOutline /> : <IoReorderThreeOutline />}
+          </StyledBurger>
+          {!isOpen ? (
+            <>
+              <UserMobileMenuButton onClick={handleOpenUserMenu}>
+                <UserLogo icon={getFirstLetter(user)} /> <IoCaretDownOutline />
+              </UserMobileMenuButton>
+              <UserMenu
+                mobile
+                isOpen={userMenu}
+                handleMenuStatus={setUserMenu}
+              />
+            </>
+          ) : (
+            <Link to="/">
+              <StyledLogo isMobile isSmall>
+                {isOpen ? <LogoWhite /> : null}
+              </StyledLogo>
+            </Link>
+          )}
+        </TopBarInnerWrapper>
       </TopBarWrapper>
 
       <Wrapper isOpen={isOpen}>

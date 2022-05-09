@@ -33,18 +33,23 @@ export const Wrapper = styled.div`
 `;
 
 export const TopBarWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 10;
-  height: 70px;
   border-bottom: 1px solid #dcdcdc;
-  padding: 1rem 2rem 0 1rem;
 
   a {
     z-index: 100;
     text-decoration: none;
   }
+`;
+
+export const TopBarInnerWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  height: 70px;
+
+  padding: 1rem 2rem 0 1rem;
 `;
 
 export const StyledBurger = styled.button`
@@ -183,5 +188,23 @@ export const DesktopLogo = styled.div`
   svg {
     width: 100%;
     z-index: 100;
+    position: relative;
+    display: inline-block;
+  }
+`;
+
+export const UserMobileMenuButton = styled.button`
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  ${({ theme }) => theme.mq.desktop} {
+    display: none;
+  }
+
+  svg {
+    margin-left: 1rem;
   }
 `;

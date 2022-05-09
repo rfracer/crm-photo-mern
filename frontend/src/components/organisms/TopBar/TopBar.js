@@ -7,7 +7,7 @@ import {
   UserName,
   UserMenuClickWrapper,
 } from './TopBar.styles';
-import { UserTab } from 'components/molecules/UserMenu/UserMenu';
+import { UserMenu } from 'components/molecules/UserMenu/UserMenu';
 import { IoCaretDownOutline } from 'react-icons/io5';
 
 export const TopBar = () => {
@@ -42,19 +42,20 @@ export const TopBar = () => {
   return (
     <Wrapper>
       <UserInfoWrapper>
-        <UserLogo icon={getFirstLetter(user)} />
         <UserMenuClickWrapper
           className="user-menu-button"
           onClick={handleOpenUserMenu}
+          role="button"
         >
+          <UserLogo icon={getFirstLetter(user)} />
           <UserName>{user}</UserName>
           <IoCaretDownOutline />
         </UserMenuClickWrapper>
 
-        <UserTab
+        <UserMenu
           ref={ref}
           isOpen={listStatus}
-          handleTabStatus={setListStatus}
+          handleMenuStatus={setListStatus}
         />
       </UserInfoWrapper>
     </Wrapper>
