@@ -16,7 +16,7 @@ const Root = () => {
     if (!user && isSuccess) {
       dispatch(setUser(data.user));
     }
-  }, [user, data, isSuccess]);
+  }, [user, data, isSuccess, dispatch]);
 
   return (
     <>

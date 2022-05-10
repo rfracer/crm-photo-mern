@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'store/state/authSlice';
 import { useForm } from 'react-hook-form';
@@ -15,6 +16,9 @@ import { Info, StyledForm, FormTitle, Wrapper } from 'views/Auth/Login.styles';
 const Login = ({ message }) => {
   const [loginUser, { data, error, isLoading, isSuccess, isError }] =
     useLoginUserMutation();
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const dispatch = useDispatch();
   const {
@@ -37,8 +41,11 @@ const Login = ({ message }) => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(setUser({ email: data.user.email }));
+      if (location.pathname === '/login') {
+        navigate('/');
+      }
     }
-  }, [data, isSuccess]);
+  }, [data, isSuccess, dispatch, navigate]);
 
   return (
     <Wrapper>

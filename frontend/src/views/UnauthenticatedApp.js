@@ -14,12 +14,11 @@ const UnauthenticatedApp = () => {
   return (
     <AuthTemplate>
       <Routes>
-        <Route path="/login" element={<Login message={message} />} />
+        <Route path="*" element={<Login message={message} />} />
         <Route
           path="/register"
           element={<Register handleMessage={handleMessage} />}
         />
-        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </AuthTemplate>
   );

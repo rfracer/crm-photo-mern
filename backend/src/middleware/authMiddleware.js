@@ -5,11 +5,15 @@ const { generateAccessToken } = require('../helpers/tokensGenerator');
 const auth = async (req, res, next) => {
   const token = req.cookies.JWT;
 
-  if (!token) return next(new ApiError('Unauthenticated', 401));
+  if (!token) {
+    res.set('Cache-Control', 'no-store');
+    return next(new ApiError('Unauthenticated', 401));
+  }
 
   jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
     if (err) {
       const refreshToken = req.cookies.JWT_REFRESH;
+      res.set('Cache-Control', 'no-store');
 
       if (!refreshToken) return next(new ApiError('Unauthenticated', 401));
 

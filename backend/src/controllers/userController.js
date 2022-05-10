@@ -8,6 +8,7 @@ const {
 } = require('../helpers/tokensGenerator');
 
 const getUser = async (req, res, next) => {
+  res.set('Cache-Control', 'no-store');
   res.status(200).send({
     status: 200,
     user: req.user ? req.user : null,
@@ -104,8 +105,16 @@ const registerUser = async (req, res, next) => {
 
 const logoutUser = (req, res) => {
   res.cookie('JWT', '', {
-    maxAge: 86400000,
+    maxAge: 0,
     httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  });
+  res.cookie('JWT_REFRESH', '', {
+    maxAge: 0,
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
   });
   res.status(200).send({ status: 200, message: 'Logout successfully' });
 };
