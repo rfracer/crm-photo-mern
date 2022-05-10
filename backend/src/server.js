@@ -4,6 +4,8 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 require('dotenv').config();
+const compression = require('compression');
+
 const connectDB = require('./config/database');
 const { notFoundURL, catchErrors } = require('./middleware/errorsMiddleware');
 
@@ -12,6 +14,9 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 if (process.env.NODE_ENV === 'production') {
+  //Turn on compression on production files
+  app.use(compression());
+  //Change cors settings - the same url for frontend and backend
   app.use(cors({ credentials: true, origin: true }));
 } else {
   app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
