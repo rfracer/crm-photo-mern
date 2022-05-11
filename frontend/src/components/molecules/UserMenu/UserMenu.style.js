@@ -31,6 +31,7 @@ export const OptionsList = styled.ul`
 export const OptionItem = styled.li`
   display: flex;
   align-items: center;
+  width: 100%;
   margin-bottom: 2rem;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
@@ -46,6 +47,7 @@ export const OptionItem = styled.li`
   a {
     display: flex;
     align-items: center;
+    width: 100%;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black};
     transition: color 0.2s ease-in-out;

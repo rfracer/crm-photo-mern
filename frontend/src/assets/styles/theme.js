@@ -28,8 +28,8 @@ export const theme = {
     normal: '1.6rem',
     small: '1.4rem',
   },
-  cardShadow: '5px 5px 20px 1px rgba(0, 0, 0, 0.03)',
-  inputShadow: '-2px 4px 11px rgba(114, 124, 142, 0.08)',
+  cardShadow: '5px 5px 20px 1px rgba(0, 0, 0, 0.06)',
+  inputShadow: '-2px 4px 11px rgba(114, 124, 142, 0.1)',
   mq: {
     tablet: '@media (min-width: 768px)',
     desktop: '@media (min-width: 1024px)',
