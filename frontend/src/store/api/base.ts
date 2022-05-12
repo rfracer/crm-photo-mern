@@ -3,6 +3,7 @@ import {
   fetchBaseQuery,
   retry,
 } from '@reduxjs/toolkit/dist/query/react';
+import { FetchArgs } from '@reduxjs/toolkit/dist/query/fetchBaseQuery';
 
 let apiURL = 'http://localhost:5000/api/';
 
@@ -16,12 +17,12 @@ const baseQuery = fetchBaseQuery({
 });
 
 const baseQueryWithAuth = retry(
-  async (args, api, extraOptions) => {
-    let result = await baseQuery(args, api, extraOptions);
+  async (args: string | FetchArgs, api, extraOptions) => {
+    const result = await baseQuery(args, api, extraOptions);
     if (
-      (result.error?.status === 401 &&
-        result.error?.data.error.message === 'Forbidden') ||
-      result.error?.status === 403
+      result.error?.status === 401 ||
+      /*result.error?.data.error.message === 'Forbidden'*/ result.error
+        ?.status === 403
     ) {
       window.location.href = '/login';
       retry.fail(result.error);

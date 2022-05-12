@@ -7,7 +7,7 @@ import Register from 'views/Auth/Register';
 const UnauthenticatedApp = () => {
   const [message, setMessage] = useState('');
 
-  const handleMessage = (msg) => {
+  const handleMessage = (msg: string) => {
     setMessage(msg);
   };
 

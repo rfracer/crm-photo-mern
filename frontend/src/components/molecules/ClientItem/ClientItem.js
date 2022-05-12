@@ -10,7 +10,6 @@ export const ClientItem = ({
 }) => {
   const [isShowMore, setIsShowMore] = useState(false);
   const ref = useRef(null);
-
   useEffect(() => {
     document.addEventListener('click', handleClickOutside, true);
     return () => {
