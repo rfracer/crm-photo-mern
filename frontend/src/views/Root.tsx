@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import AuthenticatedApp from 'views/AuthenticatedApp';
 import UnauthenticatedApp from 'views/UnauthenticatedApp';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'hooks/store';
 import { setUser } from 'store/state/authSlice';
 import { useGetUserQuery } from 'store';
-import { useSelector } from 'react-redux';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 
 const Root = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.auth.user);
   const { data, isSuccess, isLoading, isError } = useGetUserQuery();
 
   useEffect(() => {

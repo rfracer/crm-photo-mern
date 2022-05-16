@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-export const FormMessage = styled.p`
+export const FormMessage = styled.p<{ success?: boolean }>`
   width: 100%;
   background-color: ${({ success, theme: { colors } }) =>
     success ? colors.lightSuccess : colors.lightError};

@@ -1,12 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Label } from 'components/atoms/Label/Label';
 import { Input } from 'components/atoms/Input/Input';
 import { Wrapper } from 'components/molecules/TextField/TextField.styles';
 
-export const TextField = React.forwardRef(
+type Props = {
+  label: string;
+  name: string;
+  placeholder?: string;
+  id: string;
+  type?: string;
+  isTextarea?: boolean;
+  autocomplete?: boolean | string;
+  borderStyle?: {
+    border: string;
+  };
+};
+
+type Ref = HTMLInputElement;
+
+export const TextField = React.forwardRef<Ref, Props>(
   (
-    { autocomplete, label, name, id, type = 'text', isTextarea, ...props },
+    {
+      autocomplete,
+      label,
+      name,
+      placeholder,
+      id,
+      type = 'text',
+      isTextarea,
+      borderStyle,
+      ...props
+    },
     ref
   ) => {
     return (
@@ -36,10 +60,3 @@ export const TextField = React.forwardRef(
     );
   }
 );
-
-TextField.propTypes = {
-  autocomplete: PropTypes.string,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  isTextarea: PropTypes.bool,
-};

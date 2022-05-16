@@ -1,18 +1,5 @@
+import { Client } from 'types/types';
 import { baseApi } from './base';
-
-export interface Client {
-  _id?: string;
-  // eslint-disable-next-line no-restricted-globals
-  name: string;
-  category: string;
-  date: Date;
-  value: number;
-  alreadyPaid: number;
-  // eslint-disable-next-line no-restricted-globals
-  status: 'lead' | 'contract' | 'completed';
-  address: string;
-  info: string;
-}
 
 export const clientsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

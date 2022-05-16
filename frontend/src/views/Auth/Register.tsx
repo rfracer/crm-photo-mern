@@ -10,8 +10,13 @@ import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { Info, StyledForm, FormTitle, Wrapper } from 'views/Auth/Login.styles';
 import { TextField } from 'components/molecules/TextField/TextField';
+import { UserRegister, FetchCustomError } from 'types/types';
 
-const Register = ({ handleMessage }) => {
+type Props = {
+  handleMessage: (message: string) => void;
+};
+
+const Register = ({ handleMessage }: Props) => {
   const [registerUser, { error, isSuccess, isError, isLoading }] =
     useRegisterUserMutation();
 
@@ -21,7 +26,7 @@ const Register = ({ handleMessage }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<UserRegister>({
     defaultValues: {
       email: '',
       password: '',
@@ -29,7 +34,7 @@ const Register = ({ handleMessage }) => {
     },
   });
 
-  const handleRegister = (data) => {
+  const handleRegister = (data: UserRegister) => {
     registerUser(data);
   };
 
@@ -105,9 +110,9 @@ const Register = ({ handleMessage }) => {
           <FormMessage>Confirm your password</FormMessage>
         ) : null}
 
-        {isError ? (
+        {isError && typeof error !== 'undefined' ? (
           <FormMessage>
-            {error.status === 400
+            {'data' in error && error.status === 400
               ? error.data.error.message
               : 'Server error - contact with page administration'}
           </FormMessage>

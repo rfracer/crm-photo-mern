@@ -8,8 +8,7 @@ import { DashboardChart } from 'components/organisms/DashboardChart/DashboardCha
 import { ActivitesWrapper } from 'views/Dashboard/Dashboard.styles';
 
 const Dashboard = () => {
-  const { data, error, isFetching, isSuccess, isLoading, isError } =
-    useGetClientsQuery();
+  const { data, error, isSuccess, isLoading, isError } = useGetClientsQuery();
 
   return (
     <ViewWrapper>
@@ -27,7 +26,6 @@ const Dashboard = () => {
         <DashboardChart
           isSuccess={isSuccess}
           isLoading={isLoading}
-          isFetching={isFetching}
           isError={isError}
           error={error}
           baseData={data}

@@ -10,11 +10,11 @@ import { HeadingWrapper } from 'views/Tasks/Tasks.styles';
 const Tasks = () => {
   const [modalStatus, setModalStatus] = useState(false);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setModalStatus(false);
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (): void => {
     setModalStatus(true);
   };
 

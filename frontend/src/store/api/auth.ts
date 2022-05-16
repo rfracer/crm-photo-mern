@@ -1,14 +1,5 @@
+import { User, UserRegister, PasswordChangeType } from 'types/types';
 import { baseApi } from './base';
-
-export interface User {
-  id: string;
-  email: string;
-  password: string;
-}
-
-export interface UserRegister extends User {
-  confirmPassword: string;
-}
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -38,7 +29,10 @@ export const authApi = baseApi.injectEndpoints({
         method: 'POST',
       }),
     }),
-    changeUserPassword: builder.mutation<{ message: string }, UserRegister>({
+    changeUserPassword: builder.mutation<
+      { message: string },
+      PasswordChangeType
+    >({
       query: (body) => ({
         url: 'users/password',
         method: 'PATCH',

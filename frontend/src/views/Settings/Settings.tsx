@@ -9,6 +9,7 @@ import { Button } from 'components/atoms/Button/Button';
 import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { FormInputError } from 'components/atoms/FormInputError/FormInputError';
 import { StyledForm } from 'views/Settings/Settings.styles';
+import { PasswordChangeType } from 'types/types';
 
 const Settings = () => {
   const [changeUserPassword, { error, isSuccess, isError, isLoading }] =
@@ -19,7 +20,7 @@ const Settings = () => {
     handleSubmit,
     reset,
     formState: { errors, isDirty },
-  } = useForm({
+  } = useForm<PasswordChangeType>({
     defaultValues: {
       password: '',
       confirmPassword: '',
@@ -30,7 +31,7 @@ const Settings = () => {
     reset();
   }, [isSuccess, reset]);
 
-  const handleUpdatePassword = (data) => {
+  const handleUpdatePassword = (data: PasswordChangeType): void => {
     changeUserPassword(data);
   };
 
@@ -73,7 +74,13 @@ const Settings = () => {
         {isSuccess && !isDirty ? (
           <FormMessage success>User password updated</FormMessage>
         ) : null}
-        {isError ? <FormMessage>{error.data.error.message}</FormMessage> : null}
+        {isError && typeof error !== 'undefined' ? (
+          <FormMessage>
+            {'data' in error && error.status === 400
+              ? error.data.error.message
+              : null}
+          </FormMessage>
+        ) : null}
       </StyledForm>
     </ViewWrapper>
   );

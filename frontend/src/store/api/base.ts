@@ -1,9 +1,11 @@
 import {
   createApi,
+  BaseQueryFn,
   fetchBaseQuery,
   retry,
-} from '@reduxjs/toolkit/dist/query/react';
+} from '@reduxjs/toolkit/query/react';
 import { FetchArgs } from '@reduxjs/toolkit/dist/query/fetchBaseQuery';
+import { FetchCustomError } from 'types/types';
 
 let apiURL = 'http://localhost:5000/api/';
 
@@ -27,7 +29,7 @@ const baseQueryWithAuth = retry(
       window.location.href = '/login';
       retry.fail(result.error);
     }
-    return result;
+    return result.data ? result : { error: result.error as FetchCustomError };
   },
   {
     maxRetries: 0,
@@ -36,7 +38,11 @@ const baseQueryWithAuth = retry(
 
 export const baseApi = createApi({
   reducerPath: 'baseApi',
-  baseQuery: baseQueryWithAuth,
+  baseQuery: baseQueryWithAuth as BaseQueryFn<
+    string | FetchArgs,
+    unknown,
+    FetchCustomError
+  >,
   tagTypes: ['Clients', 'Tasks'],
   endpoints: () => ({}),
 });

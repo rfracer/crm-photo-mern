@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'hooks/store';
 import { setUser } from 'store/state/authSlice';
 import { useForm } from 'react-hook-form';
 import { useLoginUserMutation } from 'store';
@@ -12,20 +12,25 @@ import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { TextField } from 'components/molecules/TextField/TextField';
 import { Info, StyledForm, FormTitle, Wrapper } from 'views/Auth/Login.styles';
+import { User } from 'types/types';
 
-const Login = ({ message }) => {
+type LoginProps = {
+  message: string;
+};
+
+const Login = ({ message }: LoginProps) => {
   const [loginUser, { data, error, isLoading, isSuccess, isError }] =
     useLoginUserMutation();
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<User>({
     defaultValues: {
       email: '',
       password: '',
@@ -34,13 +39,13 @@ const Login = ({ message }) => {
     reValidateMode: 'onChange',
   });
 
-  const handleLogin = (data) => {
+  const handleLogin = (data: User): void => {
     loginUser(data);
   };
 
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(setUser({ email: data.user.email }));
+    if (isSuccess && typeof data !== 'undefined') {
+      dispatch(setUser({ email: data?.user.email }));
       if (location.pathname === '/login') {
         navigate('/');
       }
@@ -87,9 +92,9 @@ const Login = ({ message }) => {
         ) : null}
         {errors.password && <FormMessage>Enter password</FormMessage>}
 
-        {isError ? (
+        {isError && typeof error !== 'undefined' ? (
           <FormMessage>
-            {error.status === 404
+            {'data' in error && error.status === 404
               ? 'Either your email or password is wrong'
               : 'Server error - contact with page administration'}
           </FormMessage>

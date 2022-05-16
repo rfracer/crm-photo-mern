@@ -1,6 +1,12 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const Button = styled.button<{
+  $outline?: boolean;
+  $secondary?: boolean;
+  as?: React.ElementType;
+}>`
   display: block;
   padding: 8px 30px;
   text-decoration: none;

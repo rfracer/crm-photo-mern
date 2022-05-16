@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ViewWrapper = styled.div`
+export const ViewWrapper = styled.div<{ narrow?: boolean }>`
   width: 100%;
   min-height: 100%;
   padding: 2rem;

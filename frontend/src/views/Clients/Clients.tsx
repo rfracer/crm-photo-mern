@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { HeadingWrapper, SearchBar } from 'views/Clients/Clients.styles';
 import { Button } from 'components/atoms/Button/Button';
@@ -10,7 +10,7 @@ import { ClientsList } from 'components/organisms/ClientsList/ClientsList';
 const Clients = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 

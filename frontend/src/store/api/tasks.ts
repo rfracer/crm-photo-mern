@@ -1,12 +1,5 @@
+import { Task } from 'types/types';
 import { baseApi } from './base';
-
-export interface Task {
-  _id?: string;
-  // eslint-disable-next-line no-restricted-globals
-  name: string;
-  priority: 'low' | 'medium' | 'high';
-  checked: boolean;
-}
 
 export const tasksApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
