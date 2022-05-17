@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
-import { Wrapper } from './NotFound.style.js';
+import { Wrapper } from './NotFound.style';
 
 const NotFound = () => {
   return (

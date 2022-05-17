@@ -130,7 +130,4 @@ const Register = ({ handleMessage }: Props) => {
   );
 };
 
-Register.propTypes = {
-  handleMessage: PropTypes.func.isRequired,
-};
 export default Register;

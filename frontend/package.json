@@ -65,6 +65,7 @@
     "@faker-js/faker": "^6.1.2",
     "@testing-library/cypress": "^8.0.2",
     "@testing-library/user-event": "^14.1.1",
+    "@types/react-modal": "^3.13.1",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",

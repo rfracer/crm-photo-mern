@@ -5,12 +5,13 @@ import { Wrapper } from 'components/molecules/TextField/TextField.styles';
 
 type Props = {
   label: string;
+  // eslint-disable-next-line no-restricted-globals
   name: string;
   placeholder?: string;
   id: string;
   type?: string;
   isTextarea?: boolean;
-  autocomplete?: boolean | string;
+  autocomplete?: string;
   borderStyle?: {
     border: string;
   };
@@ -38,7 +39,7 @@ export const TextField = React.forwardRef<Ref, Props>(
         <Label htmlFor={id}>{label}</Label>
         {isTextarea ? (
           <Input
-            as="textarea"
+            // as="textarea"
             rows="7"
             name={name}
             id={id}

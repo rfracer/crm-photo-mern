@@ -116,8 +116,4 @@ const Login = ({ message }: LoginProps) => {
   );
 };
 
-Login.propTypes = {
-  handleMessage: PropTypes.string,
-};
-
 export default Login;

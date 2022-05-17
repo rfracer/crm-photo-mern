@@ -5,7 +5,7 @@ interface AuthState {
 }
 
 interface UserPayload {
-  email: string;
+  email: string | null;
 }
 
 const initialState: AuthState = {
