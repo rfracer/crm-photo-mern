@@ -7,6 +7,7 @@ import { DashboardActivities } from 'components/organisms/DashboardActivities/Da
 import { DashboardChart } from 'components/organisms/DashboardChart/DashboardChart';
 import { ActivitesWrapper } from 'views/Dashboard/Dashboard.styles';
 import { FetchCustomError } from 'types/types';
+import { FormattedMessage } from 'react-intl';
 
 const Dashboard = () => {
   const { data, error, isSuccess, isLoading, isError } = useGetClientsQuery();
@@ -14,7 +15,9 @@ const Dashboard = () => {
   const errorData = error as FetchCustomError;
   return (
     <ViewWrapper>
-      <Title>Dashboard</Title>
+      <Title>
+        <FormattedMessage id="dashboard.title" />
+      </Title>
       <DashboardCards
         data={data ? data : []}
         isSuccess={isSuccess}

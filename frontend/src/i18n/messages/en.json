@@ -1,0 +1,65 @@
+{
+  "global": {
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "navigation": {
+    "dashboard": "Dashboard",
+    "clients": "Clients",
+    "tasks": "Tasks",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+
+  "topbar": {
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "card_leads_title": "Leads",
+    "card_contracts_title": "Leads",
+    "card_predicted_title": "Leads",
+    "card_upcoming_activities_title": "UPCOMING ACTIVITIES",
+    "card_upcoming_activities_no_acitivities": "No activities yet",
+    "card_upcoming_activities_button_title": "ADD",
+    "card_statistics_title": "EARNING STATISTICS"
+  },
+
+  "clients": {
+    "title": "Clients",
+    "no_clients": "No Clients",
+    "search_placeholder": "Search",
+    "table": {
+      "client_name": "Client Name",
+      "date": "Date",
+      "category": "Category",
+      "value": "Value",
+      "status": "Status"
+    },
+
+    "modal": {
+      "confirm_deletion": "Confirm deletion",
+      "are_you_sure": "Are you sure you want to remove this client?"
+    },
+
+    "form": {
+      "name": "Name",
+      "category": "Category",
+      "status": "Status",
+      "contract_value": "Contract value",
+      "already_paid": "Already paid",
+      "address": "Address",
+      "date": "Date",
+      "additional_info": "Additional information",
+      "update": "Update"
+    },
+
+    "edit_client": "Edit client"
+  }
+}
