@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch } from 'hooks/store';
 import { setUser } from 'store/state/authSlice';

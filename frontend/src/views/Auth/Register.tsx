@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { useRegisterUserMutation } from 'store';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +9,7 @@ import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { Info, StyledForm, FormTitle, Wrapper } from 'views/Auth/Login.styles';
 import { TextField } from 'components/molecules/TextField/TextField';
-import { UserRegister, FetchCustomError } from 'types/types';
+import { UserRegister } from 'types/types';
 
 type Props = {
   handleMessage: (message: string) => void;

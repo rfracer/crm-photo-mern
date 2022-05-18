@@ -3,7 +3,7 @@ import styled from 'styled-components';
 interface InputInterface {
   isRounded?: boolean;
   borderStyle?: {
-    border?: string;
+    border: string;
   };
 }
 

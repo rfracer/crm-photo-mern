@@ -51,6 +51,7 @@ export const TextField = React.forwardRef<Ref, Props>(
             name={name}
             id={id}
             type={type ? type : 'text'}
+            borderStyle={borderStyle}
             {...props}
             ref={ref as React.ForwardedRef<HTMLInputElement>}
             autoComplete={autocomplete ? autocomplete : 'on'}
