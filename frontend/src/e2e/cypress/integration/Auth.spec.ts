@@ -7,7 +7,6 @@ describe('Auth test', () => {
   });
 
   it('Should redirect user to login page', () => {
-    cy.url().should('include', '/login');
     cy.findByRole('heading', { name: /login/i }).should('exist');
   });
 
@@ -18,7 +17,6 @@ describe('Auth test', () => {
   });
 
   it('Should allow user to login with correct credentials and get JWT Token in Cookie', () => {
-    cy.url().should('include', '/login');
     cy.findByRole('heading', { name: /login/i }).should('exist');
 
     cy.findByLabelText(/e-mail/i)
@@ -73,7 +71,7 @@ describe('Auth test', () => {
       .type(password);
     cy.findByRole('button', { name: /register/i }).click();
     cy.findByText(/user created successfully/i).should('exist');
-    cy.url().should('include', '/login');
+    cy.findByRole('heading', { name: /login/i }).should('exist');
 
     cy.findByLabelText(/e-mail/i)
       .click()

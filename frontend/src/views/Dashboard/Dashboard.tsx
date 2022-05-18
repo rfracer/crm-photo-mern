@@ -14,34 +14,30 @@ const Dashboard = () => {
   const errorData = error as FetchCustomError;
   return (
     <ViewWrapper>
-      {data && (
-        <>
-          <Title>Dashboard</Title>
-          <DashboardCards
-            data={data}
-            isSuccess={isSuccess}
-            isLoading={isLoading}
-          />
-          <ActivitesWrapper>
-            <DashboardActivities
-              isSuccess={isSuccess}
-              isLoading={isLoading}
-              data={data}
-              isError={isError}
-              error={errorData}
-            />
+      <Title>Dashboard</Title>
+      <DashboardCards
+        data={data ? data : []}
+        isSuccess={isSuccess}
+        isLoading={isLoading}
+      />
+      <ActivitesWrapper>
+        <DashboardActivities
+          isSuccess={isSuccess}
+          isLoading={isLoading}
+          data={data ? data : []}
+          isError={isError}
+          error={errorData}
+        />
 
-            <DashboardChart
-              isSuccess={isSuccess}
-              isLoading={isLoading}
-              isError={isError}
-              error={errorData}
-              baseData={data}
-              title="EARNINGS STATISTICS"
-            />
-          </ActivitesWrapper>
-        </>
-      )}
+        <DashboardChart
+          isSuccess={isSuccess}
+          isLoading={isLoading}
+          isError={isError}
+          error={errorData}
+          baseData={data ? data : []}
+          title="EARNINGS STATISTICS"
+        />
+      </ActivitesWrapper>
     </ViewWrapper>
   );
 };

@@ -10,7 +10,7 @@ describe('User tasks testing', () => {
   beforeEach(() => {
     cy.request({
       method: 'POST',
-      url: Cypress.config('backendBaseURL') + '/users/login',
+      url: Cypress.env('backendBaseURL') + '/users/login',
       body: {
         email: 'test@test.pl',
         password: '12345',

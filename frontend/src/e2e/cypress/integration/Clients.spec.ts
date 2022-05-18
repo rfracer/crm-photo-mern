@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
+import { Client } from '../../../types/types';
 
-const client = {
+const client: Client = {
   name: faker.name.findName(),
   category: 'wedding',
   status: 'lead',
@@ -11,7 +12,7 @@ const client = {
   info: faker.lorem.paragraph(),
 };
 
-const editedClient = {
+const editedClient: Client = {
   name: faker.name.findName(),
   category: 'event',
   status: 'contract',
@@ -32,7 +33,7 @@ describe('Clients add functionality testing', () => {
   beforeEach(() => {
     cy.request({
       method: 'POST',
-      url: Cypress.config('backendBaseURL') + '/users/login',
+      url: Cypress.env('backendBaseURL') + '/users/login',
       body: {
         email: 'test@test.pl',
         password: '12345',
@@ -65,14 +66,14 @@ describe('Clients add functionality testing', () => {
     cy.findByLabelText(/name/i).click().type(client.name);
     cy.findByLabelText(/category/i).select(client.category);
     cy.findByLabelText(/status/i).select(client.status);
-    cy.findByLabelText(/value/i).click().clear().type(client.value);
+    cy.findByLabelText(/value/i).click().clear().type(client.value.toString());
     cy.findByLabelText(/already paid/i)
       .clear()
-      .type(client.alreadyPaid);
+      .type(client.alreadyPaid.toString());
     cy.findByLabelText(/address/i)
       .click()
       .type(client.address);
-    cy.findByLabelText(/date/i).click().type(client.date);
+    cy.findByLabelText(/date/i).click().type(client.date.toString());
     cy.findByLabelText(/information/i)
       .click()
       .type(client.info);

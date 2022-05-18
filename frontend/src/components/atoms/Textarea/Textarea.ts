@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-interface InputInterface {
+interface TextareaInterface {
   isRounded?: boolean;
   borderStyle?: {
     border?: string;
   };
 }
 
-export const Input = styled.input<InputInterface>`
+export const Textarea = styled.textarea<TextareaInterface>`
   width: 100%;
   padding: 10px 12px;
   border: ${({ borderStyle }) =>
@@ -23,7 +23,7 @@ export const Input = styled.input<InputInterface>`
   resize: none;
 
   &:focus {
-    border: ${({ theme, borderStyle }) =>
+    border: ${({ borderStyle }) =>
       borderStyle
         ? borderStyle.border === 'none'
           ? '2px solid #7685D8'

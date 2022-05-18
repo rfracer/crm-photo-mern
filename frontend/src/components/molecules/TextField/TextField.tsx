@@ -2,6 +2,7 @@ import React from 'react';
 import { Label } from 'components/atoms/Label/Label';
 import { Input } from 'components/atoms/Input/Input';
 import { Wrapper } from 'components/molecules/TextField/TextField.styles';
+import { Textarea } from 'components/atoms/Textarea/Textarea';
 
 type Props = {
   label: string;
@@ -17,7 +18,7 @@ type Props = {
   };
 };
 
-type Ref = HTMLInputElement;
+type Ref = HTMLInputElement | HTMLTextAreaElement;
 
 export const TextField = React.forwardRef<Ref, Props>(
   (
@@ -38,22 +39,20 @@ export const TextField = React.forwardRef<Ref, Props>(
       <Wrapper>
         <Label htmlFor={id}>{label}</Label>
         {isTextarea ? (
-          <Input
-            // as="textarea"
-            rows="7"
+          <Textarea
+            rows={7}
             name={name}
             id={id}
             {...props}
-            ref={ref}
-            type={type ? type : 'text'}
-          />
+            ref={ref as React.ForwardedRef<HTMLTextAreaElement>}
+          ></Textarea>
         ) : (
           <Input
             name={name}
             id={id}
             type={type ? type : 'text'}
             {...props}
-            ref={ref}
+            ref={ref as React.ForwardedRef<HTMLInputElement>}
             autoComplete={autocomplete ? autocomplete : 'on'}
           />
         )}

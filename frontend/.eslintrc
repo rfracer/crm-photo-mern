@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:prettier/recommended",
+    "prettier",
+    "plugin:cypress/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
+
+  "overrides": [
+    {
+      "files": ["**/cypress/**/*.spec.js", "**/cypress/**/*.spec.ts"],
+      "rules": {
+        "testing-library/await-async-query": 0,
+        "testing-library/prefer-screen-queries": 0
+      }
+    }
+  ],
+
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "@babel/eslint-parser"
+}
