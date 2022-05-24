@@ -23,12 +23,15 @@
   "dashboard": {
     "title": "Dashboard",
     "card_leads_title": "Leads",
-    "card_contracts_title": "Leads",
-    "card_predicted_title": "Leads",
+    "card_contracts_title": "Contracts",
+    "card_predicted_title": "Predicted Earnings",
     "card_upcoming_activities_title": "UPCOMING ACTIVITIES",
+    "card_upcoming_activities_show_more": "SHOW MORE",
     "card_upcoming_activities_no_acitivities": "No activities yet",
     "card_upcoming_activities_button_title": "ADD",
-    "card_statistics_title": "EARNING STATISTICS"
+    "card_upcoming_activities_error": "Server error - contact page admin",
+    "card_statistics_title": "EARNING STATISTICS",
+    "card_statistics_no_data": "No data to show a chart"
   },
 
   "clients": {
@@ -42,6 +45,20 @@
       "value": "Value",
       "status": "Status"
     },
+
+    "category": {
+      "event": "Event",
+      "wedding": "Wedding",
+      "family": "Family"
+    },
+
+    "status": {
+      "lead": "lead",
+      "contract": "contract",
+      "completed": "completed"
+    },
+
+    "client_loading_error": "Client loading error",
 
     "modal": {
       "confirm_deletion": "Confirm deletion",
@@ -59,7 +76,78 @@
       "additional_info": "Additional information",
       "update": "Update"
     },
+    "form_messages": {
+      "fill_name": "Please fill name field",
+      "fill_category": "Please fill category field",
+      "fill_status": "Please set status",
+      "positive_value": "Please fill field with positive value",
+      "fill_address": "Please fill address field",
+      "fill_date": "Please set a date",
+      "addedd": "Addedd",
+      "updated": "Updated",
+      "server_error": "Server error"
+    },
 
-    "edit_client": "Edit client"
+    "add_client": "Add client",
+    "edit_client": "Edit client",
+    "client_info": "Client info"
+  },
+
+  "tasks": {
+    "title": "Tasks",
+    "no_tasks": "No tasks",
+    "low": "low",
+    "medium": "medium",
+    "high": "high",
+    "all": "ALL",
+    "completed": "COMPLETED",
+    "uncompleted": "UNCOMLETED",
+    "added": "Added",
+    "server_error": "Server error",
+
+    "modal": {
+      "title_add_task": "Add Task",
+      "task_name_label": "Task Name",
+      "task_name_fill_error": "Please fill name field",
+      "task_priority": "Priority"
+    }
+  },
+
+  "settings": {
+    "title": "settings",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "btn_update_password": "UPDATE PASSWORD",
+    "fill_password_field": "Please fill password field",
+    "fill_confirm_password_field": "Please fill confirm password field",
+    "min_length_password": "Password must be at least 5 characters long",
+    "success_password_update": "User password updated"
+  },
+
+  "login": {
+    "title": "Login",
+    "email": "E-mail",
+    "password": "Password",
+    "no_account_info": "DON'T HAVE AN ACCOUNT YET?",
+    "login": "Login",
+    "sing_up": "SING UP",
+    "demo_account": "DEMO ACCOUNT",
+    "demo_account_info": "login: test@test.com || password: 12345"
+  },
+
+  "register": {
+    "title": "Sing up",
+    "email": "E-mail",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "register": "Register",
+    "have_account": "YOU HAVE AN ACCOUNT?",
+    "sing_in": "SIGN IN"
+  },
+
+  "auth": {
+    "heading": "Make your Photographer life",
+    "heading_decor": "easier",
+    "subheading": "Check how we changed life of thousands photographers in few steps"
   }
 }

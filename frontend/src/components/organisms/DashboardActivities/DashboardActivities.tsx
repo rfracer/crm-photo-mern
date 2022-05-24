@@ -10,6 +10,7 @@ import {
 } from 'components/organisms/DashboardActivities/DashboardActivities.styles';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 import { Client, FetchCustomError } from 'types/types';
+import { FormattedMessage } from 'react-intl';
 
 type Props = {
   data: Client[];
@@ -44,7 +45,13 @@ export const DashboardActivities = ({
 
   return (
     <StyledCard>
-      <CardHeader nofill>UPCOMING ACTIVITIES</CardHeader>
+      <CardHeader nofill>
+        <FormattedMessage
+          id="dashboard.card_upcoming_activities_title"
+          description="Upcoming activites card title"
+          defaultMessage="Upcoming activites"
+        />
+      </CardHeader>
       <TableWrapper>
         {isLoading ? (
           <Spinner />
@@ -63,19 +70,35 @@ export const DashboardActivities = ({
             </tbody>
           </table>
         ) : isError && error.status === 404 ? (
-          'No activities yet'
+          <FormattedMessage
+            id="dashboard.card_upcoming_activities_no_acitivities"
+            description="Dashboard upcoming acitivites no acitivites text"
+            defaultMessage="No activities yet"
+          />
         ) : (
-          'Server error - contact page admin'
+          <FormattedMessage
+            id="dashboard.card_upcoming_activities_error"
+            description="Dashboard upcoming acitivites server error"
+            defaultMessage="Server error - contact page admin"
+          />
         )}
       </TableWrapper>
       <ButtonWrapper>
         {isError && error.status === 404 ? (
           <Button $outline as={Link} to="/clients/add">
-            ADD FIRST
+            <FormattedMessage
+              id="dashboard.card_upcoming_activities_button_title"
+              description="Dashboard upcoming acitivites card add btn name"
+              defaultMessage="ADD"
+            />
           </Button>
         ) : (
           <Button $outline as={Link} to="/clients">
-            SHOW MORE
+            <FormattedMessage
+              id="dashboard.card_upcoming_activities_show_more"
+              description="Dashboard upcoming acitivites show more btn name"
+              defaultMessage="SHOW MORE"
+            />
           </Button>
         )}
       </ButtonWrapper>

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'hooks/store';
 import { setUser } from 'store/state/authSlice';
 import { Wrapper, OptionsList, OptionItem } from './UserMenu.style';
 import { useLogoutUserMutation, baseApi } from 'store';
 import { IoLogOutOutline, IoBuildOutline } from 'react-icons/io5';
+import { FormattedMessage } from 'react-intl';
 
 type Props = {
   handleMenuStatus: (value: boolean) => void;
@@ -15,7 +16,7 @@ type Ref = HTMLDivElement;
 export const UserMenu = React.forwardRef<Ref, Props>(
   ({ handleMenuStatus, isOpen }, ref) => {
     const [logoutUser, { isSuccess }] = useLogoutUserMutation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const handleLogout = () => {
       logoutUser();
@@ -36,11 +37,21 @@ export const UserMenu = React.forwardRef<Ref, Props>(
         <OptionsList>
           <OptionItem>
             <Link onClick={handleCloseMenu} to="settings">
-              <IoBuildOutline /> Settings
+              <IoBuildOutline />{' '}
+              <FormattedMessage
+                id="topbar.settings"
+                description="User menu settings link name"
+                defaultMessage="Settings"
+              />
             </Link>
           </OptionItem>
           <OptionItem onClick={handleLogout}>
-            <IoLogOutOutline /> Logout
+            <IoLogOutOutline />{' '}
+            <FormattedMessage
+              id="topbar.logout"
+              description="User menu logout button"
+              defaultMessage="Logout"
+            />
           </OptionItem>
         </OptionsList>
       </Wrapper>

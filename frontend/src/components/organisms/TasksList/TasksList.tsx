@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGetTasksQuery } from 'store';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 import { TaskItem } from 'components/molecules/TaskItem/TaskItem';
 import {
@@ -16,6 +17,7 @@ export const TasksList = () => {
 
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [results, setResults] = useState<Task[] | null>(null);
+  const intl = useIntl();
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedFilter(e.target.value);
@@ -45,16 +47,26 @@ export const TasksList = () => {
         onChange={handleFilterChange}
         as="select"
       >
-        <option value="all">ALL</option>
-        <option value="completed">COMPLETED</option>
-        <option value="uncompleted">UNCOMPLETED</option>
+        <option value="all">{intl.formatMessage({ id: 'tasks.all' })}</option>
+        <option value="completed">
+          {intl.formatMessage({ id: 'tasks.completed' })}
+        </option>
+        <option value="uncompleted">
+          {intl.formatMessage({ id: 'tasks.uncompleted' })}
+        </option>
       </SelectFilter>
       {isLoading ? (
         <Spinner />
       ) : isSuccess && results ? (
         results.map((client) => <TaskItem key={client._id} data={client} />)
       ) : isError && 'status' in error && error.status !== 404 ? null : (
-        <StyledMessage>No tasks</StyledMessage>
+        <StyledMessage>
+          <FormattedMessage
+            id="tasks.no_tasks"
+            description="No task info"
+            defaultMessage="No tasks"
+          />
+        </StyledMessage>
       )}
       {isError && 'status' in error && error.status !== 404 ? (
         <FormMessage>{error.data.error.message}</FormMessage>

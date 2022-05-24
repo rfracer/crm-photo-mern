@@ -15,7 +15,7 @@ const locale = navigator.language.split('-')[0];
 
 const AppProviders = ({ children }: Props) => {
   return (
-    <IntlProvider locale={locale} messages={languages['en']} defaultLocale="en">
+    <IntlProvider locale={locale} messages={languages['pl']} defaultLocale="en">
       <Provider store={store}>
         <Router>
           <ThemeProvider theme={theme}>

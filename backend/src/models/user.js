@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema(
       required: [true, 'Please add a password'],
     },
     settings: {
+      language: {
+        type: String,
+        default: 'en',
+      },
       currency: {
         type: String,
         default: 'PLN',

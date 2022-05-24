@@ -13,9 +13,11 @@ import { DateField } from 'components/molecules/DateField/DateField';
 import { ButtonSpinner } from 'components/atoms/ButtonSpinner/ButtonSpinner';
 import { Client } from 'types/types';
 import { useEffect } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 export const ClientAddForm = () => {
   const [addClient, { isSuccess, isError, isLoading }] = useAddClientMutation();
+  const intl = useIntl();
 
   const {
     register,
@@ -46,85 +48,162 @@ export const ClientAddForm = () => {
     <StyledForm onSubmit={handleSubmit(handleAddClient)}>
       <TextField
         {...register('name', { required: true })}
-        label="Name"
+        label={intl.formatMessage({ id: 'clients.form.name' })}
         name="name"
         id="name"
       />
       {errors.name ? (
-        <FormInputError>Please fill name field</FormInputError>
+        <FormInputError>
+          <FormattedMessage
+            id="clients.form_messages.fill_name"
+            description="Name input error message"
+            defaultMessage="Please fill name field"
+          />
+        </FormInputError>
       ) : null}
 
       <SelectField
         {...register('category', { required: true })}
-        label="Category"
+        label={intl.formatMessage({ id: 'clients.form.category' })}
         name="category"
         id="category"
-        options={['event', 'wedding', 'family']}
+        options={[
+          { event: intl.formatMessage({ id: 'clients.category.event' }) },
+          { wedding: intl.formatMessage({ id: 'clients.category.wedding' }) },
+          { family: intl.formatMessage({ id: 'clients.category.family' }) },
+        ]}
       />
       {errors.category ? (
-        <FormInputError>Please fill category field</FormInputError>
+        <FormInputError>
+          <FormattedMessage
+            id="clients.form_messages.fill_category"
+            description="Please fill category field"
+            defaultMessage="Please fill category field"
+          />
+        </FormInputError>
       ) : null}
 
       <SelectField
         {...register('status', { required: true })}
-        label="Status"
+        label={intl.formatMessage({ id: 'clients.form.status' })}
         name="status"
         id="status"
-        options={['lead', 'contract', 'completed']}
+        options={[
+          { lead: intl.formatMessage({ id: 'clients.status.lead' }) },
+          { contract: intl.formatMessage({ id: 'clients.status.contract' }) },
+          { completed: intl.formatMessage({ id: 'clients.status.completed' }) },
+        ]}
       />
       {errors.status ? (
-        <FormInputError>Please set status</FormInputError>
+        <FormInputError>
+          <FormattedMessage
+            id="clients.form_messages.fill_status"
+            description="Please set status - error"
+            defaultMessage="Please set status"
+          />
+        </FormInputError>
       ) : null}
 
       <TextField
         {...register('value', { required: true })}
-        label="Contract value"
+        label={intl.formatMessage({ id: 'clients.form.contract_value' })}
         name="value"
         id="value"
         type="number"
       />
       {errors.value ? (
-        <FormInputError>Please fill field with positive value</FormInputError>
+        <FormInputError>
+          <FormattedMessage
+            id="clients.form_messages.positive_value"
+            description="Please fill field with positive value"
+            defaultMessage="Please fill field with positive value"
+          />
+        </FormInputError>
       ) : null}
 
       <TextField
         {...register('alreadyPaid', { required: true })}
-        label="Already paid"
+        label={intl.formatMessage({ id: 'clients.form.already_paid' })}
         name="alreadyPaid"
         id="alreadyPaid"
         type="number"
       />
       {errors.alreadyPaid ? (
-        <FormInputError>Please fill field with positive value</FormInputError>
+        <FormInputError>
+          <FormattedMessage
+            id="clients.form_messages.positive_value"
+            description="Please fill field with positive value"
+            defaultMessage="Please fill field with positive value"
+          />
+        </FormInputError>
       ) : null}
 
       <TextField
         {...register('address', { required: true })}
-        label="Address"
+        label={intl.formatMessage({ id: 'clients.form.address' })}
         name="address"
         id="address"
         type="text"
       />
       {errors.address ? (
-        <FormInputError>Please fill address field</FormInputError>
+        <FormInputError>
+          <FormattedMessage
+            id="clients.form_messages.fill_address"
+            description="Please fill address field - error message"
+            defaultMessage="Please fill address field"
+          />
+        </FormInputError>
       ) : null}
 
-      <DateField {...register('date')} label="Date" name="date" id="date" />
-      {errors.date ? <FormInputError>Please set a date</FormInputError> : null}
+      <DateField
+        {...register('date')}
+        label={intl.formatMessage({ id: 'clients.form.date' })}
+        name="date"
+        id="date"
+      />
+      {errors.date ? (
+        <FormInputError>
+          <FormattedMessage
+            id="clients.form_messages.fill_date"
+            description="Please set a date"
+            defaultMessage="Please set a date"
+          />
+        </FormInputError>
+      ) : null}
 
       <TextField
         {...register('info', { required: true })}
-        label="Additional information"
+        label={intl.formatMessage({ id: 'clients.form.additional_info' })}
         name="info"
         id="info"
         isTextarea
       />
 
       <Button type="submit">
-        {isLoading ? <ButtonSpinner data-testid="button-spinner" /> : 'ADD'}
+        {isLoading ? (
+          <ButtonSpinner data-testid="button-spinner" />
+        ) : (
+          <FormattedMessage id="global.add" defaultMessage="Add" />
+        )}
       </Button>
-      {isSuccess && !isDirty ? <FormMessage success>Added</FormMessage> : null}
-      {isError ? <FormMessage>Server Error</FormMessage> : null}
+      {isSuccess && !isDirty ? (
+        <FormMessage success>
+          <FormattedMessage
+            id="clients.form_messages.addedd"
+            description="Addedd success message"
+            defaultMessage="Addedd"
+          />
+        </FormMessage>
+      ) : null}
+      {isError ? (
+        <FormMessage>
+          <FormattedMessage
+            id="clients.form_messages.server_error"
+            description="Server error - message"
+            defaultMessage="Server error"
+          />
+        </FormMessage>
+      ) : null}
     </StyledForm>
   );
 };

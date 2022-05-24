@@ -1,5 +1,151 @@
 {
-  "test": {
-    "test": "ole"
+  "global": {
+    "add": "Dodaj",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "yes": "Tak",
+    "no": "Nie"
+  },
+
+  "navigation": {
+    "dashboard": "Panel główny",
+    "clients": "Klienci",
+    "tasks": "Zadania",
+    "settings": "Ustawienia",
+    "logout": "Wyloguj"
+  },
+
+  "topbar": {
+    "settings": "Ustawienia",
+    "logout": "Wyloguj"
+  },
+
+  "dashboard": {
+    "title": "Panel główny",
+    "card_leads_title": "Leady",
+    "card_contracts_title": "Umowy",
+    "card_predicted_title": "Przewidywane zarobki",
+    "card_upcoming_activities_title": "NADCHODZĄCE WYDARZENIA",
+    "card_upcoming_activities_no_acitivities": "Brak aktywności",
+    "card_upcoming_activities_show_more": "POKAŻ WIĘCEJ",
+    "card_upcoming_activities_button_title": "DODAJ",
+    "card_statistics_title": "STATYSTYKI ZAROBKÓW",
+    "card_upcoming_activities_error": "Błąd serwera - skontaktuj się z administracją",
+    "card_statistics_no_data": "Brak danych by wyświetlić wykres"
+  },
+
+  "clients": {
+    "title": "Klienci",
+    "no_clients": "Brak klientów",
+    "search_placeholder": "Szukaj",
+    "table": {
+      "client_name": "Nazwa klienta",
+      "date": "Data",
+      "category": "Kategoria",
+      "value": "Wartość",
+      "status": "Status"
+    },
+    "category": {
+      "event": "Wydarzenie",
+      "wedding": "Wesele",
+      "family": "Sesja rodzinna"
+    },
+    "status": {
+      "lead": "lead",
+      "contract": "kontrakt",
+      "completed": "ukończono"
+    },
+    "client_loading_error": "Błąd podczas ładowania",
+
+    "modal": {
+      "confirm_deletion": "Potwierdź usunięcie",
+      "are_you_sure": "Czy jesteś pewny, że chcesz usunąć tego klienta?"
+    },
+
+    "form": {
+      "name": "Nazwa",
+      "category": "Kategoria",
+      "status": "Status",
+      "contract_value": "Wartość kontraktu",
+      "already_paid": "Zapłacono",
+      "address": "Adres",
+      "date": "Data",
+      "additional_info": "Dodatkowe informacje",
+      "update": "Aktualizuj"
+    },
+
+    "form_messages": {
+      "fill_name": "Podaj nazwe klienta",
+      "fill_category": "Podaj kategorie klienta",
+      "fill_status": "Ustal status klienta",
+      "positive_value": "Podaj wartość większą od 0",
+      "fill_address": "Podaj adres klienta",
+      "fill_date": "Podaj date realizacji",
+      "addedd": "Dodano",
+      "updated": "Zaktualizowano",
+      "server_error": "Błąd serwera"
+    },
+
+    "add_client": "Dodaj klienta",
+    "edit_client": "Edytuj klienta",
+    "client_info": "Dane klienta"
+  },
+
+  "tasks": {
+    "title": "Zadania",
+    "no_tasks": "Brak zadań",
+    "low": "niski",
+    "medium": "średni",
+    "high": "wysoki",
+    "all": "WSZYSTKIE",
+    "completed": "UKOŃCZONE",
+    "uncompleted": "NIEUKOŃCZONE",
+    "added": "Dodano",
+    "server_error": "Bład serwera",
+
+    "modal": {
+      "title_add_task": "Dodaj zadanie",
+      "task_name_label": "Nazwa",
+      "task_name_fill_error": "Wypełnij pole nazwa",
+      "task_priority": "Priorytet"
+    }
+  },
+
+  "settings": {
+    "title": "Ustawienia",
+    "new_password": "Nowe hasło",
+    "confirm_password": "Potwierdź hasło",
+    "btn_update_password": "AKTUALIZUJ",
+    "fill_password_field": "Uzpełnij pole hasła",
+    "fill_confirm_password_field": "Uzpełnij pole potwierdzenia hasła",
+    "min_length_password": "Hasło musi zawierać minimum 5 znaków",
+    "success_password_update": "Pomyślnie zaktualizowano hasło"
+  },
+
+  "login": {
+    "title": "Login",
+    "email": "E-mail",
+    "password": "Password",
+    "no_account_info": "DON'T HAVE AN ACCOUNT YET?",
+    "login": "Login",
+    "sing_up": "SING UP",
+    "demo_account": "DEMO ACCOUNT",
+    "demo_account_info": "login: test@test.com || password: 12345"
+  },
+
+  "register": {
+    "title": "Sing up",
+    "email": "E-mail",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "register": "Register",
+    "have_account": "YOU HAVE AN ACCOUNT?",
+    "sing_in": "SIGN IN"
+  },
+
+  "auth": {
+    "heading": "Make your Photographer life",
+    "heading_decor": "easier",
+    "subheading": "Check how we changed life of thousands photographers in few steps"
   }
 }
