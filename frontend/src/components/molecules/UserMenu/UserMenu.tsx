@@ -27,7 +27,7 @@ export const UserMenu = React.forwardRef<Ref, Props>(
     };
     useEffect(() => {
       if (isSuccess) {
-        dispatch(setUser({ email: null }));
+        dispatch(setUser(null));
         dispatch(baseApi.util.resetApiState());
       }
     }, [isSuccess, dispatch]);

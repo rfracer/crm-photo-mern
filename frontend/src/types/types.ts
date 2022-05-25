@@ -27,6 +27,10 @@ export interface User {
   id: string;
   email: string;
   password: string;
+  settings: {
+    language: string;
+    currency?: string;
+  };
 }
 
 export type TaskFilter = 'completed' | 'uncompleted' | 'all';

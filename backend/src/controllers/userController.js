@@ -30,11 +30,16 @@ const loginUser = async (req, res, next) => {
     return next(new ApiError('Invalid password for this user', 404));
   }
 
-  const accessToken = generateAccessToken({ id: user._id, email: user.email });
+  const accessToken = generateAccessToken({
+    id: user._id,
+    email: user.email,
+    settings: user.settings,
+  });
 
   const refreshToken = generateRefreshToken({
     id: user._id,
     email: user.email,
+    settings: user.settings,
   });
 
   try {
@@ -57,7 +62,7 @@ const loginUser = async (req, res, next) => {
 
   res.status(200).send({
     status: 200,
-    user: { email: email },
+    user: { email: email, settings: user.settings },
     message: 'Login successfully',
   });
 };

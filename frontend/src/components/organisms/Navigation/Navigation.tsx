@@ -57,7 +57,7 @@ export const Navigation = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setUser({ email: null }));
+      dispatch(setUser(null));
       dispatch(baseApi.util.resetApiState());
     }
   }, [isSuccess, dispatch]);
@@ -72,7 +72,8 @@ export const Navigation = () => {
           {!isOpen && user ? (
             <>
               <UserMobileMenuButton onClick={handleOpenUserMenu}>
-                <UserLogo icon={getFirstLetter(user)} /> <IoCaretDownOutline />
+                <UserLogo icon={getFirstLetter(user.email)} />
+                <IoCaretDownOutline />
               </UserMobileMenuButton>
               <UserMenu isOpen={userMenu} handleMenuStatus={setUserMenu} />
             </>

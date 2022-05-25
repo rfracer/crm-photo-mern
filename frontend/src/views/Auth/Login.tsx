@@ -44,7 +44,9 @@ const Login = ({ message }: LoginProps) => {
 
   useEffect(() => {
     if (isSuccess && typeof data !== 'undefined') {
-      dispatch(setUser({ email: data?.user.email }));
+      dispatch(
+        setUser({ email: data?.user.email, settings: data?.user.settings })
+      );
       if (location.pathname === '/login') {
         navigate('/');
       }
