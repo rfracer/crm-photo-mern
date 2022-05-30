@@ -49,6 +49,11 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "src/e2e"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",

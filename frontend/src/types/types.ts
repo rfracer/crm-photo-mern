@@ -29,14 +29,18 @@ export interface User {
   password: string;
   settings: {
     language: string;
-    currency?: string;
+    currency: string;
   };
 }
 
 export type TaskFilter = 'completed' | 'uncompleted' | 'all';
 
-export interface UserRegister extends User {
+export interface UserRegister {
+  id: string;
+  email: string;
+  password: string;
   confirmPassword: string;
+  language: string;
 }
 
 export type FetchCustomError = {
@@ -53,4 +57,8 @@ export type FetchCustomError = {
 export type PasswordChangeType = {
   password: string;
   confirmPassword: string;
+};
+
+export type Language = {
+  language: string;
 };

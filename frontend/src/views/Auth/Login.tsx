@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch } from 'hooks/store';
 import { setUser } from 'store/state/authSlice';
+import { setSettings } from 'store/state/settingsSlice';
 import { useForm } from 'react-hook-form';
 import { useLoginUserMutation } from 'store';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { ReactComponent as Logo } from 'assets/image/logo.svg';
 import { Button } from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
@@ -20,6 +22,7 @@ type LoginProps = {
 const Login = ({ message }: LoginProps) => {
   const [loginUser, { data, error, isLoading, isSuccess, isError }] =
     useLoginUserMutation();
+  const intl = useIntl();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,8 +47,12 @@ const Login = ({ message }: LoginProps) => {
 
   useEffect(() => {
     if (isSuccess && typeof data !== 'undefined') {
+      dispatch(setUser({ email: data?.user.email }));
       dispatch(
-        setUser({ email: data?.user.email, settings: data?.user.settings })
+        setSettings({
+          language: data.user.settings.language,
+          currency: data.user.settings.currency,
+        })
       );
       if (location.pathname === '/login') {
         navigate('/');
@@ -56,19 +63,27 @@ const Login = ({ message }: LoginProps) => {
   return (
     <Wrapper>
       <Logo />
-      <FormTitle>Login</FormTitle>
+      <FormTitle>
+        <FormattedMessage
+          id="auth.login_title"
+          description="Login title"
+          defaultMessage="Login"
+        />
+      </FormTitle>
       <StyledForm onSubmit={handleSubmit(handleLogin)}>
         <TextField
           {...register('email', {
             required: true,
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Invalid email address',
+              message: intl.formatMessage({
+                id: 'auth.email_invalid',
+              }),
             },
           })}
-          placeholder="Enter your e-mail"
+          placeholder={intl.formatMessage({ id: 'auth.email_placeholder' })}
           id="email"
-          label="E-mail"
+          label={intl.formatMessage({ id: 'auth.email' })}
           borderStyle={{
             border: errors.email ? '2px solid #e53935' : 'none',
           }}
@@ -79,8 +94,8 @@ const Login = ({ message }: LoginProps) => {
           })}
           type="password"
           id="password"
-          label="Password"
-          placeholder="Enter your password"
+          label={intl.formatMessage({ id: 'auth.password' })}
+          placeholder={intl.formatMessage({ id: 'auth.password_placeholder' })}
           borderStyle={{
             border: errors.password ? '2px solid #e53935' : 'none',
           }}
@@ -88,29 +103,87 @@ const Login = ({ message }: LoginProps) => {
 
         {errors.email ? (
           <FormMessage>
-            {errors.email.message ? errors.email.message : 'Enter e-mail'}
+            {errors.email.message ? (
+              errors.email.message
+            ) : (
+              <FormattedMessage
+                id="auth.email_empty"
+                description="Empty email input - message"
+                defaultMessage="Enter e-mail"
+              />
+            )}
           </FormMessage>
         ) : null}
-        {errors.password && <FormMessage>Enter password</FormMessage>}
+        {errors.password && (
+          <FormMessage>
+            <FormattedMessage
+              id="auth.password_empty"
+              description="Empty password input - message"
+              defaultMessage="Enter your password"
+            />
+          </FormMessage>
+        )}
 
         {isError && typeof error !== 'undefined' ? (
           <FormMessage>
-            {'data' in error && error.status === 404
-              ? 'Either your email or password is wrong'
-              : 'Server error - contact with page administration'}
+            {'data' in error && error.status === 404 ? (
+              <FormattedMessage
+                id="auth.wrong_inputs"
+                description="Wrong inputs - message"
+                defaultMessage="Either your email or password is wrong"
+              />
+            ) : (
+              <FormattedMessage
+                id="auth.server_error"
+                description="Server error - message"
+                defaultMessage="Server error - contact with page administration"
+              />
+            )}
           </FormMessage>
         ) : null}
 
-        <Button>{isLoading ? <ButtonSpinner /> : 'LOGIN'}</Button>
+        <Button>
+          {isLoading ? (
+            <ButtonSpinner />
+          ) : (
+            <FormattedMessage
+              id="auth.login_btn"
+              description="Login button"
+              defaultMessage="LOGIN"
+            />
+          )}
+        </Button>
       </StyledForm>
       <Info>
-        DON'T HAVE AN ACCOUNT YET?{' '}
+        <FormattedMessage
+          id="auth.no_account_info"
+          description="No account info message"
+          defaultMessage="DON'T HAVE AN ACCOUNT YET?"
+        />{' '}
         <Link to="/register">
-          <span>SING UP</span>
+          <span>
+            <FormattedMessage
+              id="auth.sign_up"
+              description="sing up link"
+              defaultMessage="SING UP"
+            />
+          </span>
         </Link>
       </Info>
       <Info>
-        <strong>DEMO ACCOUNT: </strong> login: test@test.com || password: 12345
+        <strong>
+          <FormattedMessage
+            id="auth.demo_account"
+            description="Demo account - heading"
+            defaultMessage="DEMO ACCOUNT"
+          />
+          :{' '}
+        </strong>{' '}
+        <FormattedMessage
+          id="auth.demo_account_info"
+          description="Demo account data"
+          defaultMessage="login: test@test.com || password: 12345"
+        />
       </Info>
       {message ? <FormMessage success>{message}</FormMessage> : null}
     </Wrapper>

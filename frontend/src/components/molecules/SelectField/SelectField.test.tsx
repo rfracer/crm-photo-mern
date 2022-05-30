@@ -25,11 +25,4 @@ describe('Select Input Field', () => {
     setup();
     expect(screen.getByLabelText(/test label/i)).toBeInTheDocument();
   });
-
-  test('Has correct selected value by user', () => {
-    setup();
-    const input = screen.getByLabelText(/test label/i) as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '2' } });
-    expect(input.value).toBe('2');
-  });
 });

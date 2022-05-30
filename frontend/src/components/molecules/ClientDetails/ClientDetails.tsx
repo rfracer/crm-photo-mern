@@ -70,7 +70,7 @@ export const ClientDetails = ({ client }: Props) => {
           <StyledInfo>{data.value} $</StyledInfo>
           <Label>
             <FormattedMessage
-              id="clients.form.contract_already_paid"
+              id="clients.form.already_paid"
               defaultMessage="Already paid"
             />
             :

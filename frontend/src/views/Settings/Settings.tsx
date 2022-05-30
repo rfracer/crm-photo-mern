@@ -11,6 +11,7 @@ import { FormMessage } from 'components/atoms/FormMessage/FormMessage';
 import { FormInputError } from 'components/atoms/FormInputError/FormInputError';
 import { StyledForm } from 'views/Settings/Settings.styles';
 import { PasswordChangeType } from 'types/types';
+import SettingsLanguageForm from 'components/organisms/SettingsLanguageForm/SettingsLanguageForm';
 
 const Settings = () => {
   const [changeUserPassword, { error, isSuccess, isError, isLoading }] =
@@ -46,6 +47,7 @@ const Settings = () => {
           defaultMessage="Settings"
         />
       </Title>
+      <SettingsLanguageForm />
       <StyledForm onSubmit={handleSubmit(handleUpdatePassword)}>
         <TextField
           {...register('password', { required: true, minLength: 5 })}
@@ -83,7 +85,6 @@ const Settings = () => {
         />
         {errors.confirmPassword ? (
           <FormInputError>
-            {' '}
             <FormattedMessage
               id="settings.fill_confirm_password_field"
               description="Confirm password empty error"
@@ -106,7 +107,6 @@ const Settings = () => {
 
         {isSuccess && !isDirty ? (
           <FormMessage success>
-            {' '}
             <FormattedMessage
               id="settings.success_password_update"
               description="Update password success message"

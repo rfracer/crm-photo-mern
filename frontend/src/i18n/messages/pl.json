@@ -119,33 +119,45 @@
     "fill_password_field": "Uzpełnij pole hasła",
     "fill_confirm_password_field": "Uzpełnij pole potwierdzenia hasła",
     "min_length_password": "Hasło musi zawierać minimum 5 znaków",
-    "success_password_update": "Pomyślnie zaktualizowano hasło"
-  },
-
-  "login": {
-    "title": "Login",
-    "email": "E-mail",
-    "password": "Password",
-    "no_account_info": "DON'T HAVE AN ACCOUNT YET?",
-    "login": "Login",
-    "sing_up": "SING UP",
-    "demo_account": "DEMO ACCOUNT",
-    "demo_account_info": "login: test@test.com || password: 12345"
-  },
-
-  "register": {
-    "title": "Sing up",
-    "email": "E-mail",
-    "password": "Password",
-    "confirm_password": "Confirm Password",
-    "register": "Register",
-    "have_account": "YOU HAVE AN ACCOUNT?",
-    "sing_in": "SIGN IN"
+    "success_password_update": "Pomyślnie zaktualizowano hasło",
+    "language": "Język",
+    "languages": {
+      "en": "Angielski",
+      "pl": "Polski"
+    },
+    "success_language_update": "Zaktulizowano język aplikacji",
+    "btn_update_language": "AKTUALIZUJ JĘZYK"
   },
 
   "auth": {
-    "heading": "Make your Photographer life",
-    "heading_decor": "easier",
-    "subheading": "Check how we changed life of thousands photographers in few steps"
+    "login_title": "Logowanie",
+    "login_btn": "ZALOGUJ",
+    "register_title": "Dołącz do nas",
+    "register_btn": "ZAREJESTRUJ",
+    "email": "E-mail",
+    "email_placeholder": "Wpisz adres e-mail",
+    "email_invalid": "Niepoprawny adres e-mail",
+    "email_empty": "Podaj adres e-mail",
+    "password": "Hasło",
+    "password_placeholder": "Wpisz hasło",
+    "password_empty": "Podaj hasło",
+    "wrong_inputs": "Twoje dane logowania są niepoprawne",
+    "server_error": "Błąd serwera - skontaktuj się z administracją",
+    "no_account_info": "NIE MASZ KONTA?",
+    "register": "Rejestracja",
+    "confirm_password": "Potwierdź hasło",
+    "confirm_password_placeholder": "Wpisz hasło ponownie",
+    "confirm_password_empty": "Potwierdź swoje hasło",
+    "password_length_error": "Hasło musi mieć minimum 5 znaków",
+    "have_account": "POSIADASZ JUŻ KONTO?",
+    "sing_in": "ZALOGUJ",
+    "login": "Logowanie",
+    "sign_up": "ZAREJESTRUJ",
+    "demo_account": "KONTO DEMO",
+    "demo_account_info": "login: test@test.com || hasło: 12345",
+    "heading": "Uczeń swoją pracę fotografa",
+    "heading_decor": "łatwiejszą",
+    "subheading": "Sprawdź jak zmienieliśmy życie tysięcy fotografów. Dołącz do nas",
+    "register_success_message": "Konto zostało utworzone. Zaloguj się już teraz!"
   }
 }

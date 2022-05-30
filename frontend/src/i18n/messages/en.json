@@ -114,40 +114,52 @@
   },
 
   "settings": {
-    "title": "settings",
+    "title": "Settings",
     "new_password": "New Password",
     "confirm_password": "Confirm Password",
     "btn_update_password": "UPDATE PASSWORD",
     "fill_password_field": "Please fill password field",
     "fill_confirm_password_field": "Please fill confirm password field",
     "min_length_password": "Password must be at least 5 characters long",
-    "success_password_update": "User password updated"
-  },
-
-  "login": {
-    "title": "Login",
-    "email": "E-mail",
-    "password": "Password",
-    "no_account_info": "DON'T HAVE AN ACCOUNT YET?",
-    "login": "Login",
-    "sing_up": "SING UP",
-    "demo_account": "DEMO ACCOUNT",
-    "demo_account_info": "login: test@test.com || password: 12345"
-  },
-
-  "register": {
-    "title": "Sing up",
-    "email": "E-mail",
-    "password": "Password",
-    "confirm_password": "Confirm Password",
-    "register": "Register",
-    "have_account": "YOU HAVE AN ACCOUNT?",
-    "sing_in": "SIGN IN"
+    "success_password_update": "User password updated",
+    "language": "Language",
+    "languages": {
+      "en": "English",
+      "pl": "Polish"
+    },
+    "btn_update_language": "UPDATE LANGUAGE",
+    "success_language_update": "Application language updated"
   },
 
   "auth": {
+    "login_title": "Login",
+    "login_btn": "LOGIN",
+    "register_title": "Sign up",
+    "register_btn": "REGISTER",
+    "email": "E-mail",
+    "email_placeholder": "Enter your e-mail",
+    "email_invalid": "Invalid email address",
+    "email_empty": "Enter e-mail",
+    "password": "Password",
+    "password_placeholder": "Enter your password",
+    "password_empty": "Enter password",
+    "wrong_inputs": "Either your email or password is wrong",
+    "server_error": "Server error - contact with page administration",
+    "no_account_info": "DON'T HAVE AN ACCOUNT YET?",
+    "register": "Register",
+    "confirm_password": "Confirm Password",
+    "confirm_password_placeholder": "Type password again",
+    "confirm_password_empty": "Confirm your password",
+    "password_length_error": "Password must be at least 5 characters long",
+    "have_account": "YOU HAVE AN ACCOUNT?",
+    "sing_in": "SIGN IN",
+    "login": "Login",
+    "sign_up": "SIGN UP",
+    "demo_account": "DEMO ACCOUNT",
+    "demo_account_info": "login: test@test.com || password: 12345",
     "heading": "Make your Photographer life",
     "heading_decor": "easier",
-    "subheading": "Check how we changed life of thousands photographers in few steps"
+    "subheading": "Check how we changed life of thousands photographers in few steps",
+    "register_success_message": "User created successfully. You can sign in now!"
   }
 }

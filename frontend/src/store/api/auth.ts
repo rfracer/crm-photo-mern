@@ -1,4 +1,4 @@
-import { User, UserRegister, PasswordChangeType } from 'types/types';
+import { User, UserRegister, PasswordChangeType, Language } from 'types/types';
 import { baseApi } from './base';
 
 export const authApi = baseApi.injectEndpoints({
@@ -39,7 +39,23 @@ export const authApi = baseApi.injectEndpoints({
         body,
       }),
     }),
-    getUser: builder.query<{ user: Omit<User, 'password'> }, void>({
+    changeUserLanguage: builder.mutation<{ message: string }, Language>({
+      query: (body) => ({
+        url: 'users/language',
+        method: 'PATCH',
+        body,
+      }),
+    }),
+    getUser: builder.query<
+      {
+        user: Pick<User, 'email'>;
+        settings: {
+          language: string;
+          currency: string;
+        };
+      },
+      void
+    >({
       query: () => 'users/me',
     }),
   }),
@@ -51,4 +67,5 @@ export const {
   useRegisterUserMutation,
   useLogoutUserMutation,
   useChangeUserPasswordMutation,
+  useChangeUserLanguageMutation,
 } = authApi;

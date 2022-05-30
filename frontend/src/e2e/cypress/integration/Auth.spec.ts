@@ -37,7 +37,7 @@ describe('Auth test', () => {
   });
 
   it('Try to register already exist user', () => {
-    cy.findByRole('link', { name: /sing up/i }).click();
+    cy.findByText(/sign up/i).click();
     cy.findByLabelText(/e-mail/i)
       .click()
       .type('test@test.pl');
@@ -58,7 +58,7 @@ describe('Auth test', () => {
     const userEmail = faker.internet.email();
     const password = faker.internet.password();
 
-    cy.findByRole('link', { name: /sing up/i }).click();
+    cy.findByRole('link', { name: /sign up/i }).click();
     cy.findByLabelText(/e-mail/i)
       .click()
       .type(userEmail);

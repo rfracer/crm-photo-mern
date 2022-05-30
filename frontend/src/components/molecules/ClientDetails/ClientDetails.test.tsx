@@ -31,11 +31,13 @@ describe('Client Details', () => {
     expect(
       screen.getByRole('heading', { name: 'Address:' })
     ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Value:' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /value/i })).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { name: 'Already Paid:' })
+      screen.getByRole('heading', { name: /Already Paid/i })
     ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Notes:' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /information/i })
+    ).toBeInTheDocument();
   });
 
   test('Display client data from API', async () => {

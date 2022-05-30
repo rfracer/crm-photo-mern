@@ -33,7 +33,7 @@ describe('Delete Confirm Item - Modal content', () => {
   test('Click yes button and fire delete function', async () => {
     const { mockClose, mockDelete } = setup();
     const user = userEvent.setup();
-    const button = screen.getByRole('button', { name: 'YES' });
+    const button = screen.getByRole('button', { name: /YES/i });
     await user.click(button);
     expect(mockDelete).toHaveBeenCalled();
     expect(mockClose).not.toHaveBeenCalled();
@@ -42,7 +42,7 @@ describe('Delete Confirm Item - Modal content', () => {
   test('Click NO button and fire close function', async () => {
     const { mockClose, mockDelete } = setup();
     const user = userEvent.setup();
-    const button = screen.getByRole('button', { name: 'NO' });
+    const button = screen.getByRole('button', { name: /NO/i });
     await user.click(button);
     expect(mockDelete).not.toHaveBeenCalled();
     expect(mockClose).toHaveBeenCalled();

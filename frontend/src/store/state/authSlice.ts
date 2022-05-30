@@ -1,15 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 interface AuthState {
   user: UserPayload | null;
 }
 
 interface UserPayload {
   email: string;
-  settings: {
-    language: string;
-    currency?: string;
-  };
 }
 
 const initialState: AuthState = {
