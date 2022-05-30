@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Client } from 'types/types';
 import { ShowMoreOptions } from 'components/molecules/ShowMoreOptions/ShowMoreOptions';
 import { Wrapper } from 'components/molecules/ClientItem/ClientItem.styles';
+import { FormattedMessage } from 'react-intl';
 
 type Props = {
   data: Client;
@@ -51,7 +52,13 @@ export const ClientItem = ({
   } else {
     return (
       <Wrapper>
-        <td>Client loading error</td>
+        <td>
+          <FormattedMessage
+            id="clients.client_loading_error"
+            description="Client loading error"
+            defaultMessage="Client loading error"
+          />
+        </td>
       </Wrapper>
     );
   }

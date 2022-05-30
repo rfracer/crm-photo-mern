@@ -50,6 +50,7 @@ export const TextField = React.forwardRef<Ref, Props>(
           <Input
             name={name}
             id={id}
+            placeholder={placeholder}
             type={type ? type : 'text'}
             borderStyle={borderStyle}
             {...props}

@@ -29,6 +29,7 @@ import { Link } from 'react-router-dom';
 import { UserLogo } from 'components/atoms/UserLogo/UserLogo';
 import { UserMenu } from 'components/molecules/UserMenu/UserMenu';
 import { useAppDispatch, useAppSelector } from 'hooks/store';
+import { FormattedMessage } from 'react-intl';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +57,7 @@ export const Navigation = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setUser({ email: null }));
+      dispatch(setUser(null));
       dispatch(baseApi.util.resetApiState());
     }
   }, [isSuccess, dispatch]);
@@ -71,7 +72,8 @@ export const Navigation = () => {
           {!isOpen && user ? (
             <>
               <UserMobileMenuButton onClick={handleOpenUserMenu}>
-                <UserLogo icon={getFirstLetter(user)} /> <IoCaretDownOutline />
+                <UserLogo icon={getFirstLetter(user.email)} />
+                <IoCaretDownOutline />
               </UserMobileMenuButton>
               <UserMenu isOpen={userMenu} handleMenuStatus={setUserMenu} />
             </>
@@ -102,30 +104,52 @@ export const Navigation = () => {
                 onClick={toggleNav}
               >
                 <IoBriefcaseOutline className="nav-icon" />
-                Dashboard
+                <FormattedMessage
+                  id="navigation.dashboard"
+                  description="Navigation dashboard name"
+                  defaultMessage="Dashboard"
+                />
               </StyledLink>
             </li>
             <li>
               <StyledLink to="/clients" onClick={toggleNav}>
                 <IoPeopleOutline className="nav-icon" />
-                Clients
+                <FormattedMessage
+                  id="navigation.clients"
+                  description="Navigation clients name"
+                  defaultMessage="Clients"
+                />
               </StyledLink>
             </li>
             <li>
               <StyledLink to="/tasks" onClick={toggleNav}>
                 <IoListOutline className="nav-icon" />
-                Tasks
+                <FormattedMessage
+                  id="navigation.tasks"
+                  description="Navigation tasks name"
+                  defaultMessage="Tasks"
+                />
               </StyledLink>
             </li>
             <li>
               <StyledLink to="/settings" onClick={toggleNav}>
                 <IoBuildOutline className="nav-icon" />
-                Settings
+                <FormattedMessage
+                  id="navigation.settings"
+                  description="Navigation settings name"
+                  defaultMessage="Settings"
+                />
               </StyledLink>
             </li>
           </ul>
         </StyledNavigation>
-        <LogOutButton onClick={handleLogout}>Logout</LogOutButton>
+        <LogOutButton onClick={handleLogout}>
+          <FormattedMessage
+            id="navigation.logout"
+            description="Navigation logout button name"
+            defaultMessage="Logout"
+          />
+        </LogOutButton>
       </Wrapper>
     </OuterWrapper>
   );

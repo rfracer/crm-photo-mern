@@ -23,8 +23,12 @@ const auth = async (req, res, next) => {
         (err, user) => {
           if (err) return next(new ApiError('Forbidden - token expired', 401));
           req.user = user;
-          const { id, email } = user;
-          const accessToken = generateAccessToken({ id: id, email: email });
+          const { id, email, settings } = user;
+          const accessToken = generateAccessToken({
+            id: id,
+            email: email,
+            settings: settings,
+          });
 
           res.cookie('JWT', accessToken, {
             httpOnly: true,

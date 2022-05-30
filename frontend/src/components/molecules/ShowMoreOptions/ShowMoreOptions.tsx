@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoEllipsisVertical, IoPencil, IoTrash } from 'react-icons/io5';
 import { useRemoveClientMutation } from 'store';
 import { Link } from 'react-router-dom';
+import { useIntl, FormattedMessage } from 'react-intl';
 import Modal from 'components/organisms/Modal/Modal';
 import {
   ShowMoreList,
@@ -21,6 +22,7 @@ export const ShowMoreOptions = React.forwardRef<Ref, Props>(
   ({ id, isActive, handleOpen }, ref) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [removeClient] = useRemoveClientMutation();
+    const intl = useIntl();
 
     const handleCloseModal = (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();
@@ -42,7 +44,9 @@ export const ShowMoreOptions = React.forwardRef<Ref, Props>(
         <Modal
           isOpen={modalIsOpen}
           handleClose={handleCloseModal}
-          modalHeader={'Confirm Deletion'}
+          modalHeader={intl.formatMessage({
+            id: 'clients.modal.confirm_deletion',
+          })}
         >
           <DeleteConfirm
             handleRemoveClient={handleRemoveClient}
@@ -55,11 +59,13 @@ export const ShowMoreOptions = React.forwardRef<Ref, Props>(
         <ShowMoreList show={isActive}>
           <li>
             <Link key={id} to={`/clients/edit/${id}`}>
-              <IoPencil title="pencil icon" /> Edit
+              <IoPencil title="pencil icon" />{' '}
+              <FormattedMessage id="global.edit" defaultMessage="Edit" />
             </Link>
           </li>
           <li role="button" onClick={handleOpenDeleteClient}>
-            <IoTrash title="trash icon" /> Delete
+            <IoTrash title="trash icon" />{' '}
+            <FormattedMessage id="global.delete" defaultMessage="Delete" />
           </li>
         </ShowMoreList>
       </ShowMoreWrapper>

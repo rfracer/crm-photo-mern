@@ -4,6 +4,7 @@ import { CardsWrapper } from 'components/organisms/DashboardCards/DashboardCards
 import { IoFileTrayFull, IoCheckbox, IoCash } from 'react-icons/io5';
 import DashboardCard from 'components/molecules/DashboardCard/DashboardCard';
 import { Client } from 'types/types';
+import { useIntl } from 'react-intl';
 
 type Props = {
   theme: DefaultTheme;
@@ -16,6 +17,7 @@ const DashboardCards = ({ theme, data, isSuccess, isLoading }: Props) => {
   const [leadsAmount, setLeadsAmount] = useState(0);
   const [contractsAmount, setContractsAmount] = useState(0);
   const [earnings, setEarnings] = useState(0);
+  const intl = useIntl();
 
   const calculateLeads = (data: Client[]) => {
     const results = data.filter((client) => client.status === 'lead');
@@ -46,21 +48,21 @@ const DashboardCards = ({ theme, data, isSuccess, isLoading }: Props) => {
   return (
     <CardsWrapper>
       <DashboardCard
-        title="LEADS"
+        title={intl.formatMessage({ id: 'dashboard.card_leads_title' })}
         icon={<IoFileTrayFull title="icon" />}
         value={leadsAmount}
         isLoading={isLoading}
         background={theme.colors.lightSecondary}
       />
       <DashboardCard
-        title="CONTRACTS"
+        title={intl.formatMessage({ id: 'dashboard.card_contracts_title' })}
         icon={<IoCheckbox title="icon" />}
         value={contractsAmount}
         isLoading={isLoading}
         background={theme.colors.secondary}
       />
       <DashboardCard
-        title="PREDICTED EARNINGS"
+        title={intl.formatMessage({ id: 'dashboard.card_predicted_title' })}
         icon={<IoCash title="icon" />}
         value={earnings}
         isLoading={isLoading}

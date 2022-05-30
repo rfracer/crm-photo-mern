@@ -114,7 +114,7 @@ describe('Clients add functionality testing', () => {
     cy.findByLabelText(/category/i).select(editedClient.category);
     cy.findByLabelText(/status/i).select(editedClient.status);
 
-    cy.findByRole('button', { name: /update/i }).click();
+    cy.findByRole('button', { name: /edit/i }).click();
 
     //Check if values are correctly updated
     cy.visit('/clients');

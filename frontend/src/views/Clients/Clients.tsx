@@ -6,9 +6,11 @@ import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
 import { Input } from 'components/atoms/Input/Input';
 import { ClientsList } from 'components/organisms/ClientsList/ClientsList';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const Clients = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const intl = useIntl();
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -18,11 +20,19 @@ const Clients = () => {
     <ViewWrapper>
       <HeadingWrapper>
         <div>
-          <Title>Clients</Title>
+          <Title>
+            <FormattedMessage
+              id="clients.title"
+              description="Clients page title"
+              defaultMessage="Clients"
+            />
+          </Title>
           <SearchBar>
             <Input
               type="search"
-              placeholder="Search"
+              placeholder={intl.formatMessage({
+                id: 'clients.search_placeholder',
+              })}
               value={searchTerm}
               onChange={handleSearch}
             />
@@ -30,7 +40,11 @@ const Clients = () => {
         </div>
         <div>
           <Button as={Link} to="/clients/add" $secondary>
-            ADD
+            <FormattedMessage
+              id="global.add"
+              description="Add button name"
+              defaultMessage="Add"
+            />
           </Button>
         </div>
       </HeadingWrapper>

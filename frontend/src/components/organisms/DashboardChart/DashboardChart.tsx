@@ -20,6 +20,7 @@ import {
 import { CardHeader } from 'components/molecules/Card/Card';
 import { Spinner } from 'components/atoms/Spinner/Spinner';
 import { Client, FetchCustomError } from 'types/types';
+import { FormattedMessage } from 'react-intl';
 
 type Props = {
   baseData: Client[];
@@ -150,7 +151,13 @@ export const DashboardChart = ({
           </ChartWrapper>
         </>
       ) : isError && error.status !== 404 ? null : (
-        <ErrorMessage>No data to show a chart</ErrorMessage>
+        <ErrorMessage>
+          <FormattedMessage
+            id="dashboard.card_statistics_no_data"
+            description="No data to generate chart info"
+            defaultMessage="No data to show a chart"
+          />
+        </ErrorMessage>
       )}
     </ChartCard>
   );

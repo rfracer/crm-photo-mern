@@ -7,14 +7,23 @@ import { DashboardActivities } from 'components/organisms/DashboardActivities/Da
 import { DashboardChart } from 'components/organisms/DashboardChart/DashboardChart';
 import { ActivitesWrapper } from 'views/Dashboard/Dashboard.styles';
 import { FetchCustomError } from 'types/types';
+import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 const Dashboard = () => {
   const { data, error, isSuccess, isLoading, isError } = useGetClientsQuery();
+  const intl = useIntl();
 
   const errorData = error as FetchCustomError;
   return (
     <ViewWrapper>
-      <Title>Dashboard</Title>
+      <Title>
+        <FormattedMessage
+          id="dashboard.title"
+          description="Dashboard page header"
+          defaultMessage="Dashboard"
+        />
+      </Title>
       <DashboardCards
         data={data ? data : []}
         isSuccess={isSuccess}
@@ -35,7 +44,7 @@ const Dashboard = () => {
           isError={isError}
           error={errorData}
           baseData={data ? data : []}
-          title="EARNINGS STATISTICS"
+          title={intl.formatMessage({ id: 'dashboard.card_statistics_title' })}
         />
       </ActivitesWrapper>
     </ViewWrapper>

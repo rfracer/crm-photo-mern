@@ -51,8 +51,8 @@ export const TopBar = () => {
         >
           {user && (
             <>
-              <UserLogo icon={getFirstLetter(user)} />
-              <UserName>{user}</UserName>{' '}
+              <UserLogo icon={getFirstLetter(user.email)} />
+              <UserName>{user.email}</UserName>{' '}
             </>
           )}
           <IoCaretDownOutline />

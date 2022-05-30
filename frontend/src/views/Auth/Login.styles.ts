@@ -64,7 +64,7 @@ export const StyledForm = styled.form`
     margin-top: 3rem;
 
     ${({ theme }) => theme.mq.tablet} {
-      width: 150px;
+      width: 190px;
     }
   }
 `;

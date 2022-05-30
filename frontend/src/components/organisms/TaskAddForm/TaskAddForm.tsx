@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAddTaskMutation } from 'store';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField } from 'components/molecules/TextField/TextField';
 import { SelectField } from 'components/molecules/SelectField/SelectField';
 import { FormWrapper } from 'components/organisms/TaskAddForm/TaskAddForm.styles';
@@ -12,6 +13,7 @@ import { Task } from 'types/types';
 
 const TaskAddForm = () => {
   const [addTask, { isSuccess, isError, isLoading }] = useAddTaskMutation();
+  const intl = useIntl();
 
   const {
     register,
@@ -39,25 +41,55 @@ const TaskAddForm = () => {
         {...register('name', { required: true })}
         name="name"
         id="name"
-        label="Task Name"
+        label={intl.formatMessage({ id: 'tasks.modal.task_name_label' })}
       />
       {errors.name ? (
-        <FormInputError>Please fill name field</FormInputError>
+        <FormInputError>
+          <FormattedMessage
+            id="tasks.modal.task_name_fill_error"
+            description="Please fill name field"
+            defaultMessage="Please fill name field"
+          />
+        </FormInputError>
       ) : null}
 
       <SelectField
         {...register('priority', { required: true })}
-        label="Priority"
+        label={intl.formatMessage({ id: 'tasks.modal.task_priority' })}
         name="priority"
         id="priority"
-        options={['low', 'medium', 'high']}
+        options={[
+          { low: intl.formatMessage({ id: 'tasks.low' }) },
+          { medium: intl.formatMessage({ id: 'tasks.medium' }) },
+          { high: intl.formatMessage({ id: 'tasks.high' }) },
+        ]}
       />
 
       <Button type="submit">
-        {isLoading ? <ButtonSpinner data-testid="button-spinner" /> : 'ADD'}
+        {isLoading ? (
+          <ButtonSpinner data-testid="button-spinner" />
+        ) : (
+          <FormattedMessage id="global.add" defaultMessage="Add" />
+        )}
       </Button>
-      {isSuccess && !isDirty ? <FormMessage success>Added</FormMessage> : null}
-      {isError ? <FormMessage>Server Error</FormMessage> : null}
+      {isSuccess && !isDirty ? (
+        <FormMessage success>
+          <FormattedMessage
+            id="tasks.added"
+            description="Added task message"
+            defaultMessage="Added"
+          />
+        </FormMessage>
+      ) : null}
+      {isError ? (
+        <FormMessage>
+          <FormattedMessage
+            id="tasks.server_error"
+            description="Server errror message"
+            defaultMessage="Server error"
+          />
+        </FormMessage>
+      ) : null}
     </FormWrapper>
   );
 };

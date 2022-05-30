@@ -9,9 +9,12 @@ const {
 
 const getUser = async (req, res, next) => {
   res.set('Cache-Control', 'no-store');
+  const user = await User.findOne({ email: req.user.email });
+
   res.status(200).send({
     status: 200,
     user: req.user ? req.user : null,
+    settings: user.settings || null,
   });
 };
 
@@ -30,11 +33,16 @@ const loginUser = async (req, res, next) => {
     return next(new ApiError('Invalid password for this user', 404));
   }
 
-  const accessToken = generateAccessToken({ id: user._id, email: user.email });
+  const accessToken = generateAccessToken({
+    id: user._id,
+    email: user.email,
+    settings: user.settings,
+  });
 
   const refreshToken = generateRefreshToken({
     id: user._id,
     email: user.email,
+    settings: user.settings,
   });
 
   try {
@@ -57,13 +65,13 @@ const loginUser = async (req, res, next) => {
 
   res.status(200).send({
     status: 200,
-    user: { email: email },
+    user: { email: email, settings: user.settings },
     message: 'Login successfully',
   });
 };
 
 const registerUser = async (req, res, next) => {
-  const { email, password, confirmPassword } = req.body;
+  const { email, password, confirmPassword, language } = req.body;
 
   if (!email || !password || !confirmPassword) {
     return next(new ApiError('Fill all required fields', 400));
@@ -89,6 +97,9 @@ const registerUser = async (req, res, next) => {
     const user = await User.create({
       email,
       password: hashedPassword,
+      settings: {
+        language: language,
+      },
     });
 
     if (user) {
@@ -96,6 +107,7 @@ const registerUser = async (req, res, next) => {
         status: 201,
         message: 'User created',
         email: user.email,
+        language: user.settings.language,
       });
     }
   } catch (err) {
@@ -154,10 +166,35 @@ const changePassword = async (req, res, next) => {
   }
 };
 
+const changeLanguage = async (req, res, next) => {
+  const { language } = req.body;
+
+  if (!language) {
+    return next(new ApiError('Fill all required fields', 400));
+  }
+
+  // Update user language - PATCH
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+      settings: { language: language },
+    });
+
+    if (updatedUser) {
+      res.status(200).json({
+        status: 200,
+        message: 'Language updated',
+      });
+    }
+  } catch (err) {
+    next(new ApiError(err, 400));
+  }
+};
+
 module.exports = {
   loginUser,
   registerUser,
   logoutUser,
   getUser,
   changePassword,
+  changeLanguage,
 };

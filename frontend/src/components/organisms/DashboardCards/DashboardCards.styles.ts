@@ -8,4 +8,8 @@ export const CardsWrapper = styled.div`
   ${({ theme }) => theme.mq.desktop} {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  h3 {
+    text-transform: uppercase;
+  }
 `;
