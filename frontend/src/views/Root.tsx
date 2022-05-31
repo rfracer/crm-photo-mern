@@ -33,7 +33,7 @@ const Root = () => {
     <IntlProvider
       locale={localLanguage}
       messages={languages[localLanguage]}
-      defaultLocale='en'
+      defaultLocale="en"
     >
       {user ? (
         isLoading ? (

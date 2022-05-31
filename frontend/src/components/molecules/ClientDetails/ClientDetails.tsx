@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
@@ -18,7 +17,7 @@ type Props = {
 };
 
 export const ClientDetails = ({ client }: Props) => {
-  const { data, isLoading, isFetching } = useGetClientQuery(client);
+  const { data } = useGetClientQuery(client);
 
   return (
     <>

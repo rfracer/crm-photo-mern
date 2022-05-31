@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Wrapper } from 'components/molecules/SelectField/SelectField.styles';
 import { Label } from 'components/atoms/Label/Label';
 import { Select } from 'components/atoms/Select/Select';

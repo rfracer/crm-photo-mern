@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useRemoveTaskMutation, useUpdateTaskMutation } from 'store';
 import {
   Wrapper,

@@ -23,7 +23,7 @@ const SettingsLanguageForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isDirty },
+    formState: { isDirty },
   } = useForm<Language>();
 
   useEffect(() => {

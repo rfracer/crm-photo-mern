@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'hooks/store';
 import { setUser } from 'store/state/authSlice';
 import { useLogoutUserMutation, baseApi } from 'store';
 import { ReactComponent as LogoWhite } from 'assets/image/logo-white.svg';
@@ -28,7 +28,6 @@ import {
 import { Link } from 'react-router-dom';
 import { UserLogo } from 'components/atoms/UserLogo/UserLogo';
 import { UserMenu } from 'components/molecules/UserMenu/UserMenu';
-import { useAppDispatch, useAppSelector } from 'hooks/store';
 import { FormattedMessage } from 'react-intl';
 
 export const Navigation = () => {
