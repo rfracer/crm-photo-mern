@@ -25,15 +25,15 @@ const Root = () => {
       setLocalLanguage(language);
     } else {
       setLocalLanguage(navigator.language);
-      dispatch(setLanguage(navigator.language));
+      dispatch(setLanguage(navigator.language.split('-')[0]));
     }
-  }, [user, language, data, isSuccess]);
+  }, [user, language, data, isSuccess, dispatch]);
 
   return (
     <IntlProvider
       locale={localLanguage}
       messages={languages[localLanguage]}
-      defaultLocale="en"
+      defaultLocale='en'
     >
       {user ? (
         isLoading ? (
