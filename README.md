@@ -27,7 +27,7 @@ password: 12345
 - Dashboard with summary statistics, coming soon activities and earnings chart
 - Clients page - add, remove, edit clients, open modal with more specific data
 - Tasks page - add, remove tasks
-- Settings - allows you to change your password
+- Settings - allows you to change your password and application language
 
 ## Technologies and tools
 
@@ -39,6 +39,7 @@ password: 12345
 - MongoDB Database - Mongoose
 - JWT - Auth Tokens
 - React Testing Library, Cypress
+- React Intl - i18n
 
 ## Installation
 
